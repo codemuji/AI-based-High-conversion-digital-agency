@@ -84,7 +84,19 @@ export function QuestionStep({
   };
 
   return (
-    <div className="flex flex-col h-full justify-between">
+    <div
+      className="flex flex-col h-full justify-between"
+      style={{
+        /* Override CSS vars for glass-dark context */
+        "--foreground": "rgba(255,255,255,0.92)",
+        "--muted": "rgba(255,255,255,0.50)",
+        "--muted-light": "rgba(255,255,255,0.30)",
+        "--surface-border": "rgba(255,255,255,0.12)",
+        "--surface-hover": "rgba(255,255,255,0.08)",
+        "--background": "rgba(255,255,255,0.06)",
+        "--accent-subtle": "rgba(37,99,235,0.20)",
+      } as React.CSSProperties}
+    >
       <div>
         {/* Progress header */}
         <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-3">
@@ -95,7 +107,7 @@ export function QuestionStep({
         </div>
 
         {/* Progress bar */}
-        <div className="w-full h-1.5 bg-[var(--surface-border)] rounded-full overflow-hidden mb-6">
+        <div className="w-full h-1.5 rounded-full overflow-hidden mb-6" style={{ background: "rgba(255,255,255,0.12)" }}>
           <div
             className="h-full bg-[var(--accent)] transition-all duration-300 rounded-full"
             style={{ width: `${(question.step / totalSteps) * 100}%` }}
@@ -114,7 +126,7 @@ export function QuestionStep({
 
         {/* Error notice */}
         {error && (
-          <div className="mt-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
+          <div className="mt-4 p-3 rounded-lg text-xs font-medium flex items-center gap-2" style={{ background: "rgba(239,68,68,0.15)", border: "1px solid rgba(239,68,68,0.35)", color: "#fca5a5" }}>
             <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -216,13 +228,14 @@ export function QuestionStep({
           )}
 
           {/* Navigation Action Buttons */}
-          <div className="mt-8 pt-4 border-t border-[var(--surface-border)] flex items-center justify-between">
+          <div className="mt-8 pt-4 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
             {onBack ? (
               <button
                 type="button"
                 onClick={onBack}
                 disabled={isSubmitting}
-                className="px-5 py-2.5 rounded-xl border border-[var(--surface-border)] text-sm font-semibold text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors cursor-pointer disabled:opacity-50"
+                className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50"
+                style={{ border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.6)" }}
               >
                 &larr; Back
               </button>

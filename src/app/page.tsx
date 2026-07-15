@@ -16,7 +16,7 @@ import { submitLeadAction } from "@/app/actions";
 export default function HomePage() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<Category | null>("Website");
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [initialQuery, setInitialQuery] = useState("");
 
   const handleStartOnboarding = (category?: Category, query = "") => {

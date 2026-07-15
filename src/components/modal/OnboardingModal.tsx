@@ -40,14 +40,13 @@ export function OnboardingModal({
     if (!dialog) return;
 
     if (isOpen && !dialog.open) {
-      // Reset step when opening
       setStepIndex(0);
       setAnswers(initialQuery ? { q1: initialQuery } : {});
       dialog.showModal();
     } else if (!isOpen && dialog.open) {
       dialog.close();
     }
-  }, [isOpen, category, initialQuery]);
+  }, [isOpen, initialQuery]);
 
   // Handle ESC press directly from native dialog close
   useEffect(() => {
@@ -62,9 +61,8 @@ export function OnboardingModal({
     return () => dialog.removeEventListener("close", handleNativeClose);
   }, [onClose]);
 
-  if (!category || !currentQuestion) return null;
-
   const handleNext = async (answer: string | ContactData) => {
+    if (!currentQuestion || !category) return;
     const newAnswers = { ...answers, [currentQuestion.id]: answer };
     setAnswers(newAnswers);
 
@@ -115,41 +113,35 @@ export function OnboardingModal({
         padding: 0,
         border: "none",
         background: "transparent",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();
       }}
     >
-      {/* Glass Panel */}
-      <div
+      {category && currentQuestion && (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
+        {/* Glass Panel */}
+        <div
         style={{
           position: "relative",
           width: "min(680px, 92vw)",
           maxHeight: "88vh",
           borderRadius: "24px",
-          /* Glass background */
-          background:
-            "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.10) 100%)",
-          backdropFilter: "blur(40px) saturate(200%)",
-          WebkitBackdropFilter: "blur(40px) saturate(200%)",
-          /* Blended glowing border via box-shadow + outline */
+          /* Solid dark with subtle warm tint — no see-through */
+          background: "linear-gradient(160deg, #1e1535 0%, #140e28 50%, #0d0a1a 100%)",
+          /* No visible border — blended shadow only for soft depth */
           boxShadow: `
-            0 0 0 1px rgba(255,255,255,0.18),
-            0 0 0 1.5px rgba(99,179,237,0.12),
-            0 8px 32px rgba(2,6,23,0.45),
-            0 32px 80px rgba(2,6,23,0.30),
-            inset 0 1px 0 rgba(255,255,255,0.22),
-            inset 0 -1px 0 rgba(255,255,255,0.06)
+            0 8px 40px rgba(0,0,0,0.5),
+            0 32px 80px rgba(0,0,0,0.35),
+            inset 0 1px 0 rgba(255,153,51,0.12),
+            inset 0 -1px 0 rgba(19,136,8,0.08)
           `,
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
         }}
       >
-        {/* Subtle top sheen gradient */}
+        {/* Subtle saffron-to-green sheen at the top */}
         <div
           aria-hidden
           style={{
@@ -157,7 +149,7 @@ export function OnboardingModal({
             inset: 0,
             borderRadius: "24px",
             background:
-              "linear-gradient(160deg, rgba(255,255,255,0.10) 0%, transparent 40%)",
+              "linear-gradient(160deg, rgba(255,153,51,0.08) 0%, transparent 30%, rgba(19,136,8,0.04) 100%)",
             pointerEvents: "none",
             zIndex: 0,
           }}
@@ -184,7 +176,7 @@ export function OnboardingModal({
               justifyContent: "space-between",
               paddingBottom: "20px",
               marginBottom: "20px",
-              borderBottom: "1px solid rgba(255,255,255,0.12)",
+              borderBottom: "1px solid rgba(255,153,51,0.15)",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -192,9 +184,9 @@ export function OnboardingModal({
                 style={{
                   padding: "4px 12px",
                   borderRadius: "9999px",
-                  background: "rgba(37,99,235,0.18)",
-                  border: "1px solid rgba(99,179,237,0.25)",
-                  color: "#93c5fd",
+                  background: "rgba(255,153,51,0.18)",
+                  border: "1px solid rgba(255,153,51,0.30)",
+                  color: "#ffb366",
                   fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.08em",
@@ -268,6 +260,8 @@ export function OnboardingModal({
           </div>
         </div>
       </div>
+        </div>
+      )}
     </dialog>
   );
 }

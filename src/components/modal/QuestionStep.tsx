@@ -87,14 +87,16 @@ export function QuestionStep({
     <div
       className="flex flex-col h-full justify-between"
       style={{
-        /* Override CSS vars for glass-dark context */
-        "--foreground": "rgba(255,255,255,0.92)",
-        "--muted": "rgba(255,255,255,0.50)",
-        "--muted-light": "rgba(255,255,255,0.30)",
-        "--surface-border": "rgba(255,255,255,0.12)",
-        "--surface-hover": "rgba(255,255,255,0.08)",
-        "--background": "rgba(255,255,255,0.06)",
-        "--accent-subtle": "rgba(37,99,235,0.20)",
+        /* Override CSS vars for dark modal context — Indian tricolor accents */
+        "--foreground": "#ffffff",
+        "--muted": "rgba(255,255,255,0.65)",
+        "--muted-light": "rgba(255,255,255,0.40)",
+        "--surface-border": "rgba(255,153,51,0.15)",
+        "--surface-hover": "rgba(255,153,51,0.10)",
+        "--background": "rgba(255,255,255,0.08)",
+        "--accent": "#ff9933",
+        "--accent-hover": "#e8850a",
+        "--accent-subtle": "rgba(255,153,51,0.15)",
       } as React.CSSProperties}
     >
       <div>
@@ -228,7 +230,7 @@ export function QuestionStep({
           )}
 
           {/* Navigation Action Buttons */}
-          <div className="mt-8 pt-4 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+          <div className="mt-8 pt-4 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,153,51,0.15)" }}>
             {onBack ? (
               <button
                 type="button"
@@ -246,7 +248,8 @@ export function QuestionStep({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-sm font-display font-semibold shadow-sm hover:shadow-md transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2 cursor-pointer"
+              className="px-6 py-2.5 rounded-xl text-white text-sm font-display font-semibold shadow-sm hover:shadow-md transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2 cursor-pointer"
+              style={{ background: "#ff9933" }}
             >
               {isSubmitting ? (
                 <>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import type { Category } from "@/lib/intent-engine";
 import { HeroIntake } from "@/components/hero/HeroIntake";
 import { OnboardingModal, type LeadSubmissionPayload } from "@/components/modal/OnboardingModal";
+import { Navbar } from "@/components/navigation/Navbar";
 import { StickyIntakeBar } from "@/components/navigation/StickyIntakeBar";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -40,7 +41,9 @@ export default function HomePage() {
   };
 
   return (
-    <main className="flex-1 bg-[var(--background)] relative selection:bg-[var(--accent)] selection:text-white">
+    <main className="flex-1 bg-[var(--background)] relative">
+      <Navbar />
+
       {/* 1. Conversion-First Search/Chat Hero Intake */}
       <HeroIntake onStartOnboarding={handleStartOnboarding} />
 

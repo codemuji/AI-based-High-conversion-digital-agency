@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Zain, Nunito } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const zain = Zain({
+  variable: "--font-zain",
   subsets: ["latin"],
+  weight: ["300", "400", "700", "800", "900"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "India Web Designs | Conversion-First Digital & AI Solutions",
-  description: "Custom websites, high-performance web & mobile apps, and AI-powered automation crafted for rapid business growth.",
-  keywords: ["web design india", "app development", "AI automation", "custom software", "digital marketing"],
+  title: "India Web Designs | Conversion-First Digital Studio",
+  description:
+    "Custom websites, high-performance web & mobile apps, and AI-powered automation for rapid business growth.",
+  keywords: [
+    "web design india",
+    "app development",
+    "AI automation",
+    "custom software",
+    "digital marketing",
+  ],
 };
 
 export default function RootLayout({
@@ -28,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} h-full antialiased`}
+      className={`${zain.variable} ${nunito.variable} ${nunito.className} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans selection:bg-[var(--accent)] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
         {children}
       </body>
     </html>

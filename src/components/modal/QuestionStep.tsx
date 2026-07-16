@@ -18,14 +18,14 @@ export interface QuestionStepProps {
   isSubmitting?: boolean;
 }
 
-export function QuestionStep({
+export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(function QuestionStep({
   question,
   currentAnswer,
   totalSteps,
   onNext,
   onBack,
   isSubmitting = false,
-}: QuestionStepProps) {
+}, ref) {
   const [textVal, setTextVal] = useState<string>("");
   const [selectVal, setSelectVal] = useState<string>("");
   const [contactVal, setContactVal] = useState<ContactData>({
@@ -85,6 +85,7 @@ export function QuestionStep({
 
   return (
     <div
+      ref={ref}
       className="flex flex-col h-full justify-between"
       style={{
         /* Override CSS vars for dark modal context — Indian tricolor accents */
@@ -145,7 +146,7 @@ export function QuestionStep({
                 value={textVal}
                 onChange={(e) => setTextVal(e.target.value)}
                 placeholder={question.placeholder}
-                className="w-full p-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
+                className="w-full p-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300 resize-none"
                 autoFocus
               />
             </div>
@@ -196,7 +197,7 @@ export function QuestionStep({
                   value={contactVal.name}
                   onChange={(e) => setContactVal({ ...contactVal, name: e.target.value })}
                   placeholder="e.g., Rajesh Sharma"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
                   autoFocus
                 />
               </div>
@@ -210,7 +211,7 @@ export function QuestionStep({
                   value={contactVal.phone}
                   onChange={(e) => setContactVal({ ...contactVal, phone: e.target.value })}
                   placeholder="e.g., +91 98765 43210"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
                 />
               </div>
 
@@ -223,7 +224,7 @@ export function QuestionStep({
                   value={contactVal.email}
                   onChange={(e) => setContactVal({ ...contactVal, email: e.target.value })}
                   placeholder="e.g., rajesh@apexretail.in"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
                 />
               </div>
             </div>
@@ -270,4 +271,4 @@ export function QuestionStep({
       </div>
     </div>
   );
-}
+});

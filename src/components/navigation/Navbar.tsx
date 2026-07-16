@@ -73,19 +73,7 @@ export function Navbar() {
               letterSpacing: "-0.02em",
             }}
           >
-            IWD
-          </span>
-          <span
-            style={{
-              fontSize: 11,
-              color: "var(--muted)",
-              fontWeight: 500,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-              marginLeft: 2,
-            }}
-          >
-            Studio
+            India Web Designs
           </span>
         </a>
 

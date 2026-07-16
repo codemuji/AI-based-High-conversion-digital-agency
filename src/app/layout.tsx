@@ -16,7 +16,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "India Web Designs | Conversion-First Digital Studio",
+  title: "India Web Designs",
   description:
     "Custom websites, high-performance web & mobile apps, and AI-powered automation for rapid business growth.",
   keywords: [

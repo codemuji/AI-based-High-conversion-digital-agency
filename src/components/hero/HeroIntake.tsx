@@ -125,11 +125,7 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
       {/* Background signature motif */}
       <div className="absolute inset-0 bg-grid-pattern -z-10 opacity-60 mask-radial" />
 
-      {/* Hero Badge */}
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--accent-subtle)] text-[var(--accent)] border border-[var(--accent)]/20 text-xs font-semibold uppercase tracking-wider mb-8 shadow-2xs">
-        <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-        Conversion-First Digital Studio
-      </div>
+
 
       {/* Main Headline */}
       <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-4xl mx-auto leading-tight">
@@ -145,7 +141,7 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
 
       {/* Main Search/Chat Intake Bar */}
       <form onSubmit={handleSubmit} className="mt-10 max-w-3xl mx-auto">
-        <div className="relative flex items-center p-2 rounded-2xl bg-[var(--surface)] border-2 border-[var(--surface-border)] focus-within:border-[var(--accent)] shadow-lg hover:shadow-xl transition-all duration-200">
+        <div className="relative flex items-center p-2 rounded-2xl bg-[var(--surface)] border-2 border-[var(--surface-border)] focus-within:border-[var(--accent)]/80 focus-within:ring-4 focus-within:ring-[var(--accent)]/20 focus-within:shadow-[0_0_35px_rgba(194,65,12,0.25)] shadow-lg hover:shadow-xl transition-all duration-300">
           <div className="pl-4 text-[var(--muted)]">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -159,7 +155,7 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
             onChange={(e) => setQuery(e.target.value)}
             placeholder={PLACEHOLDERS[placeholderIdx]}
             disabled={isTypingEffect}
-            className="w-full py-3.5 px-4 text-base sm:text-lg bg-transparent text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none disabled:opacity-80 font-medium"
+            className="w-full py-3.5 px-4 text-base sm:text-lg bg-transparent text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none focus-visible:outline-none disabled:opacity-80 font-medium"
           />
 
           <button

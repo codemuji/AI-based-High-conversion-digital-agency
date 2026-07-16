@@ -12,7 +12,7 @@ export function Footer() {
             </span>
           </div>
           <p className="text-xs text-[var(--muted)] mt-1">
-            Conversion-First Digital Studio · Powered by Codemuji Digital Services
+            Powered by Codemuji Digital Services
           </p>
         </div>
 

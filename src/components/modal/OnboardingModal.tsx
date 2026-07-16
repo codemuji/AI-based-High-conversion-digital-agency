@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import gsap from "gsap";
 import type { Category } from "@/lib/intent-engine";
 import { QUESTIONS_BY_CATEGORY } from "@/lib/questions";
 import { QuestionStep, type ContactData } from "./QuestionStep";
@@ -27,39 +28,165 @@ export function OnboardingModal({
   onClose,
   onSubmit,
 }: OnboardingModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [shouldRender, setShouldRender] = useState(isOpen);
   const [stepIndex, setStepIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, any>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // GSAP animation refs
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const questionRef = useRef<HTMLDivElement>(null);
+  const isClosingRef = useRef(false);
+
   const questions = category ? QUESTIONS_BY_CATEGORY[category] : [];
   const currentQuestion = questions[stepIndex];
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
+  // Animated close handler triggered on X, ESC, or backdrop click
+  const handleAnimatedClose = useCallback(() => {
+    if (isClosingRef.current || !overlayRef.current) {
+      onClose();
+      return;
+    }
+    isClosingRef.current = true;
 
-    if (isOpen && !dialog.open) {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          isClosingRef.current = false;
+          setShouldRender(false);
+          onClose();
+        },
+      });
+
+      tl.to([headerRef.current, questionRef.current], {
+        y: -20,
+        opacity: 0,
+        duration: 0.22,
+        ease: "power2.in",
+      }).to(
+        overlayRef.current,
+        {
+          opacity: 0,
+          duration: 0.28,
+          ease: "power2.inOut",
+        },
+        "-=0.1"
+      );
+    });
+
+    return () => ctx.revert();
+  }, [onClose]);
+
+  // Sync with prop isOpen
+  useEffect(() => {
+    if (isOpen && !shouldRender) {
+      isClosingRef.current = false;
       setStepIndex(0);
       setAnswers(initialQuery ? { q1: initialQuery } : {});
-      dialog.showModal();
-    } else if (!isOpen && dialog.open) {
-      dialog.close();
+      setShouldRender(true);
+    } else if (!isOpen && shouldRender && !isClosingRef.current) {
+      handleAnimatedClose();
     }
-  }, [isOpen, initialQuery]);
+  }, [isOpen, shouldRender, initialQuery, handleAnimatedClose]);
 
-  // Handle ESC press directly from native dialog close
+  // Body scroll locking and ESC key handling
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
+    if (!shouldRender) return;
 
-    const handleNativeClose = () => {
-      onClose();
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        handleAnimatedClose();
+      }
     };
 
-    dialog.addEventListener("close", handleNativeClose);
-    return () => dialog.removeEventListener("close", handleNativeClose);
-  }, [onClose]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [shouldRender, handleAnimatedClose]);
+
+  // GSAP Entrance Choreography
+  useEffect(() => {
+    if (!shouldRender || !overlayRef.current || !headerRef.current || !questionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Check for prefers-reduced-motion
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.set(overlayRef.current, { opacity: 0 });
+        gsap.set(headerRef.current, { y: -25, opacity: 0 });
+        gsap.set(questionRef.current, { y: 35, opacity: 0 });
+
+        const tl = gsap.timeline();
+        tl.to(overlayRef.current, {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        })
+          .to(
+            headerRef.current,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.45,
+              ease: "power3.out",
+            },
+            "-=0.15"
+          )
+          .to(
+            questionRef.current,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              ease: "power3.out",
+            },
+            "-=0.3"
+          );
+      });
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(overlayRef.current, { opacity: 1 });
+        gsap.set([headerRef.current, questionRef.current], { y: 0, opacity: 1 });
+      });
+    });
+
+    return () => ctx.revert();
+  }, [shouldRender]);
+
+  const transitionToStep = (newIndex: number, direction: "forward" | "backward") => {
+    if (!questionRef.current) {
+      setStepIndex(newIndex);
+      return;
+    }
+
+    const exitX = direction === "forward" ? -45 : 45;
+    const enterX = direction === "forward" ? 45 : -45;
+
+    gsap.to(questionRef.current, {
+      x: exitX,
+      opacity: 0,
+      duration: 0.24,
+      ease: "power2.in",
+      onComplete: () => {
+        setStepIndex(newIndex);
+        if (questionRef.current) {
+          gsap.fromTo(
+            questionRef.current,
+            { x: enterX, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.38, ease: "power3.out" }
+          );
+        }
+      },
+    });
+  };
 
   const handleNext = async (answer: string | ContactData) => {
     if (!currentQuestion || !category) return;
@@ -67,18 +194,18 @@ export function OnboardingModal({
     setAnswers(newAnswers);
 
     if (stepIndex < questions.length - 1) {
-      setStepIndex((prev) => prev + 1);
+      transitionToStep(stepIndex + 1, "forward");
     } else {
       // Final step reached! Submit payload
       setIsSubmitting(true);
       try {
         const contactData = answer as ContactData;
-        // Collect Q1..Q3 text/select answers
         const contentAnswers: Record<string, string> = {};
         for (let i = 0; i < questions.length - 1; i++) {
           const qId = questions[i].id;
           const qTitle = questions[i].title;
-          contentAnswers[qTitle] = typeof newAnswers[qId] === "string" ? newAnswers[qId] : JSON.stringify(newAnswers[qId]);
+          contentAnswers[qTitle] =
+            typeof newAnswers[qId] === "string" ? newAnswers[qId] : JSON.stringify(newAnswers[qId]);
         }
 
         await onSubmit({
@@ -95,173 +222,188 @@ export function OnboardingModal({
 
   const handleBack = () => {
     if (stepIndex > 0) {
-      setStepIndex((prev) => prev - 1);
+      transitionToStep(stepIndex - 1, "backward");
     }
   };
 
+  if (!shouldRender || !category || !currentQuestion) return null;
+
   return (
-    <dialog
-      ref={dialogRef}
+    <div
+      ref={overlayRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="onboarding-flow-title"
       style={{
         position: "fixed",
         inset: 0,
         width: "100dvw",
         height: "100dvh",
-        maxWidth: "100dvw",
-        maxHeight: "100dvh",
-        margin: 0,
-        padding: 0,
-        border: "none",
-        background: "transparent",
+        zIndex: 100,
+        /* Deep rich dark gradient across the full viewport */
+        background: "linear-gradient(160deg, #0a0714 0%, #110c22 50%, #16102a 100%)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflowY: "auto",
+        padding: "24px 16px",
       }}
       onClick={(e) => {
-        if (e.target === dialogRef.current) onClose();
+        if (e.target === overlayRef.current) handleAnimatedClose();
       }}
     >
-      {category && currentQuestion && (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
-        {/* Glass Panel */}
-        <div
+      {/* Radial vignette fade at the edges for immersive feel */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "radial-gradient(circle at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.75) 100%)",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Subtle ambient warm glow in background */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: "-15%",
+          right: "-10%",
+          width: "550px",
+          height: "550px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,153,51,0.07) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          bottom: "-15%",
+          left: "-10%",
+          width: "550px",
+          height: "550px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(19,136,8,0.05) 0%, transparent 70%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Main Container */}
+      <div
         style={{
           position: "relative",
-          width: "min(680px, 92vw)",
-          maxHeight: "88vh",
-          borderRadius: "24px",
-          /* Solid dark with subtle warm tint — no see-through */
-          background: "linear-gradient(160deg, #1e1535 0%, #140e28 50%, #0d0a1a 100%)",
-          /* No visible border — blended shadow only for soft depth */
-          boxShadow: `
-            0 8px 40px rgba(0,0,0,0.5),
-            0 32px 80px rgba(0,0,0,0.35),
-            inset 0 1px 0 rgba(255,153,51,0.12),
-            inset 0 -1px 0 rgba(19,136,8,0.08)
-          `,
-          overflow: "hidden",
+          zIndex: 10,
+          width: "min(720px, 94vw)",
+          minHeight: "min(560px, 86vh)",
+          margin: "auto",
           display: "flex",
           flexDirection: "column",
+          justifyContent: "space-between",
         }}
       >
-        {/* Subtle saffron-to-green sheen at the top */}
+        {/* Header Section */}
         <div
-          aria-hidden
+          ref={headerRef}
           style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "24px",
-            background:
-              "linear-gradient(160deg, rgba(255,153,51,0.08) 0%, transparent 30%, rgba(19,136,8,0.04) 100%)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-
-        {/* Scrollable content */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            padding: "32px 36px",
-            overflowY: "auto",
             display: "flex",
-            flexDirection: "column",
-            gap: "0",
-            flex: 1,
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingBottom: "24px",
+            marginBottom: "32px",
+            borderBottom: "1px solid rgba(255,153,51,0.18)",
           }}
         >
-          {/* Header: Category Badge + Close */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              paddingBottom: "20px",
-              marginBottom: "20px",
-              borderBottom: "1px solid rgba(255,153,51,0.15)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span
-                style={{
-                  padding: "4px 12px",
-                  borderRadius: "9999px",
-                  background: "rgba(255,153,51,0.18)",
-                  border: "1px solid rgba(255,153,51,0.30)",
-                  color: "#ffb366",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                }}
-              >
-                {category} Scoping Flow
-              </span>
-              {initialQuery && initialQuery !== category && (
-                <span
-                  style={{
-                    fontSize: "12px",
-                    color: "rgba(255,255,255,0.45)",
-                    fontStyle: "italic",
-                    maxWidth: "240px",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  &ldquo;{initialQuery}&rdquo;
-                </span>
-              )}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => dialogRef.current?.close()}
-              title="Close modal (ESC)"
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+            <span
+              id="onboarding-flow-title"
               style={{
-                width: "36px",
-                height: "36px",
-                borderRadius: "10px",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(255,255,255,0.06)",
-                color: "rgba(255,255,255,0.55)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "background 0.2s, color 0.2s, border-color 0.2s",
-                flexShrink: 0,
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.14)";
-                (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.9)";
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.22)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-                (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.55)";
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.12)";
+                padding: "6px 14px",
+                borderRadius: "9999px",
+                background: "rgba(255,153,51,0.18)",
+                border: "1px solid rgba(255,153,51,0.32)",
+                color: "#ffb366",
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
               }}
             >
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+              {category} Scoping Flow
+            </span>
+            {initialQuery && initialQuery !== category && (
+              <span
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.55)",
+                  fontStyle: "italic",
+                  maxWidth: "280px",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                &ldquo;{initialQuery}&rdquo;
+              </span>
+            )}
           </div>
 
-          {/* Dynamic Question Step */}
-          <div style={{ flex: 1 }}>
-            <QuestionStep
-              question={currentQuestion}
-              currentAnswer={answers[currentQuestion.id]}
-              totalSteps={questions.length}
-              onNext={handleNext}
-              onBack={stepIndex > 0 ? handleBack : undefined}
-              isSubmitting={isSubmitting}
-            />
-          </div>
+          <button
+            type="button"
+            onClick={handleAnimatedClose}
+            title="Close scoping flow (ESC)"
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(255,255,255,0.07)",
+              color: "rgba(255,255,255,0.65)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              flexShrink: 0,
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.16)";
+              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.95)";
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.28)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.07)";
+              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.65)";
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
+            }}
+          >
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dynamic Question Step */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <QuestionStep
+            ref={questionRef}
+            question={currentQuestion}
+            currentAnswer={answers[currentQuestion.id]}
+            totalSteps={questions.length}
+            onNext={handleNext}
+            onBack={stepIndex > 0 ? handleBack : undefined}
+            isSubmitting={isSubmitting}
+          />
         </div>
       </div>
-        </div>
-      )}
-    </dialog>
+    </div>
   );
 }

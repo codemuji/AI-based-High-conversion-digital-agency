@@ -40,7 +40,7 @@ export function SuggestionCard({
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
         style={{
           background:
-            "radial-gradient(300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 153, 51, 0.12), transparent 80%)",
+            "radial-gradient(300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.12), transparent 80%)",
         }}
       />
 

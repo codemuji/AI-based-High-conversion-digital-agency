@@ -118,12 +118,12 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
         "--foreground": "#ffffff",
         "--muted": "rgba(255,255,255,0.65)",
         "--muted-light": "rgba(255,255,255,0.40)",
-        "--surface-border": "rgba(255,153,51,0.15)",
-        "--surface-hover": "rgba(255,153,51,0.10)",
+        "--surface-border": "rgba(22,163,74,0.15)",
+        "--surface-hover": "rgba(22,163,74,0.10)",
         "--background": "rgba(255,255,255,0.08)",
-        "--accent": "#ff9933",
-        "--accent-hover": "#e8850a",
-        "--accent-subtle": "rgba(255,153,51,0.15)",
+        "--accent": "#15803d",
+        "--accent-hover": "#14532d",
+        "--accent-subtle": "rgba(22,163,74,0.15)",
       } as React.CSSProperties}
     >
       <div>
@@ -172,7 +172,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                 value={textVal}
                 onChange={(e) => setTextVal(e.target.value)}
                 placeholder={question.placeholder}
-                className="w-full p-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300 resize-none"
+                className="w-full p-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] placeholder-[var(--muted-light)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(22,163,74,0.2)] transition-all duration-300 resize-none"
                 autoFocus
               />
             </div>
@@ -223,7 +223,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.name}
                   onChange={(e) => setContactVal({ ...contactVal, name: e.target.value })}
                   placeholder="e.g., Rajesh Sharma"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_22px_rgba(22,163,74,0.2)] transition-all duration-300"
                   autoFocus
                 />
               </div>
@@ -237,7 +237,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.phone}
                   onChange={(e) => setContactVal({ ...contactVal, phone: e.target.value })}
                   placeholder="e.g., +91 98765 43210"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_22px_rgba(22,163,74,0.2)] transition-all duration-300"
                 />
               </div>
 
@@ -250,14 +250,14 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.email}
                   onChange={(e) => setContactVal({ ...contactVal, email: e.target.value })}
                   placeholder="e.g., rajesh@apexretail.in"
-                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_25px_rgba(255,153,51,0.2)] transition-all duration-300"
+                  className="w-full py-3 px-4 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] text-base text-[var(--foreground)] focus:outline-none focus-visible:outline-none focus:border-[var(--accent)]/80 focus:ring-4 focus:ring-[var(--accent)]/20 focus:shadow-[0_0_22px_rgba(22,163,74,0.2)] transition-all duration-300"
                 />
               </div>
             </div>
           )}
 
           {/* Navigation Action Buttons */}
-          <div className="mt-8 pt-4 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,153,51,0.15)" }}>
+          <div className="mt-8 pt-4 flex items-center justify-between" style={{ borderTop: "1px solid rgba(22,163,74,0.15)" }}>
             {onBack ? (
               <button
                 type="button"
@@ -276,7 +276,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
               type="submit"
               disabled={isSubmitting}
               className="px-6 py-2.5 rounded-xl text-white text-sm font-display font-semibold shadow-sm hover:shadow-md transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2 cursor-pointer"
-              style={{ background: "#ff9933" }}
+              style={{ background: "#15803d" }}
             >
               {isSubmitting ? (
                 <>
@@ -284,10 +284,10 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                   </svg>
-                  <span>Calculating Proposal...</span>
+                  <span>Preparing Your Roadmap...</span>
                 </>
               ) : question.step === totalSteps ? (
-                <span>Unlock Exact Pricing & 2-Hr Proposal &rarr;</span>
+                <span>Send My Free Growth Roadmap &rarr;</span>
               ) : (
                 <span>Next Step &rarr;</span>
               )}

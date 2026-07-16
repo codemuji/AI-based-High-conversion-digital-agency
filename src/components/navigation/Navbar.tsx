@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 const NAV_LINKS = [
@@ -11,6 +12,8 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
@@ -89,7 +92,7 @@ export function Navbar() {
       >
         {/* Logo */}
         <a
-          href="#hero"
+          href={isHome ? "#hero" : "/"}
           style={{
             display: "flex",
             alignItems: "center",
@@ -129,10 +132,11 @@ export function Navbar() {
         >
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.id;
+            const linkHref = isHome ? link.href : `/${link.href}`;
             return (
               <a
                 key={link.href}
-                href={link.href}
+                href={linkHref}
                 style={{
                   fontSize: 13,
                   fontWeight: isActive ? 700 : 600,
@@ -158,7 +162,7 @@ export function Navbar() {
             );
           })}
           <a
-            href="#hero"
+            href={isHome ? "#hero" : "/"}
             style={{
               fontSize: 13,
               fontWeight: 700,
@@ -176,7 +180,7 @@ export function Navbar() {
               (e.currentTarget.style.background = "var(--accent)")
             }
           >
-            Start a Project
+            Get Free Growth Roadmap
           </a>
         </div>
 
@@ -229,26 +233,29 @@ export function Navbar() {
             padding: "16px 24px 24px",
           }}
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                display: "block",
-                fontSize: 15,
-                fontWeight: 600,
-                color: "var(--foreground)",
-                textDecoration: "none",
-                padding: "12px 0",
-                borderBottom: "1px solid var(--surface-border)",
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const linkHref = isHome ? link.href : `/${link.href}`;
+            return (
+              <a
+                key={link.href}
+                href={linkHref}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  display: "block",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: "var(--foreground)",
+                  textDecoration: "none",
+                  padding: "12px 0",
+                  borderBottom: "1px solid var(--surface-border)",
+                }}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
-            href="#hero"
+            href={isHome ? "#hero" : "/"}
             onClick={() => setMobileOpen(false)}
             style={{
               display: "block",
@@ -262,7 +269,7 @@ export function Navbar() {
               marginTop: 16,
             }}
           >
-            Start a Project
+            Get Free Growth Roadmap
           </a>
         </div>
       )}

@@ -8,9 +8,9 @@
   --foreground: #1c1917;
   --muted: #78716c;
   --muted-light: #a8a29e;
-  --accent: #c2410c;
-  --accent-hover: #9a3412;
-  --accent-subtle: #fff7ed;
+  --accent: #15803d;
+  --accent-hover: #14532d;
+  --accent-subtle: #f0fdf4;
   --signature: #166534;
   --success: #166534;
   --navy: #1e293b;
@@ -97,6 +97,21 @@ html::-webkit-scrollbar-thumb:hover {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

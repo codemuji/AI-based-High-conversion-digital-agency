@@ -9,13 +9,13 @@ export function AboutSection() {
             // About India Web Designs
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
-            We build digital products that refuse to be ignored.
+            We believe technology should simplify your work and grow your business.
           </h2>
           <p className="mt-7 text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            Most agencies sell static templates wrapped in agency jargon. At India Web Designs (Codemuji Digital Services), we operate as a dedicated product engineering team obsessed with speed, conversion rate optimization, and clean software architecture.
+            Too many business owners struggle with complicated agencies, confusing tech jargon, and websites that don&apos;t generate results. At India Web Designs (Codemuji Digital Services), our mission is different: we act as your friendly, dedicated technology partners.
           </p>
           <p className="mt-4 text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-            Whether you are launching a brand new AI startup, scaling an e-commerce brand to 7 figures, or automating legacy enterprise workflows, every line of code we write is accountable to one metric: measurable revenue growth.
+            Whether you are launching a new online venture, expanding your retail store, or looking to automate daily paperwork and customer inquiries, our goal is simple: helping you save time, delight your customers, and grow your revenue.
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-8 pt-8 border-t border-[var(--surface-border)]">
@@ -24,7 +24,7 @@ export function AboutSection() {
                 100%
               </span>
               <span className="text-xs text-[var(--muted)] font-medium mt-1 block">
-                Custom Code — Zero bloated templates or slow plugins
+                Tailored for You — Zero cookie-cutter templates or slow plugins
               </span>
             </div>
 
@@ -33,7 +33,7 @@ export function AboutSection() {
                 2 Hours
               </span>
               <span className="text-xs text-[var(--muted)] font-medium mt-1 block">
-                Guaranteed response window for AI-scoped inquiries
+                Guaranteed response window for clear answers and advice
               </span>
             </div>
           </div>
@@ -43,7 +43,7 @@ export function AboutSection() {
           <div className="absolute inset-0 bg-dot-pattern opacity-40 pointer-events-none" />
           
           <h3 className="font-display font-black text-2xl text-[var(--foreground)] mb-8 relative z-10">
-            The IWD Engineering Standard
+            The IWD Customer Guarantee
           </h3>
 
           <ul className="space-y-4 text-sm text-[var(--foreground)]">
@@ -54,8 +54,8 @@ export function AboutSection() {
                 </svg>
               </div>
               <div>
-                <strong className="font-semibold block">Sub-Second Core Web Vitals</strong>
-                <span className="text-xs text-[var(--muted)]">Every page loads in under 1 second to maximize SEO and ad quality score.</span>
+                <strong className="font-semibold block">Lightning-Fast for Every Visitor</strong>
+                <span className="text-xs text-[var(--muted)]">Nobody likes waiting for slow pages. Your site will load instantly, keeping visitors happy and engaged.</span>
               </div>
             </li>
 
@@ -66,8 +66,8 @@ export function AboutSection() {
                 </svg>
               </div>
               <div>
-                <strong className="font-semibold block">Clean Relational Data Architecture</strong>
-                <span className="text-xs text-[var(--muted)]">Postgres schemas built for security, high throughput, and effortless scaling.</span>
+                <strong className="font-semibold block">Secure &amp; Reliable Foundation</strong>
+                <span className="text-xs text-[var(--muted)]">Built with rock-solid security and reliability so your customer data and daily operations are always safe.</span>
               </div>
             </li>
 
@@ -78,8 +78,8 @@ export function AboutSection() {
                 </svg>
               </div>
               <div>
-                <strong className="font-semibold block">Accessible & Keyboard-Navigable</strong>
-                <span className="text-xs text-[var(--muted)]">Strict WCAG compliance with proper focus trapping and screen reader labels.</span>
+                <strong className="font-semibold block">Designed for Everyone</strong>
+                <span className="text-xs text-[var(--muted)]">Clean, beautiful, and effortless to use for all your customers on any mobile phone, tablet, or computer.</span>
               </div>
             </li>
           </ul>

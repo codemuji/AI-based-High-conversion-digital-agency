@@ -6,23 +6,23 @@ import gsap from "gsap";
 const STEPS = [
   {
     number: "01",
-    title: "Instant AI Scoping",
-    description: "Type your goal right on our homepage. Our custom engine enriches your specs and delivers an accurate timeline and budget range within 2 hours.",
+    title: "Friendly Discovery & Roadmap",
+    description: "Tell us your goals. Within 2 hours, we'll share a clear, plain-English roadmap, realistic timeline, and honest budget range tailored to your exact needs.",
   },
   {
     number: "02",
-    title: "Architecture & Wireframes",
-    description: "Before coding a single line, you get interactive high-fidelity prototypes and a clean system architecture diagram mapped to your business metrics.",
+    title: "Interactive Previews & Design",
+    description: "Before we write any code, you'll get to click through real interactive previews of your website or app. We refine everything together until you love it.",
   },
   {
     number: "03",
-    title: "Agile Production Sprints",
-    description: "We build your product in rapid 14-day sprints. You get live staging links, automated test reports, and zero surprises.",
+    title: "Smooth & Transparent Building",
+    description: "We build your digital product in steady 2-week milestones. You get private live test links so you can watch your vision come to life step by step.",
   },
   {
     number: "04",
-    title: "Launch & Conversion Tracking",
-    description: "We deploy to production with automated CI/CD pipelines, set up full conversion attribution, and monitor Core Web Vitals 24/7.",
+    title: "Launch & Ongoing Growth Support",
+    description: "We handle the complete launch smoothly with zero downtime, ensure everything runs lightning fast, and stay right by your side to help your business scale.",
   },
 ];
 
@@ -86,15 +86,15 @@ export function ProcessSection() {
       <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 border-b border-[var(--surface-border)] pb-8">
         <div>
           <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            // Execution Philosophy
+            // Our Simple 4-Step Journey
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
-            How we build fast <br className="hidden sm:inline" />
-            without cutting corners.
+            How we work together <br className="hidden sm:inline" />
+            to grow your business.
           </h2>
         </div>
         <p className="text-base sm:text-lg text-[var(--muted)] max-w-md md:text-right leading-relaxed">
-          A predictable, transparent production cycle engineered around rapid speed to market and measurable conversion ROI.
+          A predictable, stress-free process designed around clear communication, fast results, and measurable growth for your business.
         </p>
       </div>
 
@@ -111,7 +111,7 @@ export function ProcessSection() {
               className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
               style={{
                 background:
-                  "radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 153, 51, 0.14), transparent 80%)",
+                  "radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.14), transparent 80%)",
               }}
             />
 

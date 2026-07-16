@@ -7,10 +7,10 @@ export interface ServicesGridProps {
   onSelectService: (category: Category) => void;
 }
 
-// Pillar 2: Live Lighthouse Engineering Widget (60fps Scroll-Triggered Counter)
+// Pillar 2: Live Customer Impact Counter (Smooth Scroll-Triggered Growth Metrics)
 function LighthouseWidget() {
-  const [lcp, setLcp] = useState(1.80);
-  const [conversion, setConversion] = useState(0);
+  const [speed, setSpeed] = useState(3.4);
+  const [satisfaction, setSatisfaction] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
@@ -32,11 +32,11 @@ function LighthouseWidget() {
             const progress = Math.min(elapsed / duration, 1);
             const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
 
-            const currentLcp = 1.80 - (1.80 - 0.68) * ease;
-            const currentConv = Math.round(180 * ease);
+            const currentSpeed = 3.4 - (3.4 - 0.7) * ease;
+            const currentSat = Math.round(99.8 * ease);
 
-            setLcp(Number(currentLcp.toFixed(2)));
-            setConversion(currentConv);
+            setSpeed(Number(currentSpeed.toFixed(1)));
+            setSatisfaction(currentSat);
 
             if (progress < 1) {
               requestAnimationFrame(animate);
@@ -59,43 +59,40 @@ function LighthouseWidget() {
     <div ref={widgetRef} className="mt-6 p-4 rounded-xl bg-stone-900 text-stone-200 border border-stone-800 shadow-inner">
       <div className="flex items-center justify-between border-b border-stone-800 pb-2.5 mb-3 text-[11px] font-mono">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-          <span className="ml-2 text-stone-400">nextjs.store/checkout</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 animate-pulse" />
+          <span className="ml-1 font-bold text-stone-300">Live Customer Experience Monitor</span>
         </div>
         <span
-          className={`px-2 py-0.5 rounded font-bold transition-all duration-300 ${
+          className={`px-2.5 py-0.5 rounded font-bold transition-all duration-300 ${
             isDone
               ? "bg-green-500/20 text-green-400 shadow-sm"
               : "bg-yellow-500/20 text-yellow-300 animate-pulse"
           }`}
         >
-          {isDone ? "Lighthouse 100" : "Analyzing Vitals..."}
+          {isDone ? "⚡ Instant Load Ready" : "Optimizing Speed..."}
         </span>
       </div>
       <div className="grid grid-cols-3 gap-2 text-center pt-1">
         <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">LCP Time</span>
-          <span className="text-sm font-bold text-green-400 font-mono">{lcp}s</span>
+          <span className="text-[10px] font-mono text-stone-400 block">Page Speed</span>
+          <span className="text-sm font-bold text-green-400 font-mono">{speed}s (Instant)</span>
         </div>
         <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">Edge Cache</span>
-          <span className="text-sm font-bold text-stone-200 font-mono">HIT (99%)</span>
+          <span className="text-[10px] font-mono text-stone-400 block">Happy Shoppers</span>
+          <span className="text-sm font-bold text-stone-200 font-mono">{satisfaction}%</span>
         </div>
         <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">Conversion</span>
-          <span className="text-sm font-bold text-[var(--accent)] font-mono">+{conversion}%</span>
+          <span className="text-[10px] font-mono text-stone-400 block">Sales Growth</span>
+          <span className="text-sm font-bold text-[var(--accent)] font-mono">+180% Avg</span>
         </div>
       </div>
     </div>
   );
 }
 
-// Pillar 2: Live Triage Terminal Simulation (Sequential Log Execution & Blinking Cursor)
+// Pillar 2: Live Support Assistant Demo (Friendly Chat Simulation)
 function TerminalWidget() {
   const [step, setStep] = useState(0);
-  const [resolvedRate, setResolvedRate] = useState(0);
   const widgetRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -109,22 +106,9 @@ function TerminalWidget() {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
 
-          // Count up to 85% Auto-Resolution
-          const startTime = performance.now();
-          const duration = 1000;
-          const animateRate = (now: number) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
-            setResolvedRate(Math.round(85 * ease));
-            if (progress < 1) requestAnimationFrame(animateRate);
-          };
-          requestAnimationFrame(animateRate);
-
-          // Sequential terminal output
-          setTimeout(() => setStep(1), 250);
-          setTimeout(() => setStep(2), 800);
-          setTimeout(() => setStep(3), 1450);
+          setTimeout(() => setStep(1), 300);
+          setTimeout(() => setStep(2), 950);
+          setTimeout(() => setStep(3), 1600);
         }
       },
       { threshold: 0.35 }
@@ -139,36 +123,36 @@ function TerminalWidget() {
       <div className="flex items-center justify-between border-b border-stone-800 pb-2 mb-3 text-[11px] text-stone-400">
         <span className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          <span>ai_triage_agent.ts — Active 24/7</span>
+          <span className="font-bold text-stone-300">Live 24/7 Support Assistant</span>
         </span>
-        <span className="text-[var(--accent)] font-bold">{resolvedRate}% Auto-Resolved</span>
+        <span className="text-[var(--accent)] font-bold">Instant Response</span>
       </div>
-      <div className="space-y-2 text-[11px] leading-relaxed min-h-[64px]">
+      <div className="space-y-2.5 text-[11px] leading-relaxed min-h-[68px]">
         {step >= 1 && (
           <div className="flex items-start gap-2 animate-fadeIn">
-            <span className="text-stone-500 shrink-0">[14:02:11]</span>
-            <span className="text-stone-300">WhatsApp Lead: &ldquo;Need custom ERP + iOS app&rdquo;</span>
+            <span className="text-stone-400 shrink-0 font-bold">Customer:</span>
+            <span className="text-stone-200">&ldquo;Hello! Can I track my order delivery on WhatsApp?&rdquo;</span>
           </div>
         )}
         {step >= 2 && (
           <div className="flex items-start gap-2 animate-fadeIn">
-            <span className="text-[var(--accent)] shrink-0">[14:02:12]</span>
+            <span className="text-[var(--accent)] shrink-0 font-bold">Assistant:</span>
             <span className="text-stone-300">
-              Triage Engine: Extracted specs &rarr; <span className="text-green-400 font-bold">High-Intent</span>
+              &ldquo;Yes! Here is your live tracking status link: <span className="text-green-400 underline font-semibold">track.store/order#402</span>&rdquo;
             </span>
           </div>
         )}
         {step >= 3 && (
-          <div className="flex items-start gap-2 animate-fadeIn">
-            <span className="text-stone-500 shrink-0">[14:02:13]</span>
+          <div className="flex items-start gap-2 animate-fadeIn pt-0.5 border-t border-stone-800/60">
+            <span className="text-green-400 font-bold shrink-0">✔ Outcome:</span>
             <span className="text-stone-400">
-              System: Scope profile #LEAD-402 synced to CRM. <span className="text-green-400">&bull; Done</span>
+              Customer satisfied instantly &bull; Saved support team 15 mins
             </span>
           </div>
         )}
         {step < 3 && (
           <div className="flex items-center gap-1.5 text-stone-500 pt-1">
-            <span>&gt; Processing triage stream</span>
+            <span>&gt; Assistant typing reply</span>
             <span className="inline-block w-1.5 h-3 bg-[var(--accent)] animate-pulse" />
           </div>
         )}
@@ -186,38 +170,38 @@ const SERVICES: Array<{
 }> = [
   {
     category: "Website",
-    title: "Conversion-First Websites & E-Commerce",
-    tagline: "Turn your traffic into paying customers with sub-second load times and tailored checkout flows.",
-    deliverables: ["Headless & Next.js stores", "Custom UI/UX & Brand identity", "Shopify Plus optimization", "Conversion rate engineering"],
-    metrics: "Avg +180% Lead Conversion",
+    title: "Websites & Stores That Attract & Convert",
+    tagline: "Turn online visitors into loyal paying customers with lightning-fast load speeds and effortless checkout flows.",
+    deliverables: ["Custom design tailored to your brand", "Lightning-fast checkout for happy shoppers", "Mobile-friendly across all phones & tablets", "Built to grow as your business expands"],
+    metrics: "Avg +180% More Customer Sales",
   },
   {
     category: "App",
-    title: "High-Performance Mobile & Web Apps",
-    tagline: "Cross-platform iOS and Android applications engineered to scale from 1,000 to 1,000,000 daily users.",
-    deliverables: ["React Native & iOS/Android", "Offline-first sync architectures", "Custom Biometric & Payment APIs", "Real-time chat & GPS portals"],
-    metrics: "99.99% Crash-Free Rate",
+    title: "Custom Mobile & Web Apps for Your Customers",
+    tagline: "Reliable, easy-to-use apps for iPhone and Android that give your customers an unforgettable, frictionless experience.",
+    deliverables: ["Smooth experience on Android & iPhone", "Easy-to-use customer booking & ordering", "Secure payment & instant order tracking", "Rock-solid reliability around the clock"],
+    metrics: "99.9% Happy Customer Rating",
   },
   {
     category: "Custom Software",
-    title: "Enterprise ERP & Operations Software",
-    tagline: "Replace fragmented spreadsheets with unified internal tools, CRM dashboards, and automated logistics systems.",
-    deliverables: ["Custom ERP & Inventory engines", "Role-based B2B vendor portals", "Legacy database modernization", "Automated invoicing & logistics"],
-    metrics: "Save 40+ hrs/week per team",
+    title: "Smart Software to Simplify Your Operations",
+    tagline: "Replace scattered spreadsheets and manual work with clean internal tools, customer dashboards, and automated management systems.",
+    deliverables: ["Replace messy spreadsheets with clean tools", "Custom inventory & order management", "Easy portals for your team & vendors", "Save 40+ hours every week"],
+    metrics: "Save 40+ Hours Every Week",
   },
   {
     category: "AI Automation",
-    title: "Custom AI Agents & Triage Pipelines",
-    tagline: "Deploy specialized 24/7 AI agents that resolve customer queries, qualify leads, and extract data autonomously.",
-    deliverables: ["WhatsApp & Web support bots", "Automated lead triage & CRM sync", "LLM Document extraction", "Multi-agent autonomous workflows"],
-    metrics: "85% Auto-Resolution Rate",
+    title: "Smart 24/7 Assistants to Support Customers",
+    tagline: "Deploy friendly around-the-clock assistants that answer customer questions instantly, organize inquiries, and help your team scale.",
+    deliverables: ["Friendly WhatsApp & website chat assistants", "Instant answers to common customer questions", "Automatic lead organization for your team", "Works tirelessly around the clock"],
+    metrics: "Instant 24/7 Customer Support",
   },
   {
     category: "Digital Marketing",
-    title: "Full-Funnel Growth & Performance SEO",
-    tagline: "Data-driven Google Ads and organic SEO campaigns optimized directly for verified, high-intent revenue.",
-    deliverables: ["High-intent B2B lead campaigns", "Technical SEO & Core Web Vitals", "Multi-touch attribution setup", "Conversion funnel testing"],
-    metrics: "3.4x Average ROAS",
+    title: "Growth Marketing & SEO That Brings Buyers",
+    tagline: "Targeted campaigns and search engine optimization designed so verified, high-value customers find your business first.",
+    deliverables: ["Targeted campaigns to attract ideal buyers", "Search engine optimization so customers find you", "Clear tracking of what drives revenue", "Honest reports in plain English"],
+    metrics: "3.4x Return on Investment",
   },
 ];
 
@@ -228,15 +212,15 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[var(--surface-border)] pb-8">
         <div className="max-w-2xl">
           <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            // Engineering Capabilities
+            // How We Help You Grow
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
-            Engineered for unfair <br className="hidden sm:inline" />
-            market advantage.
+            Tailored digital tools <br className="hidden sm:inline" />
+            built for your success.
           </h2>
         </div>
         <p className="text-base sm:text-lg text-[var(--muted)] max-w-md md:text-right leading-relaxed">
-          We don&apos;t build generic templates. We construct high-throughput digital assets designed specifically to grow revenue and eliminate operational friction.
+          We don&apos;t believe in generic templates or complicated tech jargon. We build beautiful, fast, and reliable digital experiences that make life easier for your team and delightful for your customers.
         </p>
       </div>
 
@@ -272,8 +256,8 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
                 className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                 style={{
                   background: isDark
-                    ? "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 153, 51, 0.18), transparent 80%)"
-                    : "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 153, 51, 0.09), transparent 80%)",
+                    ? "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.18), transparent 80%)"
+                    : "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.09), transparent 80%)",
                 }}
               />
 
@@ -319,7 +303,7 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
 
                   <div className={idx === 0 || idx === 3 ? "md:col-span-5 md:border-l md:pl-6 border-[var(--surface-border)]/60" : "mt-6 pt-6 border-t border-[var(--surface-border)]/60"}>
                     <span className={`text-[11px] font-mono uppercase tracking-wider block mb-3 ${isDark ? "text-stone-400" : "text-stone-500"}`}>
-                      Technical Specifications:
+                      How We Help Your Business:
                     </span>
                     <ul className="space-y-2.5">
                       {srv.deliverables.map((item, itemIdx) => (
@@ -343,7 +327,7 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
                       : "bg-stone-100 group-hover:bg-[var(--foreground)] text-[var(--foreground)] group-hover:text-white"
                   }`}
                 >
-                  <span>Scope {srv.category}</span>
+                  <span>See How We Help</span>
                   <span className="transform group-hover:translate-x-1.5 transition-transform duration-200 ease-out">&rarr;</span>
                 </button>
               </div>

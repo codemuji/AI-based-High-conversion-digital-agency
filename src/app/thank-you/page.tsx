@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/sections/Footer";
 
 export default function ThankYouPage({
   searchParams,
@@ -15,7 +17,9 @@ export default function ThankYouPage({
   const whatsappUrl = `https://wa.me/919876543210?text=${whatsappMessage}`;
 
   return (
-    <main className="flex-1 bg-[var(--background)] py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <main className="flex-1 bg-[var(--background)] pt-16 min-h-screen flex flex-col justify-between">
+      <Navbar />
+      <div className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         {/* Success Icon */}
         <div className="w-16 h-16 rounded-full bg-[var(--success)]/10 text-[var(--success)] border-2 border-[var(--success)]/20 mx-auto flex items-center justify-center mb-6 shadow-sm">
@@ -104,6 +108,8 @@ export default function ThankYouPage({
           </div>
         </div>
       </div>
+      </div>
+      <Footer />
     </main>
   );
 }

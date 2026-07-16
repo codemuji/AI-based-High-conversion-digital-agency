@@ -280,7 +280,7 @@ export function OnboardingModal({
           width: "550px",
           height: "550px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,153,51,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(22,163,74,0.07) 0%, transparent 70%)",
           filter: "blur(60px)",
           pointerEvents: "none",
           zIndex: 0,
@@ -324,7 +324,7 @@ export function OnboardingModal({
             justifyContent: "space-between",
             paddingBottom: "24px",
             marginBottom: "32px",
-            borderBottom: "1px solid rgba(255,153,51,0.18)",
+            borderBottom: "1px solid rgba(22,163,74,0.18)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
@@ -333,16 +333,16 @@ export function OnboardingModal({
               style={{
                 padding: "6px 14px",
                 borderRadius: "9999px",
-                background: "rgba(255,153,51,0.18)",
-                border: "1px solid rgba(255,153,51,0.32)",
-                color: "#ffb366",
+                background: "rgba(22,163,74,0.18)",
+                border: "1px solid rgba(22,163,74,0.32)",
+                color: "#4ade80",
                 fontSize: "11px",
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
               }}
             >
-              {category} Scoping Flow
+              {category} Growth Roadmap
             </span>
             {initialQuery && initialQuery !== category && (
               <span

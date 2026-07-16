@@ -38,11 +38,11 @@ export function StickyIntakeBar({ isModalOpen, onOpenIntake }: StickyIntakeBarPr
           : "opacity-0 translate-y-16 scale-90 pointer-events-none"
       }`}
     >
-      <div className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-[var(--surface)]/95 backdrop-blur-md border border-[var(--surface-border)] hover:border-[var(--accent)]/60 shadow-[0_12px_45px_rgba(0,0,0,0.18),0_0_25px_rgba(255,153,51,0.12)] transition-all duration-300">
+      <div className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-[var(--surface)]/95 backdrop-blur-md border border-[var(--surface-border)] hover:border-[var(--accent)]/60 shadow-[0_12px_45px_rgba(0,0,0,0.18),0_0_25px_rgba(22,163,74,0.12)] transition-all duration-300">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
           <span className="text-xs sm:text-sm font-semibold text-[var(--foreground)]">
-            Want exact pricing & timeline for your project?
+            Ready to grow your business online?
           </span>
         </div>
 
@@ -51,7 +51,7 @@ export function StickyIntakeBar({ isModalOpen, onOpenIntake }: StickyIntakeBarPr
           onClick={() => onOpenIntake("Website")}
           className="px-5 py-2 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-xs font-display font-semibold shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
         >
-          Scope My Project &rarr;
+          Get Free Growth Roadmap &rarr;
         </button>
       </div>
     </div>

@@ -12,13 +12,13 @@ export function Footer() {
             </span>
           </div>
           <p className="text-xs text-[var(--muted)] mt-1">
-            Powered by Codemuji Digital Services
+            Helping Indian Businesses Grow &amp; Scale Online &bull; Powered by Codemuji Digital Services
           </p>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-[var(--muted)]">
           <a href="#hero" className="hover:text-[var(--foreground)] transition-colors">
-            Start Scoping
+            Get Growth Roadmap
           </a>
           <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">
             WhatsApp Support

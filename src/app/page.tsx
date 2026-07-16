@@ -8,6 +8,8 @@ import { OnboardingModal, type LeadSubmissionPayload } from "@/components/modal/
 import { Navbar } from "@/components/navigation/Navbar";
 import { StickyIntakeBar } from "@/components/navigation/StickyIntakeBar";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { RecognitionMarquee } from "@/components/sections/RecognitionMarquee";
+import { BusinessUseCasesSection } from "@/components/sections/BusinessUseCasesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -48,7 +50,15 @@ export default function HomePage() {
       {/* 1. Conversion-First Search/Chat Hero Intake */}
       <HeroIntake onStartOnboarding={handleStartOnboarding} />
 
-      {/* 2. Services Grid with interactive scoping triggers */}
+      {/* 1.5. Official Accreditations & Partner Ecosystem Marquee */}
+      <RecognitionMarquee />
+
+      {/* 2. Business Use Cases Bento Grid */}
+      <ScrollReveal>
+        <BusinessUseCasesSection />
+      </ScrollReveal>
+
+      {/* 2.5. Services Grid with interactive scoping triggers */}
       <ScrollReveal>
         <ServicesGrid onSelectService={(cat) => handleStartOnboarding(cat, cat)} />
       </ScrollReveal>

@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
 
 const STEPS = [
   {
@@ -24,43 +27,108 @@ const STEPS = [
 ];
 
 export function ProcessSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const el = sectionRef.current;
+        if (!el || !headerRef.current || !gridRef.current) return;
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            const [entry] = entries;
+            if (entry.isIntersecting) {
+              gsap.set(headerRef.current, { autoAlpha: 0, y: 28 });
+              const cards = gridRef.current?.querySelectorAll(".process-step-card") || [];
+              gsap.set(cards, { autoAlpha: 0, y: 35 });
+
+              const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+              tl.to(headerRef.current, { autoAlpha: 1, y: 0, duration: 0.75 })
+                .to(cards, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.14 }, "-=0.45");
+
+              obs.disconnect();
+            }
+          },
+          { threshold: 0.2 }
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+      });
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set([headerRef.current, gridRef.current?.querySelectorAll(".process-step-card") || []], {
+          autoAlpha: 1,
+          y: 0,
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[var(--surface-border)]">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">
-          Execution Philosophy
-        </span>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--foreground)] mt-3 leading-tight">
-          How we build fast without cutting corners.
-        </h2>
-        <p className="mt-4 text-base sm:text-lg text-[var(--muted)]">
-          A predictable, transparent process designed around rapid speed to market and measurable conversion ROI.
+    <section ref={sectionRef} id="process" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[var(--surface-border)]">
+      {/* Architectural Split Header */}
+      <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 border-b border-[var(--surface-border)] pb-8">
+        <div>
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
+            // Execution Philosophy
+          </span>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
+            How we build fast <br className="hidden sm:inline" />
+            without cutting corners.
+          </h2>
+        </div>
+        <p className="text-base sm:text-lg text-[var(--muted)] max-w-md md:text-right leading-relaxed">
+          A predictable, transparent production cycle engineered around rapid speed to market and measurable conversion ROI.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-        {STEPS.map((step, idx) => (
+      {/* Open Architectural Timeline Grid */}
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {STEPS.map((step) => (
           <div
             key={step.number}
-            className="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--surface-border)] hover:border-[var(--signature)] transition-all duration-200 relative flex flex-col justify-between"
+            onMouseMove={handleMouseMove}
+            className="process-step-card group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[var(--surface)] border border-[var(--surface-border)] hover:border-[var(--accent)] shadow-xs hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 ease-out flex flex-col justify-between z-0 cursor-pointer"
           >
+            {/* Dynamic Mouse-Tracking Glass Hardware Spotlight Overlay */}
+            <div
+              className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+              style={{
+                background:
+                  "radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 153, 51, 0.14), transparent 80%)",
+              }}
+            />
+
             <div>
-              <span className="font-display font-black text-3xl text-[var(--accent-subtle)] text-[var(--signature)] block mb-4">
-                {step.number}
-              </span>
-              <h3 className="font-display font-bold text-lg text-[var(--foreground)]">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-display font-black text-5xl sm:text-6xl text-stone-300 group-hover:text-[var(--accent)] transition-colors duration-200 select-none">
+                  {step.number}
+                </span>
+                <span className="w-2 h-2 rounded-full bg-[var(--surface-border)] group-hover:bg-[var(--accent)] group-hover:scale-150 transition-all duration-300" />
+              </div>
+              <h3 className="font-display font-black text-xl text-[var(--foreground)] mt-2 group-hover:text-[var(--accent)] transition-colors">
                 {step.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--muted)] mt-2 leading-relaxed">
+              <p className="text-sm text-[var(--muted)] mt-3 leading-relaxed">
                 {step.description}
               </p>
             </div>
-
-            {idx < STEPS.length - 1 && (
-              <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10 text-[var(--muted-light)]">
-                &rarr;
-              </div>
-            )}
           </div>
         ))}
       </div>

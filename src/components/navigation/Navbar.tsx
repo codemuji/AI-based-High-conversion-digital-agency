@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "Process", href: "#process", id: "process" },
+  { label: "Work", href: "#work", id: "work" },
+  { label: "About", href: "#about", id: "about" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -19,8 +22,46 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Pillar 5: Active Section Scroll Spy via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ["hero", "services", "process", "work", "about"];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.35, rootMargin: "-80px 0px -40% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  // Pillar 5: Synchronized GSAP Top Navbar Entrance
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo(
+          navRef.current,
+          { autoAlpha: 0, y: -24 },
+          { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out", clearProps: "transform,opacity,visibility" }
+        );
+      });
+    }, navRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <nav
+      ref={navRef}
       style={{
         position: "fixed",
         top: 0,
@@ -86,28 +127,36 @@ export function Navbar() {
           }}
           className="hidden md:flex"
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: "var(--muted)",
-                textDecoration: "none",
-                letterSpacing: "0.01em",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--foreground)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "var(--muted)")
-              }
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontSize: 13,
+                  fontWeight: isActive ? 700 : 600,
+                  color: isActive ? "var(--accent)" : "var(--muted)",
+                  textDecoration: "none",
+                  letterSpacing: "0.01em",
+                  transition: "color 0.2s, font-weight 0.2s",
+                  position: "relative",
+                  paddingBottom: 2,
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) e.currentTarget.style.color = "var(--foreground)";
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.color = "var(--muted)";
+                }}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--accent)] animate-pulse" />
+                )}
+              </a>
+            );
+          })}
           <a
             href="#hero"
             style={{

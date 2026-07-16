@@ -59,15 +59,43 @@
   outline: none !important;
 }
 
-/* Hide scrollbars across all website pages while keeping scroll functionality intact */
-html, body, * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+/* Native smooth scrolling and precise offset for the 64px fixed navbar */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar,
-*::-webkit-scrollbar {
+/* Refined, high-discipline scrollbar for spatial orientation */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-border) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--surface-border);
+  border-radius: 9999px;
+  border: 2px solid var(--background);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-light);
+}
+
+/* Utility class for hiding scrollbars on internal overflow containers (like pills or modals) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 

@@ -12,6 +12,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { Footer } from "@/components/sections/Footer";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { submitLeadAction } from "@/app/actions";
 
 export default function HomePage() {
@@ -48,16 +49,24 @@ export default function HomePage() {
       <HeroIntake onStartOnboarding={handleStartOnboarding} />
 
       {/* 2. Services Grid with interactive scoping triggers */}
-      <ServicesGrid onSelectService={(cat) => handleStartOnboarding(cat, cat)} />
+      <ScrollReveal>
+        <ServicesGrid onSelectService={(cat) => handleStartOnboarding(cat, cat)} />
+      </ScrollReveal>
 
       {/* 3. 4-Step Execution Process */}
-      <ProcessSection />
+      <ScrollReveal>
+        <ProcessSection />
+      </ScrollReveal>
 
       {/* 4. Verified Case Studies & Proof */}
-      <CaseStudiesSection />
+      <ScrollReveal>
+        <CaseStudiesSection />
+      </ScrollReveal>
 
       {/* 5. About IWD Conversion Engineering */}
-      <AboutSection />
+      <ScrollReveal>
+        <AboutSection />
+      </ScrollReveal>
 
       {/* 6. Footer */}
       <Footer />

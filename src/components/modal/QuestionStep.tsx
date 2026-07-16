@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 import type { QuestionDef } from "@/lib/questions";
 
 export interface ContactData {
@@ -34,6 +35,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
     phone: "",
   });
   const [error, setError] = useState<string>("");
+  const optionsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (question.type === "text" && typeof currentAnswer === "string") {
@@ -44,6 +46,20 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
       setContactVal(currentAnswer as ContactData);
     }
   }, [question.id, question.type, currentAnswer]);
+
+  // Pillar 4: Staggered Option Pill Entrance Choreography whenever step changes
+  useEffect(() => {
+    if (question.type === "select" && optionsContainerRef.current) {
+      const buttons = optionsContainerRef.current.querySelectorAll("button");
+      if (buttons.length > 0) {
+        gsap.fromTo(
+          buttons,
+          { opacity: 0, x: 20 },
+          { opacity: 1, x: 0, duration: 0.35, stagger: 0.06, ease: "power3.out", clearProps: "transform,opacity" }
+        );
+      }
+    }
+  }, [question.id, question.type]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,13 +90,23 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
     }
   };
 
-  const handleSelectOption = (opt: string) => {
+  const handleSelectOption = (opt: string, e: React.MouseEvent<HTMLButtonElement>) => {
     setSelectVal(opt);
     setError("");
+
+    // Pillar 4: Tactile selection micro-bounce
+    gsap.to(e.currentTarget, {
+      scale: 0.97,
+      duration: 0.08,
+      yoyo: true,
+      repeat: 1,
+      ease: "power2.inOut",
+    });
+
     // Auto advance on pill select for super smooth UX
     setTimeout(() => {
       onNext(opt);
-    }, 150);
+    }, 180);
   };
 
   return (
@@ -153,14 +179,14 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
           )}
 
           {question.type === "select" && question.options && (
-            <div className="space-y-3">
+            <div ref={optionsContainerRef} className="space-y-3">
               {question.options.map((opt) => {
                 const isSelected = selectVal === opt;
                 return (
                   <button
                     key={opt}
                     type="button"
-                    onClick={() => handleSelectOption(opt)}
+                    onClick={(e) => handleSelectOption(opt, e)}
                     className={`w-full text-left p-4 rounded-xl border transition-all duration-150 flex items-center justify-between cursor-pointer ${
                       isSelected
                         ? "border-[var(--accent)] bg-[var(--accent-subtle)] text-[var(--accent)] font-semibold shadow-xs"
@@ -258,10 +284,10 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                   </svg>
-                  <span>Scoping Lead...</span>
+                  <span>Calculating Proposal...</span>
                 </>
               ) : question.step === totalSteps ? (
-                <span>Generate AI Profile & Submit &rarr;</span>
+                <span>Unlock Exact Pricing & 2-Hr Proposal &rarr;</span>
               ) : (
                 <span>Next Step &rarr;</span>
               )}

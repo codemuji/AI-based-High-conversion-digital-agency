@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import type { Category } from "@/lib/intent-engine";
 import { QUESTIONS_BY_CATEGORY } from "@/lib/questions";
@@ -112,7 +112,7 @@ export function OnboardingModal({
   }, [shouldRender, handleAnimatedClose]);
 
   // GSAP Entrance Choreography
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!shouldRender || !overlayRef.current || !headerRef.current || !questionRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -167,21 +167,26 @@ export function OnboardingModal({
       return;
     }
 
-    const exitX = direction === "forward" ? -45 : 45;
-    const enterX = direction === "forward" ? 45 : -45;
+    const exitX = direction === "forward" ? -50 : 50;
+    const enterX = direction === "forward" ? 50 : -50;
 
     gsap.to(questionRef.current, {
       x: exitX,
+      scale: 0.98,
+      filter: "blur(8px)",
       opacity: 0,
-      duration: 0.24,
+      duration: 0.22,
       ease: "power2.in",
       onComplete: () => {
+        if (questionRef.current) {
+          gsap.set(questionRef.current, { x: enterX, scale: 0.98, filter: "blur(8px)", opacity: 0 });
+        }
         setStepIndex(newIndex);
         if (questionRef.current) {
           gsap.fromTo(
             questionRef.current,
-            { x: enterX, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.38, ease: "power3.out" }
+            { x: enterX, scale: 0.98, filter: "blur(8px)", opacity: 0 },
+            { x: 0, scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.4, ease: "power3.out", clearProps: "filter,transform" }
           );
         }
       },
@@ -241,7 +246,7 @@ export function OnboardingModal({
         height: "100dvh",
         zIndex: 100,
         /* Deep rich dark gradient across the full viewport */
-        background: "linear-gradient(160deg, #0a0714 0%, #110c22 50%, #16102a 100%)",
+        background: "linear-gradient(160deg, #1c1917 0%, #141210 50%, #0c0a09 100%)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

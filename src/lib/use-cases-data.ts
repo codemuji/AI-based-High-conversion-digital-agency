@@ -12,6 +12,7 @@ export interface UseCaseItem {
   category: Category;
   vertical: string;
   bentoSpan: string;
+  imageUrl: string;
   title: string;
   tagline: string;
   metrics: {
@@ -33,6 +34,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "Website",
     vertical: "E-Commerce & Retail",
     bentoSpan: "col-span-1 md:col-span-2",
+    imageUrl: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "How to Launch a High-Speed Online Store & Scale Daily Orders",
     tagline: "Replace slow loading speeds and expensive 30% aggregator commissions with a lightning-fast, custom online storefront owned 100% by your brand.",
     metrics: {
@@ -81,6 +83,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "AI Automation",
     vertical: "Healthcare & Clinics",
     bentoSpan: "col-span-1 md:col-span-1",
+    imageUrl: "https://images.pexels.com/photos/4056800/pexels-photo-4056800.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "Automating 24/7 Patient Consultations & WhatsApp Appointments",
     tagline: "Free your reception staff from endless phone calls with an intelligent 24/7 WhatsApp assistant that answers patient inquiries and schedules visits automatically.",
     metrics: {
@@ -127,6 +130,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "Custom Software",
     vertical: "Wholesale & Manufacturing",
     bentoSpan: "col-span-1 md:col-span-1",
+    imageUrl: "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "Replacing Paper Catalogues with an Instant Dealer Order Portal",
     tagline: "Empower your distributors and retail dealers across India to check live inventory, download digital invoices, and place bulk orders 24/7.",
     metrics: {
@@ -173,6 +177,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "App",
     vertical: "Logistics & Transport",
     bentoSpan: "col-span-1 md:col-span-2",
+    imageUrl: "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "Eliminating Paperwork & Live Tracking for 500+ Delivery Vehicles",
     tagline: "Replace scattered phone calls and paper dispatch slips with a clean driver mobile app and a central command dashboard for real-time fleet operations.",
     metrics: {
@@ -219,6 +224,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "Website",
     vertical: "Coaching & Institutes",
     bentoSpan: "col-span-1 md:col-span-1",
+    imageUrl: "https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "Automating Student Enrollment & Video Course Delivery",
     tagline: "Transform your coaching institute into a national academy with a branded student learning portal, automated fee collection, and secure video lectures.",
     metrics: {
@@ -265,6 +271,7 @@ export const USE_CASES_DATA: UseCaseItem[] = [
     category: "App",
     vertical: "Food & Restaurants",
     bentoSpan: "col-span-1 md:col-span-1",
+    imageUrl: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "Direct Commission-Free Ordering App & WhatsApp Loyalty",
     tagline: "Stop losing 30% of every food order to delivery apps. Build your own branded ordering system with instant table QR menus and direct customer rewards.",
     metrics: {

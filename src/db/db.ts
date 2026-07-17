@@ -23,6 +23,7 @@ if (hasLiveDb && process.env.NODE_ENV !== "production") {
 export const db = client ? drizzle(client, { schema }) : null;
 
 // In-memory fallback store for local testing without DATABASE_URL
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface MockLeadRecord {
   id: number;
   createdAt: Date;
@@ -31,10 +32,11 @@ interface MockLeadRecord {
   contactName: string;
   contactPhone?: string | null;
   contactEmail?: string | null;
-  answers: Record<string, any>;
-  aiProfile?: Record<string, any> | null;
+  answers: any;
+  aiProfile?: any | null;
   status: string;
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 const mockLeadsStore: Map<number, MockLeadRecord> = new Map();
 let mockIdCounter = 1;
@@ -69,7 +71,8 @@ export const mockDbHelper = {
     }
   },
 
-  async updateAiProfile(id: number, aiProfile: Record<string, any>): Promise<void> {
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  async updateAiProfile(id: number, aiProfile: any): Promise<void> {
     if (hasLiveDb && db) {
       await db
         .update(schema.leads)

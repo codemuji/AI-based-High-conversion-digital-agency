@@ -6,7 +6,7 @@ export function AboutSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            // About India Web Designs
+            {"// About India Web Designs"}
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
             We believe technology should simplify your work and grow your business.

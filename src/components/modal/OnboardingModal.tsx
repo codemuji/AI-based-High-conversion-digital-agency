@@ -30,6 +30,7 @@ export function OnboardingModal({
 }: OnboardingModalProps) {
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [stepIndex, setStepIndex] = useState(0);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const [answers, setAnswers] = useState<Record<string, any>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,23 +38,23 @@ export function OnboardingModal({
   const overlayRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const questionRef = useRef<HTMLDivElement>(null);
-  const isClosingRef = useRef(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const questions = category ? QUESTIONS_BY_CATEGORY[category] : [];
   const currentQuestion = questions[stepIndex];
 
   // Animated close handler triggered on X, ESC, or backdrop click
   const handleAnimatedClose = useCallback(() => {
-    if (isClosingRef.current || !overlayRef.current) {
+    if (isClosing || !overlayRef.current) {
       onClose();
       return;
     }
-    isClosingRef.current = true;
+    setIsClosing(true);
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         onComplete: () => {
-          isClosingRef.current = false;
+          setIsClosing(false);
           setShouldRender(false);
           onClose();
         },
@@ -76,19 +77,25 @@ export function OnboardingModal({
     });
 
     return () => ctx.revert();
-  }, [onClose]);
+  }, [isClosing, onClose]);
 
-  // Sync with prop isOpen
-  useEffect(() => {
-    if (isOpen && !shouldRender) {
-      isClosingRef.current = false;
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) {
+      setIsClosing(false);
       setStepIndex(0);
       setAnswers(initialQuery ? { q1: initialQuery } : {});
       setShouldRender(true);
-    } else if (!isOpen && shouldRender && !isClosingRef.current) {
+    }
+  }
+
+  // Sync close animation with prop isOpen
+  useEffect(() => {
+    if (!isOpen && shouldRender && !isClosing) {
       handleAnimatedClose();
     }
-  }, [isOpen, shouldRender, initialQuery, handleAnimatedClose]);
+  }, [isOpen, shouldRender, isClosing, handleAnimatedClose]);
 
   // Body scroll locking and ESC key handling
   useEffect(() => {

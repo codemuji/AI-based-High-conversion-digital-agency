@@ -212,7 +212,7 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[var(--surface-border)] pb-8">
         <div className="max-w-2xl">
           <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            // How We Help You Grow
+            {"// How We Help You Grow"}
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
             Tailored digital tools <br className="hidden sm:inline" />

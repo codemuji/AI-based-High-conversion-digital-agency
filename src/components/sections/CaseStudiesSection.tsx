@@ -35,7 +35,7 @@ export function CaseStudiesSection() {
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-stone-800 pb-8">
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#4ade80] block mb-2">
-              // Real Customer Growth
+              {"// Real Customer Growth"}
             </span>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
               Real business results <br className="hidden sm:inline" />

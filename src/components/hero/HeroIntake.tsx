@@ -142,8 +142,10 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
       timeout = setTimeout(() => setIsDeleting(true), 2400);
     } else if (isDeleting && currentPlaceholder === "") {
       // Finished erasing, move to next placeholder and start typing
-      setIsDeleting(false);
-      setPlaceholderIdx((prev) => (prev + 1) % PLACEHOLDERS.length);
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setPlaceholderIdx((prev) => (prev + 1) % PLACEHOLDERS.length);
+      }, 10);
     } else {
       // Typing or erasing character by character
       const speed = isDeleting ? 22 : 42;

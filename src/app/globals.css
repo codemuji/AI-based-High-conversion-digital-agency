@@ -114,6 +114,13 @@ html::-webkit-scrollbar-thumb:hover {
   animation-play-state: paused;
 }
 
+/* Butter-smooth Native View Transition morphing across routes */
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;

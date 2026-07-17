@@ -7,12 +7,12 @@ import { HeroIntake } from "@/components/hero/HeroIntake";
 import { OnboardingModal, type LeadSubmissionPayload } from "@/components/modal/OnboardingModal";
 import { Navbar } from "@/components/navigation/Navbar";
 import { StickyIntakeBar } from "@/components/navigation/StickyIntakeBar";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { RecognitionMarquee } from "@/components/sections/RecognitionMarquee";
+import { GrowthRoadmapSection } from "@/components/sections/GrowthRoadmapSection";
 import { BusinessUseCasesSection } from "@/components/sections/BusinessUseCasesSection";
-import { ProcessSection } from "@/components/sections/ProcessSection";
-import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
-import { AboutSection } from "@/components/sections/AboutSection";
+import { CTASection } from "@/components/sections/CTASection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { submitLeadAction } from "@/app/actions";
@@ -45,7 +45,7 @@ export default function HomePage() {
 
   return (
     <main className="flex-1 bg-[var(--background)] relative">
-      <Navbar />
+      <Navbar onStartOnboarding={handleStartOnboarding} />
 
       {/* 1. Conversion-First Search/Chat Hero Intake */}
       <HeroIntake onStartOnboarding={handleStartOnboarding} />
@@ -53,35 +53,35 @@ export default function HomePage() {
       {/* 1.5. Official Accreditations & Partner Ecosystem Marquee */}
       <RecognitionMarquee />
 
-      {/* 2. Business Use Cases Bento Grid */}
+      {/* 2. Real Business Growth Model (Micro / Medium / High Scale Switcher with 2-Box Layout) */}
+      <ScrollReveal>
+        <GrowthRoadmapSection onStartOnboarding={handleStartOnboarding} />
+      </ScrollReveal>
+
+      {/* 2.5. Classic Industry Use Cases with 2-Box Visual Architecture (`image` + `write up`) */}
       <ScrollReveal>
         <BusinessUseCasesSection />
       </ScrollReveal>
 
-      {/* 2.5. Services Grid with interactive scoping triggers */}
+      {/* 3. High-Impact Conversion CTA Banner */}
       <ScrollReveal>
-        <ServicesGrid onSelectService={(cat) => handleStartOnboarding(cat, cat)} />
+        <CTASection onStartOnboarding={handleStartOnboarding} />
       </ScrollReveal>
 
-      {/* 3. 4-Step Execution Process */}
+      {/* 4. Verified Client Testimonials */}
       <ScrollReveal>
-        <ProcessSection />
+        <TestimonialsSection />
       </ScrollReveal>
 
-      {/* 4. Verified Case Studies & Proof */}
+      {/* 5. Objection-Handling FAQ Accordion */}
       <ScrollReveal>
-        <CaseStudiesSection />
+        <FAQSection />
       </ScrollReveal>
 
-      {/* 5. About IWD Conversion Engineering */}
-      <ScrollReveal>
-        <AboutSection />
-      </ScrollReveal>
+      {/* 6. Comprehensive Architectural Mega-Footer (with Direct Contact Channels) */}
+      <Footer onStartOnboarding={handleStartOnboarding} />
 
-      {/* 6. Footer */}
-      <Footer />
-
-      {/* 7. Native <dialog> 4-Question Onboarding Modal */}
+      {/* 8. Native <dialog> 4-Question Onboarding Modal */}
       <OnboardingModal
         isOpen={isModalOpen}
         category={activeCategory}
@@ -90,7 +90,7 @@ export default function HomePage() {
         onSubmit={handleSubmitLead}
       />
 
-      {/* 8. Sticky / Floating Intake Bar (IntersectionObserver on #hero) */}
+      {/* 9. Sticky / Floating Intake Bar (IntersectionObserver on #hero) */}
       <StickyIntakeBar
         isModalOpen={isModalOpen}
         onOpenIntake={(cat) => handleStartOnboarding(cat, "")}

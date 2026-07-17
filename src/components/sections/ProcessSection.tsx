@@ -86,7 +86,7 @@ export function ProcessSection() {
       <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 border-b border-[var(--surface-border)] pb-8">
         <div>
           <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            // Our Simple 4-Step Journey
+            {"// Our Simple 4-Step Journey"}
           </span>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
             How we work together <br className="hidden sm:inline" />

@@ -62,14 +62,17 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
 
     try {
       after(runAsyncJob);
-    } catch (afterErr) {
+    } catch {
       // If outside Next.js request context (e.g. standalone test scripts or background worker), run non-blocking
       runAsyncJob().catch((err) => console.error("[Background Job Error]:", err));
     }
 
     return { success: true, leadId };
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[submitLeadAction Error]:", err);
-    return { success: false, error: err.message || "Failed to save lead. Please try again." };
+    return {
+      success: false,
+      error: err instanceof Error ? err.message : "Failed to save lead. Please try again.",
+    };
   }
 }

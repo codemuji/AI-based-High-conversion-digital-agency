@@ -10,8 +10,8 @@ export interface HeroIntakeProps {
 }
 
 const PLACEHOLDERS = [
-  " I want to attract more customers and increase daily sales...",
   " I need a professional website so clients trust my business...",
+  " I want to attract more customers and increase daily sales...",
   " I want an easy mobile app for my regular customers to order...",
   " I want our WhatsApp to automatically answer inquiries 24/7...",
   " I need custom software to stop billing and inventory headaches...",

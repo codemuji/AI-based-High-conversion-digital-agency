@@ -102,7 +102,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           {/* COLUMN 2: 01 // WEB DESIGN & STORES (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              01 // Web Design
+              Web Design
             </span>
             <ul className="space-y-3 font-mono text-xs">
               {SERVICES_DROPDOWN_GROUPS[0].items.map((service) => (
@@ -126,7 +126,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           {/* COLUMN 3: 02 // DIGITAL MARKETING (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              02 // Marketing
+              Marketing
             </span>
             <ul className="space-y-3 font-mono text-xs">
               {SERVICES_DROPDOWN_GROUPS[1].items.map((service) => (
@@ -150,7 +150,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           {/* COLUMN 4: 03 // CUSTOM SOLUTIONS & APPS (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              03 // Software &amp; Apps
+              Software &amp; Apps
             </span>
             <ul className="space-y-3 font-mono text-xs">
               {SERVICES_DROPDOWN_GROUPS[2].items.map((service) => (
@@ -174,7 +174,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           {/* COLUMN 5: 04 // ENGINEERED ROADMAPS & MODELS (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              04 // Growth Roadmaps
+              Growth Roadmaps
             </span>
             <ul className="space-y-3 font-mono text-xs">
               {USE_CASES_DATA.slice(0, 5).map((model) => (

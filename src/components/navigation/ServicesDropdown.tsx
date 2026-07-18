@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useLayoutEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import type { Category } from "@/lib/intent-engine";
 import {
@@ -148,13 +149,10 @@ export function ServicesDropdown({
                       const isHovered = hoveredItem.id === item.id;
                       return (
                         <li key={item.id}>
-                          <button
-                            type="button"
+                          <Link
+                            href={`/services/${item.id}`}
                             onMouseEnter={() => handleItemHover(item)}
-                            onClick={() => {
-                              onSelectService(item.category, item.title);
-                              onClose();
-                            }}
+                            onClick={onClose}
                             className={`w-full text-left py-2 px-3 rounded-xl transition-all duration-150 flex items-center justify-between group cursor-pointer ${
                               isHovered
                                 ? "bg-[var(--accent-subtle)] text-[var(--accent)] font-bold pl-3.5 shadow-xs"
@@ -175,7 +173,7 @@ export function ServicesDropdown({
                                 {item.badge}
                               </span>
                             )}
-                          </button>
+                          </Link>
                         </li>
                       );
                     })}
@@ -207,7 +205,9 @@ export function ServicesDropdown({
                 </div>
 
                 <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight leading-snug">
-                  {hoveredItem.title}
+                  <Link href={`/services/${hoveredItem.id}`} onClick={onClose} className="hover:text-[#4ade80] transition-colors">
+                    {hoveredItem.title}
+                  </Link>
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 mt-3 leading-relaxed">
                   {hoveredItem.description}
@@ -258,13 +258,13 @@ export function ServicesDropdown({
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-stone-400 px-1">
                   <span>Guaranteed 2-Hour Response</span>
-                  <a
-                    href="#services"
+                  <Link
+                    href={`/services/${hoveredItem.id}`}
                     onClick={onClose}
-                    className="text-stone-300 hover:text-white underline transition-colors"
+                    className="text-[#4ade80] hover:underline font-bold transition-colors"
                   >
-                    View All Services &rarr;
-                  </a>
+                    View Full Page &rarr;
+                  </Link>
                 </div>
               </div>
             </div>

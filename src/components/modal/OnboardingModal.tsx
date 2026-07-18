@@ -61,18 +61,19 @@ export function OnboardingModal({
       });
 
       tl.to([headerRef.current, questionRef.current], {
-        y: -20,
+        y: -30,
         opacity: 0,
-        duration: 0.22,
+        filter: "blur(16px)",
+        duration: 0.25,
         ease: "power2.in",
       }).to(
         overlayRef.current,
         {
           opacity: 0,
-          duration: 0.28,
+          duration: 0.3,
           ease: "power2.inOut",
         },
-        "-=0.1"
+        "-=0.12"
       );
     });
 
@@ -123,18 +124,17 @@ export function OnboardingModal({
     if (!shouldRender || !overlayRef.current || !headerRef.current || !questionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Check for prefers-reduced-motion
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.set(overlayRef.current, { opacity: 0 });
-        gsap.set(headerRef.current, { y: -25, opacity: 0 });
-        gsap.set(questionRef.current, { y: 35, opacity: 0 });
+        gsap.set(headerRef.current, { y: -30, opacity: 0 });
+        gsap.set(questionRef.current, { y: 40, opacity: 0, filter: "blur(20px)" });
 
         const tl = gsap.timeline();
         tl.to(overlayRef.current, {
           opacity: 1,
-          duration: 0.4,
+          duration: 0.45,
           ease: "power2.out",
         })
           .to(
@@ -142,20 +142,22 @@ export function OnboardingModal({
             {
               y: 0,
               opacity: 1,
-              duration: 0.45,
+              duration: 0.5,
               ease: "power3.out",
             },
-            "-=0.15"
+            "-=0.2"
           )
           .to(
             questionRef.current,
             {
               y: 0,
               opacity: 1,
-              duration: 0.5,
+              filter: "blur(0px)",
+              duration: 0.6,
               ease: "power3.out",
+              clearProps: "filter,transform",
             },
-            "-=0.3"
+            "-=0.35"
           );
       });
 
@@ -174,26 +176,26 @@ export function OnboardingModal({
       return;
     }
 
-    const exitX = direction === "forward" ? -50 : 50;
-    const enterX = direction === "forward" ? 50 : -50;
+    const exitY = direction === "forward" ? -45 : 45;
+    const enterY = direction === "forward" ? 45 : -45;
 
     gsap.to(questionRef.current, {
-      x: exitX,
-      scale: 0.98,
-      filter: "blur(8px)",
+      y: exitY,
+      scale: 0.96,
+      filter: "blur(18px)",
       opacity: 0,
-      duration: 0.22,
+      duration: 0.24,
       ease: "power2.in",
       onComplete: () => {
         if (questionRef.current) {
-          gsap.set(questionRef.current, { x: enterX, scale: 0.98, filter: "blur(8px)", opacity: 0 });
+          gsap.set(questionRef.current, { y: enterY, scale: 0.96, filter: "blur(18px)", opacity: 0 });
         }
         setStepIndex(newIndex);
         if (questionRef.current) {
           gsap.fromTo(
             questionRef.current,
-            { x: enterX, scale: 0.98, filter: "blur(8px)", opacity: 0 },
-            { x: 0, scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.4, ease: "power3.out", clearProps: "filter,transform" }
+            { y: enterY, scale: 0.96, filter: "blur(18px)", opacity: 0 },
+            { y: 0, scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.5, ease: "power3.out", clearProps: "filter,transform" }
           );
         }
       },
@@ -208,7 +210,6 @@ export function OnboardingModal({
     if (stepIndex < questions.length - 1) {
       transitionToStep(stepIndex + 1, "forward");
     } else {
-      // Final step reached! Submit payload
       setIsSubmitting(true);
       try {
         const contactData = answer as ContactData;
@@ -240,6 +241,8 @@ export function OnboardingModal({
 
   if (!shouldRender || !category || !currentQuestion) return null;
 
+  const progressPercent = Math.round(((stepIndex + 1) / questions.length) * 100);
+
   return (
     <div
       ref={overlayRef}
@@ -252,168 +255,204 @@ export function OnboardingModal({
         width: "100dvw",
         height: "100dvh",
         zIndex: 100,
-        /* Deep rich dark gradient across the full viewport */
-        background: "linear-gradient(160deg, #1c1917 0%, #141210 50%, #0c0a09 100%)",
+        /* Deep cinematic frosted glass backdrop with subtle radial green glow */
+        background: "radial-gradient(circle at 50% 30%, rgba(21, 128, 61, 0.16) 0%, rgba(10, 9, 8, 0.94) 85%)",
+        backdropFilter: "blur(28px) saturate(180%)",
+        WebkitBackdropFilter: "blur(28px) saturate(180%)",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "column",
+        justifyContent: "space-between",
         overflowY: "auto",
-        padding: "24px 16px",
+        padding: "0",
       }}
       onClick={(e) => {
         if (e.target === overlayRef.current) handleAnimatedClose();
       }}
     >
-      {/* Radial vignette fade at the edges for immersive feel */}
+      {/* Top Edge Laser Progress Line */}
       <div
         aria-hidden="true"
         style={{
           position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          background:
-            "radial-gradient(circle at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.75) 100%)",
-          zIndex: 0,
-        }}
-      />
-
-      {/* Subtle ambient warm glow in background */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          top: "-15%",
-          right: "-10%",
-          width: "550px",
-          height: "550px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(22,163,74,0.07) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          bottom: "-15%",
-          left: "-10%",
-          width: "550px",
-          height: "550px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(19,136,8,0.05) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-
-      {/* Main Container */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-          width: "min(720px, 94vw)",
-          minHeight: "min(560px, 86vh)",
-          margin: "auto",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "3px",
+          zIndex: 110,
+          background: "rgba(255, 255, 255, 0.08)",
         }}
       >
-        {/* Header Section */}
         <div
-          ref={headerRef}
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingBottom: "24px",
-            marginBottom: "32px",
-            borderBottom: "1px solid rgba(22,163,74,0.18)",
+            height: "100%",
+            width: `${progressPercent}%`,
+            background: "linear-gradient(90deg, #16a34a, #4ade80)",
+            boxShadow: "0 0 15px #4ade80, 0 0 30px #4ade80",
+            transition: "width 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-            <span
-              id="onboarding-flow-title"
-              style={{
-                padding: "6px 14px",
-                borderRadius: "9999px",
-                background: "rgba(22,163,74,0.18)",
-                border: "1px solid rgba(22,163,74,0.32)",
-                color: "#4ade80",
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-              }}
-            >
-              {category} Growth Roadmap
-            </span>
-            {initialQuery && initialQuery !== category && (
-              <span
-                style={{
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.55)",
-                  fontStyle: "italic",
-                  maxWidth: "280px",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                &ldquo;{initialQuery}&rdquo;
-              </span>
-            )}
-          </div>
+        />
+      </div>
 
-          <button
-            type="button"
-            onClick={handleAnimatedClose}
-            title="Close scoping flow (ESC)"
+      {/* Floating Top HUD Status Bar */}
+      <div
+        ref={headerRef}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "18px 24px sm:24px 40px",
+          width: "100%",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          flexShrink: 0,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
+          <span
+            id="onboarding-flow-title"
             style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "12px",
-              border: "1px solid rgba(255,255,255,0.15)",
-              background: "rgba(255,255,255,0.07)",
-              color: "rgba(255,255,255,0.65)",
+              padding: "7px 16px",
+              borderRadius: "9999px",
+              background: "rgba(74, 222, 128, 0.12)",
+              border: "1px solid rgba(74, 222, 128, 0.3)",
+              color: "#4ade80",
+              fontFamily: "var(--font-mono, monospace)",
+              fontSize: "12px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.16)";
-              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.95)";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.28)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.07)";
-              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.65)";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
+              gap: "8px",
+              boxShadow: "0 0 25px rgba(74, 222, 128, 0.15)",
             }}
           >
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 10px #4ade80" }} className="animate-pulse" />
+            <span>{`0${stepIndex + 1} / 0${questions.length} // ${category} ROADMAP`}</span>
+          </span>
+
+          {initialQuery && initialQuery !== category && (
+            <span
+              style={{
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "13px",
+                color: "rgba(255, 255, 255, 0.6)",
+                fontStyle: "italic",
+                maxWidth: "320px",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                display: "inline-block",
+              }}
+            >
+              &ldquo;{initialQuery}&rdquo;
+            </span>
+          )}
         </div>
 
-        {/* Dynamic Question Step */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          <QuestionStep
-            ref={questionRef}
-            question={currentQuestion}
-            currentAnswer={answers[currentQuestion.id]}
-            totalSteps={questions.length}
-            onNext={handleNext}
-            onBack={stepIndex > 0 ? handleBack : undefined}
-            isSubmitting={isSubmitting}
-          />
+        <button
+          type="button"
+          onClick={handleAnimatedClose}
+          title="Exit Scoping Flow (ESC)"
+          style={{
+            padding: "8px 16px",
+            borderRadius: "9999px",
+            border: "1px solid rgba(255, 255, 255, 0.14)",
+            background: "rgba(255, 255, 255, 0.05)",
+            color: "rgba(255, 255, 255, 0.75)",
+            fontFamily: "var(--font-mono, monospace)",
+            fontSize: "12px",
+            fontWeight: 600,
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+            flexShrink: 0,
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.14)";
+            (e.currentTarget as HTMLButtonElement).style.color = "#ffffff";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.35)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.05)";
+            (e.currentTarget as HTMLButtonElement).style.color = "rgba(255, 255, 255, 0.75)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.14)";
+          }}
+        >
+          <span>ESC</span>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Floating Center Stage (Zero Box Boundaries!) */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          maxWidth: "720px",
+          margin: "0 auto",
+          padding: "16px 20px sm:32px",
+        }}
+      >
+        <QuestionStep
+          ref={questionRef}
+          question={currentQuestion}
+          currentAnswer={answers[currentQuestion.id]}
+          totalSteps={questions.length}
+          onNext={handleNext}
+          onBack={stepIndex > 0 ? handleBack : undefined}
+          isSubmitting={isSubmitting}
+        />
+      </div>
+
+      {/* Floating Bottom HUD Bar */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "18px 24px sm:24px 40px",
+          width: "100%",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          flexShrink: 0,
+          fontFamily: "var(--font-mono, monospace)",
+          fontSize: "12px",
+          color: "rgba(255, 255, 255, 0.45)",
+        }}
+      >
+        <div>
+          {stepIndex > 0 && (
+            <button
+              type="button"
+              onClick={handleBack}
+              disabled={isSubmitting}
+              style={{
+                color: "rgba(255, 255, 255, 0.7)",
+                transition: "color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.color = "#4ade80";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.color = "rgba(255, 255, 255, 0.7)";
+              }}
+            >
+              &larr; Return to Previous Question
+            </button>
+          )}
+        </div>
+
+        <div>
+          <span>Press <strong style={{ color: "rgba(255,255,255,0.8)" }}>[ESC]</strong> or click anywhere outside to exit</span>
         </div>
       </div>
     </div>

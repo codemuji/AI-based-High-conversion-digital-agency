@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import type { Category } from "@/lib/intent-engine";
@@ -360,15 +361,15 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
                             </span>
                             <div className="grid grid-cols-1 gap-1 pl-2 border-l-2 border-[var(--surface-border)]">
                               {group.items.map((item) => (
-                                <button
+                                <Link
                                   key={item.id}
-                                  type="button"
-                                  onClick={() => handleSelectService(item.category, item.title)}
+                                  href={`/services/${item.id}`}
+                                  onClick={() => setMobileOpen(false)}
                                   className="w-full text-left py-1.5 px-2 rounded-lg text-xs font-medium text-[var(--foreground)] hover:text-[var(--accent)] hover:bg-[var(--surface-hover)] flex items-center justify-between"
                                 >
                                   <span>{item.title}</span>
                                   <span className="text-[10px] text-[var(--accent)]">&rarr;</span>
-                                </button>
+                                </Link>
                               ))}
                             </div>
                           </div>

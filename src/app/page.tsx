@@ -10,6 +10,9 @@ import { StickyIntakeBar } from "@/components/navigation/StickyIntakeBar";
 import { RecognitionMarquee } from "@/components/sections/RecognitionMarquee";
 import { GrowthRoadmapSection } from "@/components/sections/GrowthRoadmapSection";
 import { BusinessUseCasesSection } from "@/components/sections/BusinessUseCasesSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
+import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -58,12 +61,27 @@ export default function HomePage() {
         <GrowthRoadmapSection onStartOnboarding={handleStartOnboarding} />
       </ScrollReveal>
 
-      {/* 2.5. Classic Industry Use Cases with 2-Box Visual Architecture (`image` + `write up`) */}
+      {/* 2.5. Classic Industry Use Cases with 2-Box Visual Architecture */}
       <ScrollReveal>
         <BusinessUseCasesSection />
       </ScrollReveal>
 
-      {/* 3. High-Impact Conversion CTA Banner */}
+      {/* 3. Our 4-Step Architectural Engineering Process (`#process`) */}
+      <ScrollReveal>
+        <ProcessSection />
+      </ScrollReveal>
+
+      {/* 3.5. Verified Client Work & Case Studies (`#work`) */}
+      <ScrollReveal>
+        <CaseStudiesSection />
+      </ScrollReveal>
+
+      {/* 3.8. Studio Overview & Guarantees (`#about`) */}
+      <ScrollReveal>
+        <AboutSection />
+      </ScrollReveal>
+
+      {/* 4. High-Impact Conversion CTA Banner */}
       <ScrollReveal>
         <CTASection onStartOnboarding={handleStartOnboarding} />
       </ScrollReveal>

@@ -108,7 +108,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               {SERVICES_DROPDOWN_GROUPS[0].items.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={`/services/${service.id}`}
+                    href={`/${service.id}`}
                     className="group flex items-center justify-between py-0.5 text-stone-400 hover:text-white transition-all"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">{service.title}</span>
@@ -132,7 +132,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               {SERVICES_DROPDOWN_GROUPS[1].items.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={`/services/${service.id}`}
+                    href={`/${service.id}`}
                     className="group flex items-center justify-between py-0.5 text-stone-400 hover:text-white transition-all"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">{service.title}</span>
@@ -156,7 +156,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               {SERVICES_DROPDOWN_GROUPS[2].items.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={`/services/${service.id}`}
+                    href={`/${service.id}`}
                     className="group flex items-center justify-between py-0.5 text-stone-400 hover:text-white transition-all"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">{service.title}</span>
@@ -203,28 +203,31 @@ export function Footer({ onStartOnboarding }: FooterProps) {
         {/* MIDDLE BAR: QUICK NAVIGATION & ASSURANCE STRIP */}
         <div className="py-8 border-b border-stone-800/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-stone-400">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
-            <a href="#hero" className="hover:text-white transition-colors">
+            <Link href="/" className="hover:text-white transition-colors">
               Home
-            </a>
-            <a href="#services" className="hover:text-white transition-colors">
+            </Link>
+            <a href="/#services" className="hover:text-white transition-colors">
               All Services
             </a>
-            <a href="#growth-roadmap" className="hover:text-white transition-colors">
+            <a href="/#growth-roadmap" className="hover:text-white transition-colors">
               Scale Roadmaps
             </a>
-            <a href="#use-cases" className="hover:text-white transition-colors">
+            <a href="/#use-cases" className="hover:text-white transition-colors">
               Industry Models
             </a>
-            <a href="#process" className="hover:text-white transition-colors">
+            <Link href="/process" className="hover:text-white transition-colors">
               Our Process
-            </a>
-            <a href="#testimonials" className="hover:text-white transition-colors">
-              Client Results
-            </a>
-            <a href="#faq" className="hover:text-white transition-colors">
+            </Link>
+            <Link href="/work" className="hover:text-white transition-colors">
+              Case Studies &amp; Work
+            </Link>
+            <Link href="/about" className="hover:text-white transition-colors">
+              About The Studio
+            </Link>
+            <a href="/#faq" className="hover:text-white transition-colors">
               FAQ
             </a>
-            <a href="#contact" className="hover:text-[#4ade80] font-bold transition-colors">
+            <a href="/#contact" className="hover:text-[#4ade80] font-bold transition-colors">
               Direct Contact
             </a>
           </div>
@@ -247,7 +250,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           </div>
 
           <div className="text-center sm:text-right text-stone-400">
-            Engineered in India &bull; <span className="text-stone-300 font-semibold">Powered by Codemuji Digital Services</span>
+            Engineered in India &bull; <span className="text-stone-300 font-semibold">Powered by India Web Designs</span>
           </div>
         </div>
       </div>

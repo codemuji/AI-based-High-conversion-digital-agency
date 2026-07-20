@@ -9,10 +9,10 @@ import { SERVICES_DROPDOWN_GROUPS } from "@/lib/services-dropdown-data";
 import { ServicesDropdown } from "./ServicesDropdown";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services", id: "services" },
-  { label: "Process", href: "#process", id: "process" },
-  { label: "Work", href: "#work", id: "work" },
-  { label: "About", href: "#about", id: "about" },
+  { label: "Services", href: "#services", id: "services", isPage: false },
+  { label: "Process", href: "/process", id: "process", isPage: true },
+  { label: "Work", href: "/work", id: "work", isPage: true },
+  { label: "About", href: "/about", id: "about", isPage: true },
 ];
 
 export interface NavbarProps {
@@ -171,8 +171,8 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
             className="hidden md:flex"
           >
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.id || (link.id === "services" && dropdownOpen);
-              const linkHref = isHome ? link.href : `/${link.href}`;
+              const isActive = activeSection === link.id || (link.id === "services" && dropdownOpen) || pathname === link.href;
+              const linkHref = link.isPage ? link.href : (isHome ? link.href : `/${link.href}`);
 
               if (link.id === "services") {
                 return (
@@ -219,6 +219,36 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
                       )}
                     </a>
                   </div>
+                );
+              }
+
+              if (link.isPage) {
+                return (
+                  <Link
+                    key={link.href}
+                    href={linkHref}
+                    style={{
+                      fontSize: 13,
+                      fontWeight: isActive ? 700 : 600,
+                      color: isActive ? "var(--accent)" : "var(--muted)",
+                      textDecoration: "none",
+                      letterSpacing: "0.01em",
+                      transition: "color 0.2s, font-weight 0.2s",
+                      position: "relative",
+                      paddingBottom: 2,
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) e.currentTarget.style.color = "var(--foreground)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) e.currentTarget.style.color = "var(--muted)";
+                    }}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--accent)] animate-pulse" />
+                    )}
+                  </Link>
                 );
               }
 
@@ -363,7 +393,7 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
                               {group.items.map((item) => (
                                 <Link
                                   key={item.id}
-                                  href={`/services/${item.id}`}
+                                  href={`/${item.id}`}
                                   onClick={() => setMobileOpen(false)}
                                   className="w-full text-left py-1.5 px-2 rounded-lg text-xs font-medium text-[var(--foreground)] hover:text-[var(--accent)] hover:bg-[var(--surface-hover)] flex items-center justify-between"
                                 >
@@ -377,6 +407,27 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
                       </div>
                     )}
                   </div>
+                );
+              }
+
+              if (link.isPage) {
+                return (
+                  <Link
+                    key={link.href}
+                    href={linkHref}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: "block",
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: "var(--foreground)",
+                      textDecoration: "none",
+                      padding: "12px 0",
+                      borderBottom: "1px solid var(--surface-border)",
+                    }}
+                  >
+                    {link.label}
+                  </Link>
                 );
               }
 

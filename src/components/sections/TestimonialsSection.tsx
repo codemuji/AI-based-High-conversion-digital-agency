@@ -17,7 +17,7 @@ const TESTIMONIALS: TestimonialCard[] = [
   {
     id: "t1",
     quote:
-      "Before Codemuji, our staff spent 5 hours daily manually verifying WhatsApp screenshots for student fee installments. They engineered a custom LMS portal and automated GST invoicing pipeline in just 3 weeks. Our admin overhead dropped 80% instantly.",
+      "Before India Web Designs, our staff spent 5 hours daily manually verifying WhatsApp screenshots for student fee installments. They engineered a custom LMS portal and automated GST invoicing pipeline in just 3 weeks. Our admin overhead dropped 80% instantly.",
     author: "Rajesh Kumar Sharma",
     role: "Director",
     company: "Apex Vocational & Academy",

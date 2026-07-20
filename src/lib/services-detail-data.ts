@@ -96,7 +96,7 @@ const DEFAULT_PHASES: PhaseItem[] = [
 
 export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> = {
   // --- GROUP 1: WEB DESIGN ---
-  "static-website": {
+  "static-website-design-services-in-india": {
     overview: "In today's fast-moving Indian market, your website is your digital flagship. Our Static Website Design service delivers ultra-fast, highly secure informational websites engineered with modern static generation tools. Unlike sluggish WordPress sites burdened by heavy themes and vulnerable plugins, our bespoke static builds load in under 0.8 seconds, ensuring immediate credibility and superior Google quality scores.",
     targetAudience: "Ideal for corporate consultancies, manufacturing units, law firms, healthcare clinics, and B2B enterprises needing a bulletproof, zero-maintenance brand showcase.",
     corePillars: [
@@ -126,7 +126,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "How fast will the website go live?", answer: "Typically within 7 to 14 business days once your logo, brand guidelines, and page content are finalized." },
     ],
   },
-  "dynamic-website": {
+  "dynamic-website-design-services-in-india": {
     overview: "When your business requires frequent content updates, custom calculators, client portals, or dynamic database interactions, standard templates fall apart. Our Dynamic Website Design service builds high-speed, database-driven web applications powered by modern server-side rendering and intuitive administrative dashboards.",
     targetAudience: "Perfect for real estate agencies with active property listings, educational institutions, news portals, and scaling businesses requiring dynamic content management.",
     corePillars: [
@@ -154,7 +154,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Is training provided for our administrative team?", answer: "Absolutely. We conduct live screen-share training sessions and record customized video tutorials on how to add listings, manage users, and export reports." },
     ],
   },
-  "ecommerce-website": {
+  "ecommerce-website-design-services-in-india": {
     overview: "Don't let Shopify or WooCommerce eat away your profit margins with recurring subscription fees, transaction percentages, and sluggish checkout flows. Our E-Commerce Website Design delivers a high-speed, custom-engineered digital storefront optimized for high conversion in the Indian retail ecosystem with seamless UPI and Razorpay checkouts.",
     targetAudience: "Direct-to-Consumer (D2C) brands, fashion labels, electronics distributors, and established brick-and-mortar retailers looking to dominate online sales without paying platform commissions.",
     corePillars: [
@@ -183,7 +183,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can we integrate courier partners like Shiprocket?", answer: "Yes, we integrate courier APIs so whenever an order is placed, a shipping label and waybill number are generated automatically." },
     ],
   },
-  "mobile-website": {
+  "mobile-website-design-services-in-india": {
     overview: "Over 85% of internet traffic in India originates from mobile devices. If your website isn't engineered mobile-first, you are losing the vast majority of potential customers. Our Mobile Website Design focuses on touch ergonomics, thumb-friendly navigation, low-bandwidth resilience, and app-like responsiveness.",
     targetAudience: "Consumer-facing brands, local service providers, restaurants, and retail outlets whose customers browse primarily on smartphones while on the move.",
     corePillars: [
@@ -209,7 +209,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Will this also work nicely on desktop computers?", answer: "Yes! While we design mobile-first to guarantee perfection on smartphones, the layout fluidly adapts and expands into a rich, full-screen experience on laptops and desktop monitors." },
     ],
   },
-  "redesign-website": {
+  "red": {
     overview: "Is your legacy website hurting your brand reputation? Outdated designs, broken links, non-responsive layouts, and excruciatingly slow loading speeds actively drive high-value clients to your competitors. Our Redesign of Existing Website service strips away years of technical debt and transforms your online presence into a sleek, modern conversion engine.",
     targetAudience: "Established Indian companies whose current website looks like it was built a decade ago, suffering from low conversions, high bounce rates, or bloated WordPress maintenance costs.",
     corePillars: [
@@ -238,7 +238,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 
   // --- GROUP 2: DIGITAL MARKETING ---
-  "seo-optimisation": {
+  "search-engine-optimization-seo-outsourcing-to-india": {
     overview: "Ranking #1 on Google isn't about keyword stuffing or spammy backlinks—it's about technical excellence, structural clarity, and high-intent local relevance. Our Search Engine Optimisation service combines deep technical Core Web Vitals engineering with targeted Indian search intent strategies to put your brand directly in front of active buyers right when they are ready to transact.",
     targetAudience: "B2B service providers, local Indian businesses, healthcare clinics, educational institutes, and e-commerce stores wanting consistent, high-intent organic lead flow without endless ad spend.",
     corePillars: [
@@ -265,7 +265,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "How long does it take to see tangible ranking improvements on Google?", answer: "While technical fixes yield immediate indexing benefits within 2 to 4 weeks, establishing page-1 rankings for competitive high-volume Indian keywords typically requires 60 to 90 days of consistent execution." },
     ],
   },
-  "social-media-marketing": {
+  "social-media-marketing-services": {
     overview: "Your audience is scrolling through Instagram, LinkedIn, and Facebook every single day. Our Social Media Marketing service creates distinctive, thumb-stopping visual campaigns and precision performance ad funnels that turn casual scrollers into loyal customers and high-ticket inquiries.",
     targetAudience: "Lifestyle brands, real estate developers, coaching academies, and B2B tech consultancies aiming to build brand authority and generate consistent inbound inquiries across social channels.",
     corePillars: [
@@ -291,7 +291,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Do you create both organic posts and paid advertisements?", answer: "Yes! We handle full-funnel social marketing: high-quality organic content to build your long-term brand equity, paired with precision paid ad campaigns to drive immediate leads and revenue." },
     ],
   },
-  "bulk-sms-marketing": {
+  "bulk-sms-marketing-services-in-india": {
     overview: "With a 98% open rate—often within 3 minutes of delivery—SMS remains one of the most reliable and direct communication channels in India. Our Bulk SMS Broadcasting & Marketing service provides TRAI DLT-compliant, instant messaging pipelines for promotional blasts, OTP verification, and automated customer transaction alerts.",
     targetAudience: "Retail chains, educational institutions sending fee/exam alerts, event organizers, healthcare clinics for appointment reminders, and financial services requiring instant alerts.",
     corePillars: [
@@ -317,7 +317,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "What is DLT registration and why is it required in India?", answer: "As per TRAI regulations, every business sending SMS to Indian mobile numbers must register their business entity and message templates on a telecom DLT portal to prevent spam. We guide your team through this entire simple registration process." },
     ],
   },
-  "whatsapp-messaging": {
+  "whatsapp-marketing-services-in-inida": {
     overview: "WhatsApp is where India does business. Our WhatsApp Messaging & Bots service leverages the official WhatsApp Cloud API to deploy verified 24/7 AI business assistants, instant query responders, automated customer support workflows, and high-conversion promotional broadcast campaigns without risk of number banning.",
     targetAudience: "D2C brands, educational admission cells, real estate brokerages, and customer support centers needing instant, automated 24/7 engagement on India's #1 messaging app.",
     corePillars: [
@@ -343,7 +343,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Will our WhatsApp number get blocked when sending promotional broadcasts?", answer: "No! Because we use the official Meta WhatsApp Cloud API with approved message templates and opt-in contact lists, your account remains 100% compliant and secure against algorithmic bans." },
     ],
   },
-  "google-adwords": {
+  "ads": {
     overview: "When a potential customer searches Google for your exact service in your city, you need to be at the very top of the page instantly. Our Google AdWords (PPC) Management service constructs precision pay-per-click search campaigns, eliminating wasted ad clicks and capturing high-intent inquiries from day one.",
     targetAudience: "High-ticket B2B services, emergency local contractors, legal/medical specialists, and businesses seeking immediate, qualified customer inquiries within 72 hours.",
     corePillars: [
@@ -372,7 +372,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 
   // --- GROUP 3: MOBILE APPS ---
-  "ecommerce-mobile-app": {
+  "ecommerce-mobile-app-development-services-in-india": {
     overview: "While websites capture new visitors, native mobile apps drive customer loyalty, repeat purchases, and higher average order values. Our E-Commerce Mobile App Development service builds slick, native iOS and Android shopping experiences featuring instant UPI payments, real-time order tracking, and high-conversion push notifications.",
     targetAudience: "Established fashion brands, grocery & daily essentials delivery networks, electronics retailers, and D2C brands looking to own their customer's smartphone home screen.",
     corePillars: [
@@ -399,7 +399,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Will this mobile app sync with our existing website inventory?", answer: "Yes! We build a unified API bridge so whenever an item is sold on your website or mobile app, stock levels update across all platforms instantly." },
     ],
   },
-  "multivendor-mobile-app": {
+  "ecommerce-multivendor-mobile-app-development-services-in-india": {
     overview: "Build your own digital marketplace. Our Multivendor Mobile App Development service creates a scalable, three-pillar ecosystem connecting independent vendors, end-consumers, and delivery agents into a seamless platform—complete with automated commission splitting and vendor payouts.",
     targetAudience: "Entrepreneurs launching regional food delivery networks, B2B wholesale marketplaces, service booking aggregators, or multi-brand retail platforms.",
     corePillars: [
@@ -425,7 +425,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "How does the platform handle commission deductions when a customer pays?", answer: "Using automated payment splitters (like Razorpay Route), when a customer pays ₹1,000, the platform automatically retains your agreed commission (e.g. 15%) and routes the remaining balance directly to the vendor's bank account." },
     ],
   },
-  "video-streaming-ott": {
+  "video-streaming-ott-app-development-services-in-india": {
     overview: "Launch your own Netflix or MasterClass. Our Video Streaming App (OTT) Development builds high-concurrency, buffer-free video entertainment and educational platforms engineered with DRM content protection, multi-bitrate adaptive streaming, and flexible subscription or pay-per-view monetization models.",
     targetAudience: "Regional entertainment producers, ed-tech academies, religious organizations, and fitness trainers wanting to monetize their video catalog without relying on YouTube.",
     corePillars: [
@@ -451,7 +451,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can users download videos to watch offline inside the app?", answer: "Yes! Users can securely download videos inside the mobile app for offline viewing during flights or commutes. The downloaded files are encrypted and cannot be exported or played outside your app." },
     ],
   },
-  "food-ordering-app": {
+  "online-food-delivery-mobile-app-development-service-in-india": {
     overview: "Take back control from Zomato and Swiggy. Our Food Ordering Mobile App Development creates bespoke, zero-commission ordering applications for restaurants and cloud kitchen networks—complete with live order ticketing, delivery dispatching, and direct customer loyalty rewards.",
     targetAudience: "Multi-outlet restaurant chains, independent fine-dining establishments, bakery networks, and fast-growing cloud kitchens tired of paying 25% to 30% aggregator commissions.",
     corePillars: [
@@ -478,7 +478,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "How much can a typical restaurant save by having its own ordering app?", answer: "A restaurant doing ₹5 Lakhs monthly on third-party apps typically pays ₹1.25 Lakhs to ₹1.5 Lakhs in commissions every single month. With your own custom app, your monthly software cost drops to zero after launch, keeping lakhs of extra profit every year." },
     ],
   },
-  "consultation-apps": {
+  "online-consultation-mobile-app": {
     overview: "Whether you are a medical doctor, legal advocate, astrological consultant, or business coach, our Consultation & Booking Apps provide a seamless virtual office. We engineer complete platforms featuring automated time-slot scheduling, upfront fee collection, and high-definition encrypted video consultations.",
     targetAudience: "Healthcare clinics, legal firms, therapy centers, expert consultants, and fitness instructors wanting to monetize their time and expertise globally without scheduling headaches.",
     corePillars: [
@@ -507,7 +507,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 
   // --- GROUP 4: WEB PORTALS ---
-  "online-learning-portal": {
+  "online-learning-portal-development-service-in-india": {
     overview: "Scale your educational institution beyond physical classrooms. Our Online Learning Web Portal (LMS) development creates powerful, interactive digital learning platforms complete with structured video course modules, online assignments, automated MCQ grading, and verifiable digital certificate issuance.",
     targetAudience: "Coaching institutes, universities, corporate employee upskilling programs, and individual subject-matter experts creating structured online academies.",
     corePillars: [
@@ -534,7 +534,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can we offer courses with installment or EMI payment options?", answer: "Yes! We can configure flexible payment plans, allowing students to pay in monthly installments with automatic course access suspension if an installment is missed." },
     ],
   },
-  "matrimony-portal": {
+  "online-matrimony-website-development-service-in-india": {
     overview: "Trust, privacy, and granular compatibility are the pillars of Indian matchmaking. Our Matrimony Web Portal development builds high-security, culturally tailored matrimonial platforms featuring advanced profile filtering, ID verification badges, privacy-guarded photo vaults, and smart astrological matching.",
     targetAudience: "Community organizations, regional matrimonial bureaus, and entrepreneurs launching specialized matchmaking networks across India.",
     corePillars: [
@@ -561,7 +561,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "How do you ensure member data and contact numbers remain safe?", answer: "All sensitive data and phone numbers are encrypted at rest. Contact numbers are never displayed publicly and can only be accessed when a premium member utilizes an official contact unlock credit." },
     ],
   },
-  "food-delivery-portal": {
+  "online-food-delivery-web-portal-development-service-in-india": {
     overview: "Manage an entire multi-restaurant food delivery network from a central command dashboard. Our Food Delivery Web Portal provides web-based ordering networks complete with real-time kitchen status, delivery driver dispatching, customer tracking, and comprehensive settlement accounting.",
     targetAudience: "City-wide food delivery cooperatives, cloud kitchen conglomerates, and enterprise hospitality brands managing high-volume web food ordering across multiple locations.",
     corePillars: [
@@ -587,7 +587,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can the web portal handle sudden traffic spikes during major cricket matches or festivals?", answer: "Yes! By utilizing edge caching and Redis in-memory queueing, our portals routinely handle thousands of concurrent orders per minute with zero lag or crash failures." },
     ],
   },
-  "news-portal": {
+  "online-news-portal-development-service-in-india": {
     overview: "Journalism demands speed, reliability, and monetization efficiency. Our Online News Portal Development creates lightning-fast, high-concurrency digital publishing platforms optimized for breaking news alerts, Google News indexing, programmatic ad management, and editorial workflow automation.",
     targetAudience: "Regional news networks, digital magazines, independent journalists, and media publishing houses aiming for dominant online readership across India.",
     corePillars: [
@@ -614,7 +614,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Will the portal crash if a breaking news story goes viral and brings 100,000 visitors in an hour?", answer: "No. Because our architecture leverages Incremental Static Regeneration (ISR) and global Cloudflare edge caching, viral traffic spikes are served directly from edge CDN nodes with zero strain on your origin database." },
     ],
   },
-  "classifieds-portal": {
+  "Free-Classifieds-Portal": {
     overview: "Connect buyers, sellers, and local service providers in your region. Our Free Classifieds Portal development builds high-speed community directories and listing marketplaces complete with location-based discovery, category filtering, user moderation tools, and featured listing monetization.",
     targetAudience: "Entrepreneurs building city-specific directories, B2B industrial surplus marketplaces, job boards, or used vehicles/real estate classified networks.",
     corePillars: [
@@ -642,7 +642,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 
   // --- GROUP 5: SOFTWARES ---
-  "school-management": {
+  "school-management-online-software-in-india": {
     overview: "Eliminate messy paper registers, scattered WhatsApp groups, and billing confusion. Our School Management Software (ERP) is a comprehensive, centralized academic administration system tracking student attendance, fee collection, exam report cards, teacher timetables, and parent communications in one clean portal.",
     targetAudience: "K-12 schools, international academies, and educational trusts across India needing a modern, unified campus management solution.",
     corePillars: [
@@ -669,7 +669,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can the software handle complex Indian fee structures with concession quotas and late fines?", answer: "Yes! We build highly customizable fee structures supporting RTE concessions, sibling discounts, bus transport zone charges, and automated daily/weekly late fee calculations." },
     ],
   },
-  "college-management": {
+  "college-management-online-software-in-india": {
     overview: "Managing a multi-department university or technical college requires industrial-grade software architecture. Our College Management Software provides a unified campus ERP managing admissions, semester registrations, faculty workloads, hostel room allocation, library assets, and placement cell automation.",
     targetAudience: "Engineering colleges, degree universities, medical institutes, and autonomous educational campuses managing thousands of students and staff across multiple departments.",
     corePillars: [
@@ -695,7 +695,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Is data secure against unauthorized grade modifications?", answer: "We enforce strict cryptographic audit logs and immutable role permissions. Every grade entry or modification is time-stamped with the exact IP address and faculty credentials, preventing any unauthorized tampering." },
     ],
   },
-  "vocational-management": {
+  "vocational-school-management-online-software-in-india": {
     overview: "Specialized skill development institutes and vocational training academies operate on dynamic batch schedules and practical certification workflows. Our Vocational Institute Management software streamlines batch scheduling, instructor allocations, student lab attendance, and corporate placement tracking.",
     targetAudience: "IT training institutes, fashion design academies, culinary schools, language centers, and government-affiliated skill development organizations across India.",
     corePillars: [
@@ -721,7 +721,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can we track students enrolled in multiple short-term courses simultaneously?", answer: "Yes, our architecture supports multi-course enrollments under a single unified student ID, providing a clean overview of all active batches and fee ledgers." },
     ],
   },
-  "billing-client-management": {
+  "billing-accounting-software-in-india": {
     overview: "Throw away messy Excel sheets and fragmented accounting software. Our Billing & Client Management (CRM) custom software replaces administrative chaos with clean, automated GST invoice generation, client project pipelines, automated payment follow-ups, and comprehensive financial reporting built specifically for Indian businesses.",
     targetAudience: "Digital agencies, chartered accountants, legal consultancies, B2B service contractors, and distributors wanting an all-in-one CRM and GST billing power-tool.",
     corePillars: [
@@ -747,7 +747,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can our accountant easily export data for monthly GSTR-1 and GSTR-3B filings?", answer: "Yes! With one single click, your accountant can download complete, clean Excel reports formatted specifically with B2B, B2C, HSN codes, and tax breakdowns ready for direct portal upload." },
     ],
   },
-  "restaurant-management": {
+  "Restaurant-Management": {
     overview: "Streamline your hospitality operations from table reservation to kitchen prep and billing checkout. Our Restaurant Management (POS & KOT) software connects front-of-house waiters, kitchen chefs, and cashiers into a real-time, synchronized workflow eliminating order delays, billing errors, and ingredient theft.",
     targetAudience: "Busy dine-in restaurants, cafes, bars, quick-service food courts, and cloud kitchen brands requiring fast, reliable table and kitchen synchronization.",
     corePillars: [
@@ -775,7 +775,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 
   // --- GROUP 6: GRAPHIC DESIGN ---
-  "logo-design": {
+  "logo-design-services-in-india": {
     overview: "Your logo is the foundation of your brand identity and the first thing customers judge. Our Logo & Brand Identity Design service crafts distinctive, memorable, and strategically engineered visual identities. We don't use generic clipart or AI generators—we build bespoke typography, powerful symbols, and comprehensive brand guidelines that command respect across every Indian and global touchpoint.",
     targetAudience: "Ambitious startups launching new ventures, established Indian businesses undergoing premium rebranding, and corporate enterprises needing a cohesive, authoritative visual identity.",
     corePillars: [
@@ -802,7 +802,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Do we receive the original vector source files?", answer: "Yes! Once finalized, you receive the complete industry-standard vector source package (AI, EPS, and SVG) giving you full ownership and the ability to scale your logo from a business card to a stadium billboard with zero quality loss." },
     ],
   },
-  "flyer-design": {
+  "flyer-design-services-in-india": {
     overview: "When advertising your upcoming event, seasonal discount sale, or local store launch, your promotional material must grab attention in less than 2 seconds. Our Flyer & Marketing Collateral design creates vibrant, high-converting digital handbills and print flyers engineered with sharp visual hierarchy and compelling call-to-action placement.",
     targetAudience: "Retail showrooms running festival sales, educational institutes announcing new admissions, event organizers, and real estate developers showcasing new project launches.",
     corePillars: [
@@ -827,7 +827,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Can we use this flyer for both physical printing and WhatsApp distribution?", answer: "Yes! We provide two dedicated master files: a high-res CMYK file tailored specifically for professional offset/digital printers, and a lightweight, crisp RGB file optimized for instant WhatsApp broadcasting and social sharing." },
     ],
   },
-  "brochure-design": {
+  "brochure-design-services-in-india": {
     overview: "Present your corporate capabilities, product lines, and architectural vision with unmatched elegance. Our Brochure Design service crafts sophisticated multi-page corporate brochures, company profiles, and investor pitch deck PDFs featuring editorial grid layouts, rich custom iconography, and authoritative storytelling.",
     targetAudience: "B2B manufacturing conglomerates, real estate builders presenting luxury properties, IT consulting firms, and educational universities publishing prospectus catalogs.",
     corePillars: [
@@ -853,7 +853,7 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
       { question: "Do you also assist with organizing and refining the content structure?", answer: "Yes! We review your raw text structure and assist in breaking down dense paragraphs into scannable bullet points, callout boxes, and visual infographics to maximize reader engagement." },
     ],
   },
-  "poster-design": {
+  "poster-design-services-in-india": {
     overview: "Whether dominating a outdoor billboard, adorning a corporate exhibit booth, or capturing clicks across high-traffic social media feeds, your posters must command immediate authority. Our Poster & Banner Design service delivers striking, high-contrast visual artworks designed for maximum retention and click-through engagement.",
     targetAudience: "Event promoters, corporate exhibitors, retail chains launching festival campaigns, and digital marketers needing high-conversion ad banners.",
     corePillars: [
@@ -906,7 +906,41 @@ export const SERVICE_DETAILS_DICTIONARY: Record<string, Partial<ServiceDetail>> 
   },
 };
 
-export function getServiceDetail(id: string): ServiceDetail {
+const SHORT_ID_TO_SEO_SLUG: Record<string, string> = {
+  "static-website": "static-website-design-services-in-india",
+  "dynamic-website": "dynamic-website-design-services-in-india",
+  "ecommerce-website": "ecommerce-website-design-services-in-india",
+  "mobile-website": "mobile-website-design-services-in-india",
+  "redesign-website": "red",
+  "seo-optimisation": "search-engine-optimization-seo-outsourcing-to-india",
+  "social-media-marketing": "social-media-marketing-services",
+  "bulk-sms-marketing": "bulk-sms-marketing-services-in-india",
+  "whatsapp-messaging": "whatsapp-marketing-services-in-inida",
+  "google-adwords": "ads",
+  "ecommerce-mobile-app": "ecommerce-mobile-app-development-services-in-india",
+  "multivendor-mobile-app": "ecommerce-multivendor-mobile-app-development-services-in-india",
+  "video-streaming-ott": "video-streaming-ott-app-development-services-in-india",
+  "food-ordering-app": "online-food-delivery-mobile-app-development-service-in-india",
+  "consultation-apps": "online-consultation-mobile-app",
+  "online-learning-portal": "online-learning-portal-development-service-in-india",
+  "matrimony-portal": "online-matrimony-website-development-service-in-india",
+  "food-delivery-portal": "online-food-delivery-web-portal-development-service-in-india",
+  "news-portal": "online-news-portal-development-service-in-india",
+  "classifieds-portal": "Free-Classifieds-Portal",
+  "school-management": "school-management-online-software-in-india",
+  "college-management": "college-management-online-software-in-india",
+  "vocational-management": "vocational-school-management-online-software-in-india",
+  "billing-client-management": "billing-accounting-software-in-india",
+  "restaurant-management": "Restaurant-Management",
+  "logo-design": "logo-design-services-in-india",
+  "flyer-design": "flyer-design-services-in-india",
+  "brochure-design": "brochure-design-services-in-india",
+  "poster-design": "poster-design-services-in-india",
+  "catalogue-design": "catalogue-design",
+};
+
+export function getServiceDetail(rawId: string): ServiceDetail {
+  const id = SHORT_ID_TO_SEO_SLUG[rawId] || rawId;
   // Find group and item from SERVICES_DROPDOWN_GROUPS
   let foundGroup = SERVICES_DROPDOWN_GROUPS[0];
   let foundItem = foundGroup.items[0];

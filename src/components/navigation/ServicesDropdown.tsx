@@ -150,7 +150,7 @@ export function ServicesDropdown({
                       return (
                         <li key={item.id}>
                           <Link
-                            href={`/services/${item.id}`}
+                            href={`/${item.id}`}
                             onMouseEnter={() => handleItemHover(item)}
                             onClick={onClose}
                             className={`w-full text-left py-2 px-3 rounded-xl transition-all duration-150 flex items-center justify-between group cursor-pointer ${
@@ -205,7 +205,7 @@ export function ServicesDropdown({
                 </div>
 
                 <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight leading-snug">
-                  <Link href={`/services/${hoveredItem.id}`} onClick={onClose} className="hover:text-[#4ade80] transition-colors">
+                  <Link href={`/${hoveredItem.id}`} onClick={onClose} className="hover:text-[#4ade80] transition-colors">
                     {hoveredItem.title}
                   </Link>
                 </h3>
@@ -259,7 +259,7 @@ export function ServicesDropdown({
                 <div className="flex items-center justify-between text-[11px] font-mono text-stone-400 px-1">
                   <span>Guaranteed 2-Hour Response</span>
                   <Link
-                    href={`/services/${hoveredItem.id}`}
+                    href={`/${hoveredItem.id}`}
                     onClick={onClose}
                     className="text-[#4ade80] hover:underline font-bold transition-colors"
                   >

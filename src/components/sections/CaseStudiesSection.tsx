@@ -4,85 +4,144 @@ const CASE_STUDIES = [
   {
     category: "Online Store & Sales",
     client: "Apex Fashion Retailers",
+    code: "PORTAL_SLA // SUB-0.8S",
     title: "Growing monthly sales to ₹40 Lakhs with instant checkout speeds.",
     metrics: "+180% More Customer Orders",
     description: "Replaced a slow, clunky online store with a lightning-fast shopping experience. Page load times dropped instantly, giving shoppers a delightful checkout and almost doubling daily sales.",
+    deliverables: ["Custom Next.js Storefront", "Instant UPI / Cart Checkout", "Sub-0.8s Global Edge CDN"],
   },
   {
     category: "24/7 WhatsApp Support",
     client: "CareConnect Medical Group",
+    code: "BOT_PROTOCOL // INSTANT",
     title: "Handling patient inquiries instantly and booking 2,400+ daily consults.",
     metrics: "2,400+ Daily Consults Booked",
     description: "Launched a friendly 24/7 WhatsApp assistant to answer common patient questions and book appointments automatically, saving staff hours of phone time every single day.",
+    deliverables: ["WhatsApp Cloud API Engine", "Automated Appointment Scheduling", "EMR Database Sync"],
   },
   {
     category: "Operations & Management",
     client: "LogiTrack Express Supply",
+    code: "ERP_SYSTEM // REALTIME",
     title: "Simplifying daily dispatch tracking for 500+ delivery vehicles.",
     metrics: "Save ₹3.2 Lakhs / mo in Fuel Waste",
     description: "Created an easy-to-use custom dashboard and mobile app for drivers that eliminated manual paperwork and optimized daily delivery routes for maximum efficiency.",
+    deliverables: ["Real-Time GPS Fleet Dashboard", "Driver Offline Mobile App", "Automated GST Dispatch Ledger"],
   },
 ];
 
 export function CaseStudiesSection() {
   return (
-    <section id="work" className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="bg-[#141210] text-[#fefcf9] border border-stone-800 rounded-3xl p-8 sm:p-14 lg:p-16 shadow-2xl relative overflow-hidden">
-        {/* Subtle dark grid texture inside showcase */}
-        <div className="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none" />
+    <section id="work" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden border-t border-[var(--surface-border)] bg-[var(--background)] font-sans">
+      {/* Subtle Architectural Drafting Grid */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
+      <div className="absolute -top-32 left-1/3 w-96 h-96 bg-[var(--accent)]/5 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Architectural Split Header */}
-        <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-stone-800 pb-8">
-          <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#4ade80] block mb-2">
-              {"// Real Customer Growth"}
-            </span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
-              Real business results <br className="hidden sm:inline" />
-              that help you grow.
-            </h2>
+      {/* Architectural Split Header */}
+      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[var(--surface-border)] pb-8">
+        <div>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-stone-200 shadow-xs mb-3 text-xs font-mono font-bold text-[var(--foreground)] tracking-wider uppercase">
+            <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
+            <span>VERIFIED CLIENT WORK // CASE STUDIES</span>
           </div>
-          <p className="text-base sm:text-lg text-stone-400 max-w-md md:text-right leading-relaxed">
-            See how our fast, reliable digital tools directly help Indian businesses increase sales, save time, and delight their customers every day.
-          </p>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[var(--foreground)] tracking-tight leading-[1.04]">
+            Real business results <br className="hidden sm:inline" />
+            that help you grow.
+          </h2>
         </div>
+        <div className="max-w-md md:text-right space-y-2">
+          <p className="text-base sm:text-lg text-[var(--muted)] leading-relaxed">
+            See how our fast, reliable digital tools directly help high-growth Indian businesses increase sales, save time, and eliminate operational bloat every day.
+          </p>
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[var(--accent)]">
+            <span>✓ ALL METRICS AUDITED &amp; PRODUCTION VERIFIED</span>
+          </div>
+        </div>
+      </div>
 
-        {/* High-Contrast Case Studies Grid */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {CASE_STUDIES.map((study, idx) => (
-            <div
-              key={idx}
-              className="group p-6 sm:p-8 rounded-2xl bg-[#1c1917] border border-stone-800 hover:border-[#4ade80]/60 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="px-3 py-1 rounded-full bg-stone-800/80 text-[#4ade80] font-mono text-[11px] uppercase tracking-wider font-semibold border border-stone-700/60">
-                    {study.category}
-                  </span>
-                </div>
+      {/* High-Contrast Light Luxury Case Studies Grid */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {CASE_STUDIES.map((study, idx) => (
+          <div
+            key={idx}
+            className="group p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 hover:border-[var(--accent)] shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
+          >
+            {/* Top Accent Gradient Line */}
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[var(--accent)] via-emerald-400 to-transparent opacity-80" />
 
-                <span className="font-mono text-xs font-bold uppercase tracking-widest text-stone-400 block mb-1">
-                  {study.client}
+            <div>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+                <span className="px-3 py-1 rounded-full bg-stone-100 text-stone-700 font-mono text-[11px] uppercase tracking-wider font-bold border border-stone-200">
+                  {study.category}
                 </span>
-                <h3 className="font-display font-black text-xl text-white group-hover:text-[#4ade80] transition-colors leading-snug">
-                  {study.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-300 mt-3 leading-relaxed">
-                  {study.description}
-                </p>
+                <span className="font-mono text-[10px] font-bold text-[var(--muted)]">
+                  {study.code}
+                </span>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-stone-800 flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase text-stone-400 tracking-wider">
-                  Customer Impact:
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[var(--accent)] block mb-1">
+                {study.client}
+              </span>
+              <h3 className="font-display font-black text-xl sm:text-2xl text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors leading-snug">
+                {study.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--muted)] mt-3 leading-relaxed">
+                {study.description}
+              </p>
+
+              {/* Technical Specifications Pills */}
+              <div className="mt-6 pt-5 border-t border-stone-100 space-y-2">
+                <span className="font-mono text-[10px] font-bold uppercase text-stone-400 block tracking-wider">
+                  {"// ARCHITECTURAL DELIVERABLES:"}
                 </span>
-                <span className="font-display font-black text-sm sm:text-base text-[#4ade80]">
+                <div className="flex flex-wrap gap-1.5">
+                  {study.deliverables.map((item, i) => (
+                    <span key={i} className="px-2.5 py-1 rounded-lg bg-stone-50 border border-stone-200 font-mono text-[11px] text-stone-700 font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-5 border-t border-stone-200/80 flex items-center justify-between">
+              <div>
+                <span className="font-mono text-[10px] uppercase text-stone-400 block font-bold tracking-wider">
+                  Customer Impact
+                </span>
+                <span className="font-display font-black text-base sm:text-lg text-[var(--accent)]">
                   {study.metrics}
                 </span>
               </div>
+              <a
+                href="#contact"
+                className="w-10 h-10 rounded-full bg-stone-100 group-hover:bg-[var(--accent)] group-hover:text-white transition-all flex items-center justify-center font-mono text-sm shadow-xs shrink-0"
+                aria-label="Scope similar project"
+              >
+                &rarr;
+              </a>
             </div>
-          ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom Proof Strip */}
+      <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-stone-900 text-white border border-stone-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-[#16a34a] flex items-center justify-center text-2xl shrink-0 shadow-[0_0_15px_rgba(22,163,74,0.5)]">
+            🚀
+          </div>
+          <div>
+            <h4 className="font-display font-bold text-lg text-white">Want to see exact architecture patterns for your industry?</h4>
+            <p className="text-xs sm:text-sm text-stone-400">Our senior engineering team can share live reference demos and architecture diagrams during your scoping call.</p>
+          </div>
         </div>
+        <a
+          href="#contact"
+          className="px-6 py-3.5 rounded-full bg-white text-stone-900 hover:bg-[#4ade80] font-display font-bold text-sm tracking-wide transition-all shrink-0 shadow-md"
+        >
+          Request Reference Demos &rarr;
+        </a>
       </div>
     </section>
   );

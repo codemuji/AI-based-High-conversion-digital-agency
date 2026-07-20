@@ -14,7 +14,7 @@ const FAQ_DATA: FAQItem[] = [
     id: "faq-1",
     question: "Why shouldn't I just use cheap WordPress/Wix templates or generic page builders?",
     answer:
-      "Generic page builders are loaded with dozens of heavy, third-party plugins that slow down your load times (often 4–7 seconds), hurt your Google search ranking (Core Web Vitals), and create severe security vulnerabilities. At India Web Designs (Codemuji), we custom-engineer your digital platforms from scratch using modern high-speed code (Next.js, React, Tailwind). Your site loads in under 0.8 seconds, never crashes under heavy traffic, and gives you complete ownership with zero recurring plugin fees.",
+      "Generic page builders are loaded with dozens of heavy, third-party plugins that slow down your load times (often 4–7 seconds), hurt your Google search ranking (Core Web Vitals), and create severe security vulnerabilities. At India Web Designs, we custom-engineer your digital platforms from scratch using modern high-speed code (Next.js, React, Tailwind). Your site loads in under 0.8 seconds, never crashes under heavy traffic, and gives you complete ownership with zero recurring plugin fees.",
     category: "Architecture",
   },
   {

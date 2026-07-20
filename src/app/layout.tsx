@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Zain, Nunito } from "next/font/google";
+import { Nunito, Outfit } from "next/font/google";
 import "./globals.css";
-
-const zain = Zain({
-  variable: "--font-zain",
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "800", "900"],
-  display: "swap",
-});
 
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${zain.variable} ${nunito.variable} ${nunito.className} h-full`}
+      className={`${outfit.variable} ${nunito.variable} ${nunito.className} h-full`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
         {children}

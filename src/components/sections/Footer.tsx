@@ -36,7 +36,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
             {/* Direct Channel Pills */}
             <div className="pt-2 space-y-3">
-              <div className="flex items-center gap-3 text-xs font-mono text-stone-300">
+              <div className="flex items-center gap-3 text-xs font-display text-stone-300">
                 <span className="w-8 h-8 rounded-lg bg-stone-900 border border-stone-800 flex items-center justify-center text-base shrink-0">
                   📞
                 </span>
@@ -48,7 +48,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-xs font-mono text-stone-300">
+              <div className="flex items-center gap-3 text-xs font-display text-stone-300">
                 <span className="w-8 h-8 rounded-lg bg-stone-900 border border-stone-800 flex items-center justify-center text-base shrink-0">
                   💬
                 </span>
@@ -65,7 +65,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-xs font-mono text-stone-300">
+              <div className="flex items-center gap-3 text-xs font-display text-stone-300">
                 <span className="w-8 h-8 rounded-lg bg-stone-900 border border-stone-800 flex items-center justify-center text-base shrink-0">
                   ✉️
                 </span>
@@ -83,7 +83,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               <button
                 type="button"
                 onClick={() => onStartOnboarding?.("Website", "General Project Inquiry")}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-stone-900 hover:bg-[#4ade80] border border-stone-800 hover:border-[#4ade80] text-xs font-mono font-bold uppercase tracking-wider text-stone-200 hover:text-black transition-all shadow-md group cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-stone-900 hover:bg-[#4ade80] border border-stone-800 hover:border-[#4ade80] text-xs font-display font-bold uppercase tracking-wider text-stone-200 hover:text-black transition-all shadow-md group cursor-pointer"
               >
                 <span>Launch 4-Question Scoping Modal</span>
                 <svg
@@ -101,10 +101,10 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 2: 01 // WEB DESIGN & STORES (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
               Web Design
             </span>
-            <ul className="space-y-3 font-mono text-xs">
+            <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[0].items.map((service) => (
                 <li key={service.id}>
                   <Link
@@ -125,10 +125,10 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 3: 02 // DIGITAL MARKETING (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
               Marketing
             </span>
-            <ul className="space-y-3 font-mono text-xs">
+            <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[1].items.map((service) => (
                 <li key={service.id}>
                   <Link
@@ -149,10 +149,10 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 4: 03 // CUSTOM SOLUTIONS & APPS (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
               Software &amp; Apps
             </span>
-            <ul className="space-y-3 font-mono text-xs">
+            <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[2].items.map((service) => (
                 <li key={service.id}>
                   <Link
@@ -173,10 +173,10 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 5: 04 // ENGINEERED ROADMAPS & MODELS (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
               Growth Roadmaps
             </span>
-            <ul className="space-y-3 font-mono text-xs">
+            <ul className="space-y-3 font-display text-xs">
               {USE_CASES_DATA.slice(0, 5).map((model) => (
                 <li key={model.slug}>
                   <Link
@@ -201,7 +201,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
         </div>
 
         {/* MIDDLE BAR: QUICK NAVIGATION & ASSURANCE STRIP */}
-        <div className="py-8 border-b border-stone-800/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-stone-400">
+        <div className="py-8 border-b border-stone-800/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-display text-stone-400">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
             <Link href="/" className="hover:text-white transition-colors">
               Home
@@ -239,7 +239,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
         </div>
 
         {/* BOTTOM ARCHITECTURAL STRIP */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-stone-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-display text-stone-500">
           <div>
             &copy; {new Date().getFullYear()} India Web Designs. All rights reserved.
           </div>

@@ -29,6 +29,17 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface ServicePackage {
+  id: string;
+  name: string;
+  tagline: string;
+  badge?: string;
+  timeline: string;
+  targetScope: string;
+  features: string[];
+  isPopular?: boolean;
+}
+
 export interface ServiceDetail {
   id: string;
   groupName: string;
@@ -1018,3 +1029,220 @@ export function getServiceDetail(rawId: string): ServiceDetail {
     ],
   };
 }
+
+export function getServicePackages(detail: ServiceDetail): ServicePackage[] {
+  const lowerTitle = detail.item.title.toLowerCase();
+  const lowerCat = detail.item.category.toLowerCase();
+  const lowerGroup = detail.groupName.toLowerCase();
+
+  // 1. E-Commerce & Storefronts
+  if (lowerTitle.includes("ecommerce") || lowerTitle.includes("store") || lowerTitle.includes("shop")) {
+    return [
+      {
+        id: "starter",
+        name: "Starter Store",
+        tagline: "Up to 50 Products E-Commerce",
+        timeline: "2 Weeks",
+        targetScope: "Ideal for D2C brands launching their first high-speed independent online store.",
+        features: [
+          "Custom Responsive Store Design",
+          "Free 1st Year Domain & High-Speed Hosting",
+          "Up to 50 Products Setup & Cataloging",
+          "Secure UPI, Card & COD Payment Gateways",
+          "100% Source Code & IP Handover",
+          "0% Monthly Platform Tax Forever",
+        ],
+      },
+      {
+        id: "growth",
+        name: "Growth Store",
+        tagline: "Unlimited Products + Admin Engine",
+        badge: "Most Popular",
+        timeline: "3 Weeks",
+        targetScope: "Ideal for scaling stores needing zero commissions, sub-second checkout, and automated alerts.",
+        isPopular: true,
+        features: [
+          "Unlimited Products & Category Management",
+          "Custom Admin Control Panel & Order Tracker",
+          "Automated WhatsApp & Email Order Notification",
+          "Advanced On-Page E-Commerce SEO Setup",
+          "Free 1st Year Domain & Edge CDN Hosting",
+          "100% Source Code & Zero Monthly Commission",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Custom Scale Store",
+        tagline: "Multi-Vendor / ERP Integrated",
+        timeline: "4 - 6 Weeks",
+        targetScope: "Ideal for large retail brands, multi-vendor marketplaces, or custom ERP/inventory syncs.",
+        features: [
+          "Custom Multi-Vendor / Complex Checkout Architecture",
+          "Real-time ERP, POS & Inventory Sync APIs",
+          "Dedicated Database & Custom Dashboard Workflows",
+          "Enterprise SSL & DDoS Hardening",
+          "Priority 24/7 SLA Scoping & Architecture Support",
+          "Complete Source Code & Repository Handover",
+        ],
+      },
+    ];
+  }
+
+  // 2. Apps & Custom Software
+  if (lowerCat === "app" || lowerCat === "custom software" || lowerGroup.includes("app") || lowerGroup.includes("software")) {
+    return [
+      {
+        id: "starter",
+        name: "MVP Foundation",
+        tagline: "Core Functional Architecture",
+        timeline: "3 - 4 Weeks",
+        targetScope: "Ideal for startups or businesses testing a new digital product with core user workflows.",
+        features: [
+          "Custom UI/UX Wireframing & Interactive Design",
+          "Core User Authentication & Role Management",
+          "High-Performance Cloud API & Backend Setup",
+          "Essential Admin Monitoring Dashboard",
+          "100% Source Code & IP Ownership Handover",
+          "Zero Third-Party Subscription Lock-in",
+        ],
+      },
+      {
+        id: "growth",
+        name: "Full Scale Solution",
+        tagline: "Complete Multi-User Ecosystem",
+        badge: "Most Popular",
+        timeline: "4 - 6 Weeks",
+        targetScope: "Ideal for growing businesses automating complex operations or launching consumer-ready apps.",
+        isPopular: true,
+        features: [
+          "Cross-Platform Architecture (Web, iOS, Android Ready)",
+          "Custom Database Engine & Real-Time Sync",
+          "Automated Notifications (WhatsApp, SMS & Push)",
+          "Comprehensive Admin & Reporting Control Panel",
+          "Payment & Third-Party API Integrations",
+          "Complete Source Code & Permanent Intellectual Property",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise Architecture",
+        tagline: "Custom High-Concurrency Portal",
+        timeline: "6 - 8+ Weeks",
+        targetScope: "Ideal for large enterprises requiring bespoke security, multi-branch scaling, and dedicated SLA.",
+        features: [
+          "Custom High-Concurrency Microservices / Edge Infrastructure",
+          "Advanced Data Security, Encryption & Indian Localization",
+          "Custom Staff Training & Dedicated Staging Environments",
+          "Legacy Data Migration & Custom API Connectors",
+          "Priority 24/7 SLA Scoping & Post-Launch Support",
+          "Full Source Code Handover with Commercial Rights",
+        ],
+      },
+    ];
+  }
+
+  // 3. Marketing & AI Automation
+  if (lowerCat === "digital marketing" || lowerCat === "ai automation" || lowerGroup.includes("marketing") || lowerGroup.includes("ai")) {
+    return [
+      {
+        id: "starter",
+        name: "Starter Growth",
+        tagline: "Core Setup & Visibility",
+        timeline: "1 - 2 Weeks",
+        targetScope: "Ideal for local businesses establishing immediate visibility and initial lead generation.",
+        features: [
+          "Complete Audit & Strategic Roadmap Setup",
+          "Google My Business & Local SEO Optimization",
+          "Essential Conversion Funnel Tracking Setup",
+          "Automated Lead Capture Notification Engine",
+          "Monthly Transparent Performance & ROI Reporting",
+          "Zero Lock-in Contract — 100% Data Ownership",
+        ],
+      },
+      {
+        id: "growth",
+        name: "Market Leader",
+        tagline: "Full Funnel & Automation Engine",
+        badge: "Most Popular",
+        timeline: "2 - 3 Weeks",
+        targetScope: "Ideal for ambitious brands aiming to dominate local rankings and automate customer conversion.",
+        isPopular: true,
+        features: [
+          "Comprehensive SEO & High-Converting Landing Page Setup",
+          "24/7 WhatsApp Assistant / Chat Automation Pipeline",
+          "Targeted Ad Campaign Architecture & Optimization",
+          "Automated CRM Lead Routing & Follow-up Scripts",
+          "Bi-Weekly Executive Strategy & ROI Reviews",
+          "Complete Ownership of All Ad Accounts & Automations",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Dominance Suite",
+        tagline: "Custom Scale & Multi-Channel AI",
+        timeline: "3 - 4 Weeks",
+        targetScope: "Ideal for large brands seeking multi-city market dominance and deep bespoke AI integrations.",
+        features: [
+          "Bespoke AI Agent Workflow & Custom Knowledge Base Integration",
+          "Multi-City SEO & High-Volume Lead Pipeline Engineering",
+          "Dedicated Account Director & Priority SLA Support",
+          "Custom Executive Analytics & Real-time ROI Dashboard",
+          "Full Enterprise Security & Indian Data Localization",
+          "100% Handover of Custom Scripts, Prompts & IP",
+        ],
+      },
+    ];
+  }
+
+  // 4. Default / Website Design (Static / Dynamic / Custom)
+  return [
+    {
+      id: "starter",
+      name: "5-Page Website",
+      tagline: "Essential Brand Foundation",
+      timeline: "1 - 2 Weeks",
+      targetScope: "Ideal for new ventures & local Indian businesses needing instant online credibility and fast loading.",
+      features: [
+        "5-Page Bespoke Custom Responsive Design",
+        "Free 1st Year Domain & High-Speed Cloud Hosting",
+        "Basic On-Page SEO & Google Search Indexing",
+        "Contact & Lead Capture Form Integration",
+        "100% Source Code & Intellectual Property Ownership",
+        "0% Monthly Platform Taxes or Commissions Forever",
+      ],
+    },
+    {
+      id: "growth",
+      name: "10-12 Page Website",
+      tagline: "Content-Rich + Admin Panel",
+      badge: "Most Popular",
+      timeline: "2 - 3 Weeks",
+      targetScope: "Ideal for growing companies needing dynamic content management, blog portals, and steady lead generation.",
+      isPopular: true,
+      features: [
+        "10-12 Page Custom Architecture & Premium UI/UX",
+        "Easy Admin Control Panel (Update Content Without Code)",
+        "Advanced On-Page SEO & Local Business Optimization",
+        "Automated WhatsApp & Email Lead Alerts",
+        "Free 1st Year Domain & Edge Cloud Hosting",
+        "100% Source Code & Permanent Commercial Rights",
+      ],
+    },
+    {
+      id: "enterprise",
+      name: "Custom Portal",
+      tagline: "Unlimited Scale Architecture",
+      timeline: "3 - 5 Weeks",
+      targetScope: "Ideal for established enterprises, custom web applications, multi-service portals, or complex requirements.",
+      features: [
+        "Unlimited Custom Pages & Bespoke UI Workflows",
+        "Dedicated Database, Blog & Advanced Admin Portal",
+        "Custom API Integrations (CRM, ERP, Payment, SMS)",
+        "Enterprise SSL, DDoS Hardening & Sub-Second Edge CDN",
+        "Priority 24/7 SLA Scoping & Post-Launch Support",
+        "Complete Source Code & Git Repository Handover",
+      ],
+    },
+  ];
+}
+

@@ -56,16 +56,16 @@ function LighthouseWidget() {
   }, []);
 
   return (
-    <div ref={widgetRef} className="mt-6 p-4 rounded-xl bg-stone-900 text-stone-200 border border-stone-800 shadow-inner">
-      <div className="flex items-center justify-between border-b border-stone-800 pb-2.5 mb-3 text-[11px] font-mono">
+    <div ref={widgetRef} className="mt-4 p-3.5 rounded-xl bg-stone-900 text-stone-200 border border-stone-800 shadow-inner font-display text-xs">
+      <div className="flex items-center justify-between border-b border-stone-800 pb-2 mb-2.5 text-[11px] font-display">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-green-500/80 animate-pulse" />
           <span className="ml-1 font-bold text-stone-300">Live Customer Experience Monitor</span>
         </div>
         <span
-          className={`px-2.5 py-0.5 rounded font-bold transition-all duration-300 ${
+          className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all duration-300 ${
             isDone
-              ? "bg-green-500/20 text-green-400 shadow-sm"
+              ? "bg-green-500/20 text-green-400 shadow-xs"
               : "bg-yellow-500/20 text-yellow-300 animate-pulse"
           }`}
         >
@@ -73,17 +73,17 @@ function LighthouseWidget() {
         </span>
       </div>
       <div className="grid grid-cols-3 gap-2 text-center pt-1">
-        <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">Page Speed</span>
-          <span className="text-sm font-bold text-green-400 font-mono">{speed}s (Instant)</span>
+        <div className="p-1.5 rounded-lg bg-stone-800/60 border border-stone-700/50">
+          <span className="text-[10px] font-display text-stone-400 block">Page Speed</span>
+          <span className="text-xs sm:text-sm font-bold text-green-400 font-display">{speed}s (Instant)</span>
         </div>
-        <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">Happy Shoppers</span>
-          <span className="text-sm font-bold text-stone-200 font-mono">{satisfaction}%</span>
+        <div className="p-1.5 rounded-lg bg-stone-800/60 border border-stone-700/50">
+          <span className="text-[10px] font-display text-stone-400 block">Happy Shoppers</span>
+          <span className="text-xs sm:text-sm font-bold text-stone-200 font-display">{satisfaction}%</span>
         </div>
-        <div className="p-2 rounded-lg bg-stone-800/60 border border-stone-700/50">
-          <span className="text-[10px] font-mono text-stone-400 block">Sales Growth</span>
-          <span className="text-sm font-bold text-[var(--accent)] font-mono">+180% Avg</span>
+        <div className="p-1.5 rounded-lg bg-stone-800/60 border border-stone-700/50">
+          <span className="text-[10px] font-display text-stone-400 block">Sales Growth</span>
+          <span className="text-xs sm:text-sm font-bold text-[var(--accent)] font-display">+180% Avg</span>
         </div>
       </div>
     </div>
@@ -119,15 +119,15 @@ function TerminalWidget() {
   }, []);
 
   return (
-    <div ref={widgetRef} className="mt-6 p-4 rounded-xl bg-stone-950 text-stone-200 border border-stone-800 shadow-inner font-mono text-xs">
-      <div className="flex items-center justify-between border-b border-stone-800 pb-2 mb-3 text-[11px] text-stone-400">
-        <span className="flex items-center gap-2">
+    <div ref={widgetRef} className="mt-4 p-3.5 rounded-xl bg-stone-950 text-stone-200 border border-stone-800 shadow-inner font-display text-xs">
+      <div className="flex items-center justify-between border-b border-stone-800 pb-2 mb-2.5 text-[11px] text-stone-400">
+        <span className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="font-bold text-stone-300">Live 24/7 Support Assistant</span>
         </span>
-        <span className="text-[var(--accent)] font-bold">Instant Response</span>
+        <span className="text-[var(--accent)] font-bold text-[10px]">Instant Response</span>
       </div>
-      <div className="space-y-2.5 text-[11px] leading-relaxed min-h-[68px]">
+      <div className="space-y-2 text-[11px] leading-relaxed min-h-[60px]">
         {step >= 1 && (
           <div className="flex items-start gap-2 animate-fadeIn">
             <span className="text-stone-400 shrink-0 font-bold">Customer:</span>
@@ -207,27 +207,26 @@ const SERVICES: Array<{
 
 export function ServicesGrid({ onSelectService }: ServicesGridProps) {
   return (
-    <section id="services" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[var(--surface-border)]">
+    <section id="services" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[var(--surface-border)] font-sans text-sm">
       {/* Editorial Architectural Split Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[var(--surface-border)] pb-8">
-        <div className="max-w-2xl">
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[var(--accent)] block mb-2">
-            {"// How We Help You Grow"}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-[var(--surface-border)] pb-6">
+        <div className="max-w-xl">
+          <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1.5">
+            How We Help You Grow
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[var(--foreground)] tracking-tight leading-none">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
             Tailored digital tools <br className="hidden sm:inline" />
             built for your success.
           </h2>
         </div>
-        <p className="text-base sm:text-lg text-[var(--muted)] max-w-md md:text-right leading-relaxed">
+        <p className="text-xs sm:text-sm text-[var(--muted)] max-w-md md:text-right leading-relaxed">
           We don&apos;t believe in generic templates or complicated tech jargon. We build beautiful, fast, and reliable digital experiences that make life easier for your team and delightful for your customers.
         </p>
       </div>
 
-      {/* Asymmetrical Bento Grid (12 Columns) */}
-      <div className="grid grid-cols-12 gap-6">
+      {/* Compact Bento Grid (12 Columns) */}
+      <div className="grid grid-cols-12 gap-5">
         {SERVICES.map((srv, idx) => {
-          // Dynamic Bento Spans: Wide hero cards for Web & AI, clean technical cards for Apps & ERP, full bar for Marketing
           const spanClass =
             idx === 0 || idx === 3
               ? "col-span-12 lg:col-span-8 bg-[var(--surface)] border border-[var(--surface-border)] hover:border-stone-400"
@@ -249,22 +248,21 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
             <div
               key={srv.category}
               onMouseMove={handleMouseMove}
-              className={`group rounded-2xl p-6 sm:p-8 transition-all duration-300 ease-out flex flex-col justify-between shadow-xs hover:shadow-2xl hover:-translate-y-1.5 relative overflow-hidden z-0 ${spanClass}`}
+              className={`group rounded-xl p-5 sm:p-6 transition-all duration-300 ease-out flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 relative overflow-hidden z-0 ${spanClass}`}
             >
-              {/* Pillar 3: Dynamic Mouse-Tracking Glass Hardware Spotlight Overlay */}
               <div
-                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
                 style={{
                   background: isDark
-                    ? "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.18), transparent 80%)"
-                    : "radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.09), transparent 80%)",
+                    ? "radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.18), transparent 80%)"
+                    : "radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(22, 163, 74, 0.09), transparent 80%)",
                 }}
               />
 
               <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex items-center justify-between gap-3 mb-4">
                   <span
-                    className={`font-mono text-xs uppercase font-bold tracking-wider px-3 py-1 rounded-full ${
+                    className={`font-display text-[11px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full ${
                       isDark
                         ? "bg-stone-800 text-stone-300 border border-stone-700"
                         : "bg-stone-100 text-[var(--foreground)] border border-stone-200"
@@ -273,7 +271,7 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
                     0{idx + 1} / {srv.category}
                   </span>
                   <span
-                    className={`text-xs font-bold px-3 py-1 rounded-full ${
+                    className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
                       isDark ? "bg-[var(--accent)] text-white" : "bg-[var(--accent-subtle)] text-[var(--accent)]"
                     }`}
                   >
@@ -281,33 +279,30 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
                   </span>
                 </div>
 
-                <div className={idx === 0 || idx === 3 ? "grid grid-cols-1 md:grid-cols-12 gap-6 items-start" : ""}>
+                <div className={idx === 0 || idx === 3 ? "grid grid-cols-1 md:grid-cols-12 gap-5 items-start" : ""}>
                   <div className={idx === 0 || idx === 3 ? "md:col-span-7" : ""}>
                     <h3
-                      className={`font-display font-black text-2xl sm:text-3xl tracking-tight ${
+                      className={`font-display font-bold text-lg sm:text-xl tracking-tight ${
                         isDark ? "text-white" : "text-[var(--foreground)]"
                       } group-hover:text-[var(--accent)] transition-colors`}
                     >
                       {srv.title}
                     </h3>
-                    <p className={`text-sm mt-3 leading-relaxed ${isDark ? "text-stone-300" : "text-[var(--muted)]"}`}>
+                    <p className={`text-xs sm:text-sm mt-2 leading-relaxed ${isDark ? "text-stone-300" : "text-[var(--muted)]"}`}>
                       {srv.tagline}
                     </p>
 
-                    {/* Live Visual Engineering Widget: Lighthouse Storefront Mockup (Website Card) */}
                     {idx === 0 && <LighthouseWidget />}
-
-                    {/* Live Visual Engineering Widget: Autonomous Triage Terminal (AI Card) */}
                     {idx === 3 && <TerminalWidget />}
                   </div>
 
-                  <div className={idx === 0 || idx === 3 ? "md:col-span-5 md:border-l md:pl-6 border-[var(--surface-border)]/60" : "mt-6 pt-6 border-t border-[var(--surface-border)]/60"}>
-                    <span className={`text-[11px] font-mono uppercase tracking-wider block mb-3 ${isDark ? "text-stone-400" : "text-stone-500"}`}>
+                  <div className={idx === 0 || idx === 3 ? "md:col-span-5 md:border-l md:pl-5 border-[var(--surface-border)]/60" : "mt-4 pt-4 border-t border-[var(--surface-border)]/60"}>
+                    <span className={`text-[11px] font-display font-bold uppercase tracking-wider block mb-2.5 ${isDark ? "text-stone-400" : "text-stone-500"}`}>
                       How We Help Your Business:
                     </span>
-                    <ul className="space-y-2.5">
+                    <ul className="space-y-2">
                       {srv.deliverables.map((item, itemIdx) => (
-                        <li key={itemIdx} className="flex items-center gap-2.5 text-xs font-medium">
+                        <li key={itemIdx} className="flex items-center gap-2 text-xs font-medium">
                           <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
                           <span className={isDark ? "text-stone-200" : "text-[var(--foreground)]"}>{item}</span>
                         </li>
@@ -317,18 +312,18 @@ export function ServicesGrid({ onSelectService }: ServicesGridProps) {
                 </div>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-[var(--surface-border)]/40 flex items-center justify-end">
+              <div className="mt-6 pt-4 border-t border-[var(--surface-border)]/40 flex items-center justify-end">
                 <button
                   type="button"
                   onClick={() => onSelectService(srv.category)}
-                  className={`py-2 px-5 rounded-xl font-display font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                  className={`py-2 px-4 rounded-lg font-display font-bold text-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                     isDark
                       ? "bg-stone-800 group-hover:bg-[var(--accent)] text-white"
                       : "bg-stone-100 group-hover:bg-[var(--foreground)] text-[var(--foreground)] group-hover:text-white"
                   }`}
                 >
                   <span>See How We Help</span>
-                  <span className="transform group-hover:translate-x-1.5 transition-transform duration-200 ease-out">&rarr;</span>
+                  <span className="transform group-hover:translate-x-1 transition-transform duration-200 ease-out">&rarr;</span>
                 </button>
               </div>
             </div>

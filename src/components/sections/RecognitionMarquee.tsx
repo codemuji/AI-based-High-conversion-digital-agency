@@ -76,11 +76,11 @@ const RECOGNITION_LOGOS: RecognitionItem[] = [
 export function RecognitionMarquee() {
   return (
     <section className="relative py-12 border-t border-b border-[var(--surface-border)] bg-[var(--surface)]/40 overflow-hidden select-none">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent-subtle)] border border-[var(--accent)]/30 text-xs font-mono font-bold tracking-wider uppercase text-[var(--accent)] mb-2">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent-subtle)] border border-[var(--accent)]/30 text-[11px] font-display font-bold tracking-wider uppercase text-[var(--accent)] mb-2">
           <span>Official Accreditations &amp; Partner Ecosystem</span>
         </div>
-        <h2 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
+        <h2 className="text-xs font-display font-bold uppercase tracking-wider text-[var(--muted)]">
           Recognized by Government Initiatives &amp; Trusted by Leading Digital Platforms Across India
         </h2>
       </div>

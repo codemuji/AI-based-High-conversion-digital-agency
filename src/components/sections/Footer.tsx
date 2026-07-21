@@ -12,14 +12,14 @@ interface FooterProps {
 
 export function Footer({ onStartOnboarding }: FooterProps) {
   return (
-    <footer id="contact" className="bg-[#0f0d0c] text-stone-300 border-t border-stone-800/80 pt-20 pb-12 px-4 sm:px-6 lg:px-8 mt-auto relative overflow-hidden selection:bg-[#4ade80] selection:text-black font-sans">
+    <footer id="contact" className="bg-[#0f0d0c] text-stone-300 border-t border-stone-800/80 pt-12 sm:pt-16 pb-12 px-4 sm:px-6 lg:px-8 mt-auto relative overflow-hidden selection:bg-[#4ade80] selection:text-black font-sans text-sm">
       {/* Subtle architectural background texture */}
       <div className="absolute inset-0 bg-dot-pattern opacity-5 pointer-events-none" />
       <div className="absolute -top-40 right-1/4 w-96 h-96 bg-[#22c55e]/10 rounded-full blur-3xl pointer-events-none opacity-40" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* TOP LEVEL: ARCHITECTURAL MEGA GRID (5 COLUMNS) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-stone-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10 border-b border-stone-800/80">
           
           {/* COLUMN 1: BRAND ARCHITECTURE & DIRECT HOTLINE (Span 4 on Large) */}
           <div className="lg:col-span-4 space-y-6 md:pr-6">

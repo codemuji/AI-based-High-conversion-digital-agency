@@ -244,7 +244,7 @@ export function ServicesDropdown({
                   }}
                   className="w-full py-3.5 px-6 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-display font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer group"
                 >
-                  <span>Scope This Project Now ⚡</span>
+                  <span>Book Free Consultation ⚡</span>
                   <svg
                     className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform"
                     fill="none"

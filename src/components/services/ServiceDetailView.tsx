@@ -146,7 +146,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
               onClick={() => handleStartOnboarding()}
               className="px-6 py-3 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-display font-bold text-sm sm:text-base tracking-wide shadow-md hover:shadow-lg transition-all flex items-center gap-2.5 group cursor-pointer"
             >
-              <span>Scope This Project — Free 2Hr SLA</span>
+              <span>Book Free Consultation</span>
               <span className="group-hover:translate-x-1 transition-transform font-display text-xs">&rarr;</span>
             </button>
 
@@ -154,7 +154,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
               href="#plans"
               className="px-5 py-3 rounded-full bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] font-display font-bold text-sm sm:text-base border border-[var(--surface-border)] transition-all flex items-center gap-1.5"
             >
-              <span>Investment &amp; Packages ↓</span>
+              <span>See Plans &amp; Pricing ↓</span>
             </a>
           </div>
         </div>

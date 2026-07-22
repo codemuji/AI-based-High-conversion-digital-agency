@@ -75,6 +75,33 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
     return () => ctx.revert();
   }, []);
 
+  // Lock body scroll when mobile menu is open & close on route change or Escape
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        setDropdownOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   // Safe Diagonal Hover Bridge handlers
   const handleServicesEnter = () => {
     if (hoverTimeoutRef.current) {
@@ -112,50 +139,25 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
           right: 0,
           zIndex: 50,
           transition: "background 0.3s, box-shadow 0.3s",
-          background: scrolled || dropdownOpen ? "rgba(254,252,249,0.95)" : "transparent",
-          backdropFilter: scrolled || dropdownOpen ? "blur(14px)" : "none",
-          WebkitBackdropFilter: scrolled || dropdownOpen ? "blur(14px)" : "none",
-          boxShadow: scrolled || dropdownOpen ? "0 1px 0 rgba(0,0,0,0.06)" : "none",
+          background: scrolled || dropdownOpen || mobileOpen ? "rgba(254,252,249,0.98)" : "transparent",
+          backdropFilter: scrolled || dropdownOpen || mobileOpen ? "blur(14px)" : "none",
+          WebkitBackdropFilter: scrolled || dropdownOpen || mobileOpen ? "blur(14px)" : "none",
+          boxShadow: scrolled || dropdownOpen || mobileOpen ? "0 1px 0 rgba(0,0,0,0.08)" : "none",
         }}
       >
         <div
-          style={{
-            maxWidth: 1120,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: 64,
-            paddingLeft: 24,
-            paddingRight: 24,
-          }}
+          className="max-w-[1120px] mx-auto flex items-center justify-between h-16 px-4 sm:px-6"
         >
           {/* Logo */}
           <a
             href={isHome ? "#hero" : "/"}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              textDecoration: "none",
-              color: "var(--foreground)",
-            }}
+            className="flex items-center gap-2 text-decoration-none text-[var(--foreground)]"
           >
             <span
-              style={{
-                width: 8,
-                height: 8,
-                background: "var(--accent)",
-                display: "inline-block",
-              }}
+              className="w-2 h-2 rounded-full bg-[var(--accent)] inline-block animate-pulse"
             />
             <span
-              style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 800,
-                fontSize: 18,
-                letterSpacing: "-0.02em",
-              }}
+              className="font-display font-extrabold text-base sm:text-lg tracking-tight whitespace-nowrap"
             >
               India Web Designs
             </span>
@@ -163,12 +165,7 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
 
           {/* Desktop Links */}
           <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 32,
-            }}
-            className="hidden md:flex"
+            className="hidden md:flex items-center gap-8"
           >
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.id || (link.id === "services" && dropdownOpen) || pathname === link.href;
@@ -303,170 +300,146 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger Button (44x44 minimum touch target) */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              color: "var(--foreground)",
-              padding: 6,
-            }}
-            aria-label="Toggle menu"
+            className="md:hidden w-11 h-11 flex items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--surface-hover)] active:bg-stone-200 dark:active:bg-stone-800 transition-colors cursor-pointer"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
           >
             <svg
-              width="22"
-              height="22"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth={2}
+              strokeWidth={2.2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               {mobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path d="M18 6L6 18M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Backdrop */}
         {mobileOpen && (
           <div
-            className="md:hidden max-h-[82vh] overflow-y-auto no-scrollbar"
+            className="fixed inset-0 top-[64px] bg-black/40 backdrop-blur-xs z-40 md:hidden animate-fadeIn"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Mobile Navigation Drawer */}
+        {mobileOpen && (
+          <div
+            className="relative z-50 md:hidden max-h-[calc(100vh-64px)] overflow-y-auto border-t border-[var(--surface-border)] shadow-xl"
             style={{
               background: "var(--surface)",
-              borderTop: "1px solid var(--surface-border)",
-              padding: "16px 24px 24px",
+              padding: "16px 20px 28px",
             }}
           >
-            {NAV_LINKS.map((link) => {
-              const linkHref = isHome ? link.href : `/${link.href}`;
+            <div className="space-y-1">
+              {NAV_LINKS.map((link) => {
+                const linkHref = isHome ? link.href : `/${link.href}`;
 
-              if (link.id === "services") {
-                return (
-                  <div key={link.href} className="border-b border-stone-200/60 dark:border-stone-800/60 py-3">
-                    <div
-                      onClick={() => setMobileServicesExpanded(!mobileServicesExpanded)}
-                      className="flex items-center justify-between cursor-pointer py-1 select-none"
-                    >
-                      <span className="fontSize-15 font-semibold text-[var(--foreground)] flex items-center gap-2">
-                        <span>{link.label}</span>
-                        <span className="text-[10px] font-mono font-bold text-[var(--accent)] bg-[var(--accent-subtle)] px-2 py-0.5 rounded-full">
-                          30+ Services
-                        </span>
-                      </span>
-                      <svg
-                        className={`w-4 h-4 text-[var(--muted)] transition-transform duration-200 ${
-                          mobileServicesExpanded ? "rotate-180 text-[var(--accent)]" : ""
-                        }`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
+                if (link.id === "services") {
+                  return (
+                    <div key={link.href} className="border-b border-[var(--surface-border)] py-2">
+                      <button
+                        type="button"
+                        onClick={() => setMobileServicesExpanded(!mobileServicesExpanded)}
+                        className="w-full flex items-center justify-between py-2.5 px-2 rounded-lg text-left select-none hover:bg-[var(--surface-hover)] transition-colors cursor-pointer"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
+                        <span className="text-[15px] font-semibold text-[var(--foreground)] flex items-center gap-2">
+                          <span>{link.label}</span>
+                          <span className="text-[10px] font-mono font-bold text-[var(--accent)] bg-[var(--accent-subtle)] px-2 py-0.5 rounded-full">
+                            30+ Services
+                          </span>
+                        </span>
+                        <svg
+                          className={`w-4 h-4 text-[var(--muted)] transition-transform duration-200 ${
+                            mobileServicesExpanded ? "rotate-180 text-[var(--accent)]" : ""
+                          }`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
 
-                    {/* Mobile Accordion Services List */}
-                    {mobileServicesExpanded && (
-                      <div className="mt-3 pl-2 space-y-4 pt-2 border-t border-stone-100 dark:border-stone-800 animate-fadeIn">
-                        {SERVICES_DROPDOWN_GROUPS.map((group) => (
-                          <div key={group.id} className="space-y-1.5">
-                            <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-[var(--muted)] block">
-                              {`${group.columnNumber} // ${group.name}`}
-                            </span>
-                            <div className="grid grid-cols-1 gap-1 pl-2 border-l-2 border-[var(--surface-border)]">
-                              {group.items.map((item) => (
-                                <Link
-                                  key={item.id}
-                                  href={`/${item.id}`}
-                                  onClick={() => setMobileOpen(false)}
-                                  className="w-full text-left py-1.5 px-2 rounded-lg text-xs font-medium text-[var(--foreground)] hover:text-[var(--accent)] hover:bg-[var(--surface-hover)] flex items-center justify-between"
-                                >
-                                  <span>{item.title}</span>
-                                  <span className="text-[10px] text-[var(--accent)]">&rarr;</span>
-                                </Link>
-                              ))}
+                      {/* Mobile Accordion Services List */}
+                      {mobileServicesExpanded && (
+                        <div className="mt-2 pl-2 space-y-4 pt-2 border-t border-[var(--surface-border)] animate-fadeIn">
+                          {SERVICES_DROPDOWN_GROUPS.map((group) => (
+                            <div key={group.id} className="space-y-1.5">
+                              <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-[var(--muted)] block px-2">
+                                {`${group.columnNumber} // ${group.name}`}
+                              </span>
+                              <div className="grid grid-cols-1 gap-1 pl-2 border-l-2 border-[var(--accent)]/30">
+                                {group.items.map((item) => (
+                                  <Link
+                                    key={item.id}
+                                    href={`/${item.id}`}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="w-full text-left py-2 px-3 rounded-lg text-xs font-medium text-[var(--foreground)] hover:text-[var(--accent)] hover:bg-[var(--surface-hover)] active:bg-[var(--accent-subtle)] flex items-center justify-between transition-colors"
+                                  >
+                                    <span>{item.title}</span>
+                                    <span className="text-[11px] font-bold text-[var(--accent)]">&rarr;</span>
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
 
-              if (link.isPage) {
+                if (link.isPage) {
+                  return (
+                    <Link
+                      key={link.href}
+                      href={linkHref}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-[15px] font-semibold text-[var(--foreground)] hover:text-[var(--accent)] py-3 px-2 border-b border-[var(--surface-border)] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                }
+
                 return (
-                  <Link
+                  <a
                     key={link.href}
                     href={linkHref}
                     onClick={() => setMobileOpen(false)}
-                    style={{
-                      display: "block",
-                      fontSize: 15,
-                      fontWeight: 600,
-                      color: "var(--foreground)",
-                      textDecoration: "none",
-                      padding: "12px 0",
-                      borderBottom: "1px solid var(--surface-border)",
-                    }}
+                    className="block text-[15px] font-semibold text-[var(--foreground)] hover:text-[var(--accent)] py-3 px-2 border-b border-[var(--surface-border)] transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 );
-              }
+              })}
+            </div>
 
-              return (
-                <a
-                  key={link.href}
-                  href={linkHref}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    display: "block",
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "var(--foreground)",
-                    textDecoration: "none",
-                    padding: "12px 0",
-                    borderBottom: "1px solid var(--surface-border)",
-                  }}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-            <a
-              href={isHome ? "#hero" : "/"}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                display: "block",
-                fontSize: 14,
-                fontWeight: 700,
-                color: "#fff",
-                background: "var(--accent)",
-                padding: "12px 0",
-                textAlign: "center",
-                textDecoration: "none",
-                marginTop: 16,
-              }}
-            >
-              Get Free Growth Roadmap
-            </a>
+            <div className="pt-4">
+              <a
+                href={isHome ? "#hero" : "/"}
+                onClick={() => setMobileOpen(false)}
+                className="block w-full py-3.5 px-4 text-center rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] active:scale-[0.98] text-white font-bold text-sm tracking-wide shadow-md transition-all cursor-pointer"
+              >
+                Get Free Growth Roadmap &rarr;
+              </a>
+            </div>
           </div>
         )}
       </nav>
@@ -482,3 +455,4 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
     </>
   );
 }
+

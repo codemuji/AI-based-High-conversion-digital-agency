@@ -347,7 +347,7 @@ export function Navbar({ onStartOnboarding }: NavbarProps) {
           >
             <div className="space-y-1">
               {NAV_LINKS.map((link) => {
-                const linkHref = isHome ? link.href : `/${link.href}`;
+                const linkHref = link.isPage ? link.href : (isHome ? link.href : `/${link.href}`);
 
                 if (link.id === "services") {
                   return (

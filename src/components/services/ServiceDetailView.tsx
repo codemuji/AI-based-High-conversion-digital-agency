@@ -424,9 +424,9 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
       <TestimonialsSection />
 
       {/* 5. LONG DESCRIPTION SECTION */}
-      <section id="long-description" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full border-t border-[var(--surface-border)] space-y-6">
+      <section id="long-description" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full border-t border-[var(--surface-border)] space-y-6">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
           <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block">
             Detailed Overview &amp; Specifications
           </span>
@@ -435,8 +435,8 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
           </h2>
         </div>
 
-        {/* Detailed Service Long Paragraph */}
-        <div className="max-w-3xl mx-auto text-sm sm:text-base text-[var(--muted)] leading-relaxed space-y-4 font-sans text-left bg-[var(--surface)]/60 p-6 sm:p-8 rounded-2xl border border-[var(--surface-border)] shadow-xs">
+        {/* Detailed Service Long Paragraph (Full Width) */}
+        <div className="w-full text-sm sm:text-base text-[var(--muted)] leading-relaxed space-y-4 font-sans text-left bg-[var(--surface)]/60 p-6 sm:p-8 rounded-2xl border border-[var(--surface-border)] shadow-xs">
           <p>
             {detail.overview} {detail.targetAudience ? `This solution is specifically engineered for ${detail.targetAudience.toLowerCase()}, providing a secure, ultra-fast, and scalable architectural framework that eliminates legacy inefficiencies.` : ""}
           </p>

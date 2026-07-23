@@ -52,18 +52,15 @@ const TESTIMONIALS: TestimonialCard[] = [
 export function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-[var(--surface-border)] font-sans text-sm">
-      {/* Editorial Split Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-[var(--surface-border)] pb-6">
-        <div>
-          <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1.5">
-            Verified Technical Proof
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
-            Real business results <br className="hidden sm:inline" />
-            that prove our architecture.
-          </h2>
-        </div>
-        <p className="text-xs sm:text-sm text-[var(--muted)] max-w-md md:text-right leading-relaxed">
+      {/* Centered Section Header */}
+      <div className="max-w-2xl mx-auto mb-10 text-center border-b border-[var(--surface-border)] pb-6">
+        <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1.5">
+          Verified Technical Proof
+        </span>
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-[var(--foreground)] tracking-tight leading-snug">
+          Real business results that prove our architecture.
+        </h2>
+        <p className="mt-2 text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
           Don&apos;t take our word for it. Here is what directors, founders, and operations heads experience after deploying our custom engineering workflows.
         </p>
       </div>

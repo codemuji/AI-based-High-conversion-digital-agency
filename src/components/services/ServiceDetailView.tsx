@@ -13,6 +13,7 @@ import { OnboardingModal, type LeadSubmissionPayload } from "@/components/modal/
 import { StickyIntakeBar } from "@/components/navigation/StickyIntakeBar";
 import { submitLeadAction } from "@/app/actions";
 import { ServiceHeroVisualizer } from "@/components/services/ServiceHeroVisualizer";
+import { ExpertConsultationModal } from "@/components/modal/ExpertConsultationModal";
 
 const SERVICE_HERO_IMAGES: Record<string, string> = {
   "school-management-online-software-in-india": "/images/school-management-software.jpg",
@@ -96,6 +97,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
   const heroPrefix = heroTitleInfo?.prefix || "Grow your business with";
   const packages = getServicePackages(detail);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeQuery, setActiveQuery] = useState("");
 
@@ -215,7 +217,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 type="button"
-                onClick={() => handleStartOnboarding()}
+                onClick={() => setIsExpertModalOpen(true)}
                 className="px-7 py-3.5 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-display font-bold text-sm sm:text-base shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-150 flex items-center gap-2.5 cursor-pointer group"
               >
                 <span>Talk to our expert</span>
@@ -503,7 +505,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
           <div className="shrink-0">
             <button
               type="button"
-              onClick={() => handleStartOnboarding()}
+              onClick={() => setIsExpertModalOpen(true)}
               className="px-6 py-3.5 rounded-full bg-[var(--foreground)] hover:opacity-90 text-[var(--background)] font-display font-bold text-sm sm:text-base tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-2 shadow-sm"
             >
               <span>Talk to our expert &rarr;</span>
@@ -521,6 +523,12 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
         initialQuery={activeQuery}
         onClose={handleCloseModal}
         onSubmit={handleSubmitLead}
+      />
+
+      <ExpertConsultationModal
+        isOpen={isExpertModalOpen}
+        serviceTitle={detail.item.title}
+        onClose={() => setIsExpertModalOpen(false)}
       />
 
       <StickyIntakeBar

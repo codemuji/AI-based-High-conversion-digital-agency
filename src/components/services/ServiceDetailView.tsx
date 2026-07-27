@@ -16,7 +16,45 @@ import { ServiceHeroVisualizer } from "@/components/services/ServiceHeroVisualiz
 import { ExpertConsultationModal } from "@/components/modal/ExpertConsultationModal";
 
 const SERVICE_HERO_IMAGES: Record<string, string> = {
+  // Web Design
+  "static-website-design-services-in-india": "/images/static_website.png",
+  "dynamic-website-design-services-in-india": "/images/dynamic_website.png",
+  "mobile-website-design-services-in-india": "/images/mobile_website_design.png",
+  "red": "/images/redesign_existing_website.png",
+
+  // Digital Marketing
+  "search-engine-optimization-seo-outsourcing-to-india": "/images/search_engine_optimization.png",
+  "social-media-marketing-services": "/images/Social_Media_Marketing.png",
+  "bulk-sms-marketing-services-in-india": "/images/Bulk_SMS_Broadcasting_&_Marketing.png",
+  "whatsapp-marketing-services-in-inida": "/images/Whatsapp_Messaging_&_Bots.png",
+  "ads": "/images/Google_Adwords_(PPC_Ads).png",
+
+  // Mobile Apps
+  "ecommerce-mobile-app-development-services-in-india": "/images/Ecommerce_Mobile_App_Development.png",
+  "ecommerce-multivendor-mobile-app-development-services-in-india": "/images/Multivendor_Mobile_App_Development.png",
+  "video-streaming-ott-app-development-services-in-india": "/images/Video_Streaming_App_(OTT)_Development.png",
+  "online-food-delivery-mobile-app-development-service-in-india": "/images/Food_Ordering_Mobile_App_Development.png",
+  "online-consultation-mobile-app": "/images/Consultation_&_Booking_Apps.png",
+
+  // Web Portals
+  "online-learning-portal-development-service-in-india": "/images/Online_Learning_Web_Portal.png",
+  "online-matrimony-website-development-service-in-india": "/images/Matrimony_Web_Portal.png",
+  "Free-Classifieds-Portal": "/images/Free_Classifieds_Portal.png",
+  "online-food-delivery-web-portal-development-service-in-india": "/images/Food_Ordering_Mobile_App_Development.png",
+
+  // Softwares
   "school-management-online-software-in-india": "/images/school-management-software.jpg",
+  "college-management-online-software-in-india": "/images/College_Management_Software.png",
+  "vocational-school-management-online-software-in-india": "/images/Vocational_Institute_Management.png",
+  "billing-accounting-software-in-india": "/images/Billing_&_Client_Management_(CRM).png",
+  "Restaurant-Management": "/images/Restaurant_Management_(POS_&_KOT).png",
+
+  // Graphic Design
+  "logo-design-services-in-india": "/images/Logo_&_Brand_Identity_Design.png",
+  "flyer-design-services-in-india": "/images/Flyer_&_Marketing_Collateral.png",
+  "brochure-design-services-in-india": "/images/Brochure_Design.png",
+  "poster-design-services-in-india": "/images/Poster_&_Banner_Design.png",
+  "catalogue-design": "/images/Digital_Catalogue_Design.png",
 };
 
 const SERVICE_HERO_TITLES: Record<string, { prefix: string }> = {

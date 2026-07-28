@@ -59,7 +59,7 @@ export function ExpertConsultationModal({
       // 2. Format WhatsApp Message
       const message = `Hi India Web Designs,\n\nI would like to talk to an expert regarding *${serviceTitle}*.\n\n*Name:* ${name.trim()}\n*Phone Number:* ${phone.trim()}\n*Service Page:* ${serviceTitle}`;
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/919876543210?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/917002160093?text=${encodedMessage}`;
 
       // 3. Open WhatsApp in new tab
       window.open(whatsappUrl, "_blank");

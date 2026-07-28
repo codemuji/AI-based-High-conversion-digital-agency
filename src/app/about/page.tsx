@@ -17,15 +17,16 @@ export default function AboutPage() {
       <Navbar />
 
       {/* High-Impact Studio Philosophy Hero Section (Viewport-Aligned) */}
-      <section className="relative min-h-[calc(100vh-4rem)] pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center border-b border-[var(--surface-border)] overflow-hidden">
-        {/* Base Light Luminous Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[#fdfcf9] to-[#f4f7f5] -z-20" />
-        <div className="absolute -top-40 left-1/3 w-[700px] h-[700px] bg-[var(--accent)]/10 rounded-full blur-[165px] pointer-events-none -z-10" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[145px] pointer-events-none -z-10" />
+      <section className="relative w-full min-h-[calc(100vh-4rem)] pt-24 pb-16 flex items-center border-b border-[var(--surface-border)] overflow-hidden isolate">
+        {/* Base Light Rich Luminous Gradient Background & Ambient Glowing Color Orbs */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f4fbf6] via-[#e6f7ec] to-[#d8f3e2] -z-20 pointer-events-none" />
+        <div className="absolute -top-32 left-1/4 w-[650px] h-[650px] bg-gradient-to-br from-[#16a34a]/35 via-[#22c55e]/30 to-[#4ade80]/25 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
+        <div className="absolute -bottom-20 right-10 w-[550px] h-[550px] bg-gradient-to-tl from-[#15803d]/30 via-[#22c55e]/25 to-[#86efac]/25 rounded-full blur-[100px] pointer-events-none -z-10" />
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
         <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
 
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-8">
           {/* Left Column: Studio Typography & Non-Negotiable Guarantees */}
           <div className="lg:col-span-7 space-y-8">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-stone-200/90 shadow-sm text-xs font-mono font-bold text-[var(--foreground)] tracking-wider uppercase">
@@ -157,6 +158,7 @@ export default function AboutPage() {
                 <span className="text-[10px] text-[var(--accent)]">100% YOURS</span>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

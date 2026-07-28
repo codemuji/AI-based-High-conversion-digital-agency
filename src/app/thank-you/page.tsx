@@ -14,12 +14,18 @@ export default function ThankYouPage({
   const whatsappMessage = encodeURIComponent(
     `Hi India Web Designs! I just submitted scoping inquiry #${leadId} for ${category}. I'd like to chat directly about our requirements.`
   );
-  const whatsappUrl = `https://wa.me/919876543210?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/917002160093?text=${whatsappMessage}`;
 
   return (
-    <main className="flex-1 bg-[var(--background)] pt-16 min-h-screen flex flex-col justify-between">
+    <main className="flex-1 bg-[var(--background)] pt-16 min-h-screen flex flex-col justify-between relative overflow-hidden">
       <Navbar />
-      <div className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Base Light Luminous Background & Ambient Glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[#fdfcf9] to-[#f4f7f5] -z-20" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[var(--accent)]/10 rounded-full blur-[165px] pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
+
+      <div className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-4xl mx-auto text-center">
         {/* Success Icon */}
         <div className="w-16 h-16 rounded-full bg-[var(--success)]/10 text-[var(--success)] border-2 border-[var(--success)]/20 mx-auto flex items-center justify-center mb-6 shadow-sm">

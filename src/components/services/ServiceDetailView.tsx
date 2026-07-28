@@ -169,17 +169,21 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
     <main key={detail.item.id} className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans selection:bg-[var(--accent)] selection:text-white text-sm sm:text-base">
       <Navbar onStartOnboarding={() => handleStartOnboarding()} />
 
-      {/* 1. HERO SECTION (2-COLUMN LAYOUT WITH SPECIFIC SERVICE VISUALIZER) */}
-      <section id="hero" className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden w-full border-b border-[var(--surface-border)]">
-        {/* Background signature motif & ambient glow */}
-        <div className="absolute inset-0 bg-grid-pattern -z-10 opacity-60 mask-radial" />
-        <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[22rem] bg-[var(--accent)]/10 blur-[120px] -z-10 rounded-full pointer-events-none" />
+      {/* 1. HERO SECTION (FULL-BLEED LUMINOUS GRADIENT HERO) */}
+      <section id="hero" className="relative w-full py-12 sm:py-16 md:py-20 overflow-hidden border-b border-[var(--surface-border)] isolate">
+        {/* Base Light Rich Luminous Gradient Background & Ambient Glowing Color Orbs */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f4fbf6] via-[#e6f7ec] to-[#d8f3e2] -z-20 pointer-events-none" />
+        <div className="absolute -top-32 left-1/4 w-[650px] h-[650px] bg-gradient-to-br from-[#16a34a]/35 via-[#22c55e]/30 to-[#4ade80]/25 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
+        <div className="absolute -bottom-20 right-10 w-[550px] h-[550px] bg-gradient-to-tl from-[#15803d]/30 via-[#22c55e]/25 to-[#86efac]/25 rounded-full blur-[100px] pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* LEFT COLUMN: Title, Description, Checkmark Grid & CTAs */}
           <div className="lg:col-span-6 xl:col-span-6 text-left space-y-6">
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--surface-border)] shadow-2xs text-xs sm:text-sm font-display uppercase tracking-wider text-[var(--muted)]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-stone-200 shadow-sm text-xs sm:text-sm font-display uppercase tracking-wider text-[var(--muted)]">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="font-bold text-[var(--foreground)]">India's Trusted {detail.groupName} Experts</span>
               {detail.item.badge && (
@@ -199,7 +203,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
                   </span>
                 ))}
               </span>
-              <span className="relative inline-block max-w-full text-[var(--accent)] font-black whitespace-nowrap text-[clamp(1rem,2.3vw,2.25rem)] tracking-tight py-1">
+              <span className="relative inline-block max-w-full text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-[var(--accent)] to-[#15803d] font-black whitespace-nowrap text-[clamp(1rem,2.3vw,2.25rem)] tracking-tight py-1">
                 {detail.item.title}
                 <svg
                   className="absolute left-0 -bottom-2 w-full h-3 sm:h-4 text-[var(--accent)] opacity-90 overflow-visible pointer-events-none"
@@ -326,6 +330,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
             ) : (
               <ServiceHeroVisualizer detail={detail} />
             )}
+          </div>
           </div>
         </div>
       </section>

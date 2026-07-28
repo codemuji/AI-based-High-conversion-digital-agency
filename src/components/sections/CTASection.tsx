@@ -43,7 +43,7 @@ export function CTASection({ onStartOnboarding }: CTASectionProps) {
             </button>
 
             <a
-              href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20looking%20to%20engineer%20a%20custom%20website%20or%20software%20for%20my%20business."
+              href="https://wa.me/917002160093?text=Hi%2C%20I%20am%20looking%20to%20engineer%20a%20custom%20website%20or%20software%20for%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-stone-900/90 hover:bg-stone-800 border border-stone-700 text-white font-display text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"

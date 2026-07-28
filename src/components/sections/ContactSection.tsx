@@ -85,7 +85,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
               <div className="space-y-3">
                 {/* WhatsApp Block */}
                 <a
-                  href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20scope%20a%20project%20with%20India%20Web%20Designs."
+                  href="https://wa.me/917002160093?text=Hi%2C%20I%20want%20to%20scope%20a%20project%20with%20India%20Web%20Designs."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3.5 p-3.5 rounded-xl bg-stone-900/80 border border-stone-800 hover:border-[#22c55e] transition-all"
@@ -98,7 +98,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
                       Instant WhatsApp Chat
                     </span>
                     <strong className="text-sm font-bold text-white group-hover:text-[#22c55e] transition-colors">
-                      +91 98765 43210
+                      +91 70021 60093
                     </strong>
                     <span className="text-[10px] text-stone-500 block mt-0.5">
                       Average response: under 5 mins
@@ -108,7 +108,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
 
                 {/* Phone Line */}
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+917002160093"
                   className="group flex items-start gap-3.5 p-3.5 rounded-xl bg-stone-900/80 border border-stone-800 hover:border-[#4ade80] transition-all"
                 >
                   <div className="w-9 h-9 rounded-lg bg-[#4ade80]/15 text-[#4ade80] flex items-center justify-center shrink-0 border border-[#4ade80]/30 group-hover:scale-105 transition-transform text-base">
@@ -119,7 +119,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
                       Engineering Phone Hotline
                     </span>
                     <strong className="text-sm font-bold text-white group-hover:text-[#4ade80] transition-colors">
-                      +91 98765 43210
+                      +91 70021 60093
                     </strong>
                     <span className="text-[10px] text-stone-500 block mt-0.5">
                       Mon – Sat | 9:00 AM – 8:00 PM IST

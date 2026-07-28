@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Category } from "@/lib/intent-engine";
 import { SERVICES_DROPDOWN_GROUPS } from "@/lib/services-dropdown-data";
 import { USE_CASES_DATA } from "@/lib/use-cases-data";
@@ -24,7 +25,13 @@ export function Footer({ onStartOnboarding }: FooterProps) {
           {/* COLUMN 1: BRAND ARCHITECTURE & DIRECT HOTLINE (Span 4 on Large) */}
           <div className="lg:col-span-4 space-y-6 md:pr-6">
             <div className="flex items-center gap-3">
-              <span className="w-3.5 h-3.5 rounded-full bg-[#4ade80] shadow-[0_0_12px_#4ade80]" />
+              <Image
+                src="/images/logo.png"
+                alt="India Web Designs"
+                width={40}
+                height={40}
+                className="h-10 w-auto object-contain bg-white/10 p-1 rounded-lg border border-stone-800"
+              />
               <span className="font-display font-black text-2xl text-white tracking-tight">
                 India Web Designs
               </span>
@@ -42,8 +49,8 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 </span>
                 <div>
                   <span className="text-stone-500 block text-[10px] uppercase font-bold">Direct Hotline</span>
-                  <a href="tel:+919876543210" className="hover:text-[#4ade80] font-semibold transition-colors">
-                    +91 98765 43210
+                  <a href="tel:+917002160093" className="hover:text-[#4ade80] font-semibold transition-colors">
+                    +91 70021 60093
                   </a>
                 </div>
               </div>
@@ -55,7 +62,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 <div>
                   <span className="text-stone-500 block text-[10px] uppercase font-bold">WhatsApp Support</span>
                   <a
-                    href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20scope%20a%20project%20with%20India%20Web%20Designs."
+                    href="https://wa.me/917002160093?text=Hi%2C%20I%20want%20to%20scope%20a%20project%20with%20India%20Web%20Designs."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[#4ade80] font-semibold transition-colors"

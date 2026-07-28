@@ -82,8 +82,8 @@ export function GrowthRoadmapSection({ onStartOnboarding }: GrowthRoadmapSection
         </div>
 
         {/* Interactive Scale Switcher Bar (Micro / Medium / High) */}
-        <div className="mt-6">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 p-1.5 rounded-xl bg-[var(--surface)] border border-[var(--surface-border)] shadow-md">
+        <div className="mt-5 flex justify-center">
+          <div className="inline-flex items-center gap-1.5 p-0.5">
             {GROWTH_ROADMAP_SCALES.map((scale) => {
               const isActive = scale.id === activeScaleId;
               return (
@@ -91,51 +91,21 @@ export function GrowthRoadmapSection({ onStartOnboarding }: GrowthRoadmapSection
                   key={scale.id}
                   type="button"
                   onClick={() => handleTabChange(scale.id)}
-                  className={`flex-1 flex items-center justify-between sm:justify-center gap-2 py-2.5 px-4 rounded-lg font-display text-xs font-bold uppercase tracking-wider transition-all duration-300 relative cursor-pointer ${
+                  className={`inline-flex items-center gap-2 py-1.5 px-3 rounded-lg font-display text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-[var(--background)] text-[var(--foreground)] shadow-sm border border-[var(--accent)]/40 text-[var(--accent)]"
-                      : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--background)]/50"
+                      ? "bg-[var(--surface)] text-[var(--accent)] border border-[var(--accent)]/30 font-extrabold"
+                      : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)]/30"
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        isActive ? "bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]" : "bg-[var(--muted)]/40"
-                      }`}
-                    />
-                    <span>{scale.label}</span>
-                  </div>
-                  <span className="text-[10px] sm:hidden px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--surface-border)]">
-                    {scale.badge.replace("// ", "").trim()}
-                  </span>
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                      isActive ? "bg-[var(--accent)] shadow-[0_0_6px_var(--accent)]" : "bg-stone-300 dark:bg-stone-600"
+                    }`}
+                  />
+                  <span>{scale.label}</span>
                 </button>
               );
             })}
-          </div>
-
-          {/* Active Scale Tier Overview Banner */}
-          <div className="mt-4 p-4 sm:p-6 rounded-xl bg-[var(--surface)]/60 border border-[var(--surface-border)] flex flex-col md:flex-row md:items-center justify-between gap-4 relative overflow-hidden">
-            <div className="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none" />
-            <div className="relative z-10 max-w-xl">
-              <span className="px-2.5 py-0.5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] font-display text-[11px] font-bold uppercase tracking-wider border border-[var(--accent)]/30 inline-block mb-2">
-                {activeTab.badge.replace("// ", "").trim()}
-              </span>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-[var(--foreground)]">
-                {activeTab.tagline}
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-                {activeTab.description}
-              </p>
-            </div>
-            <div className="relative z-10 shrink-0 flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => onStartOnboarding?.("Website", `${activeTab.label} Strategy`)}
-                className="px-4 py-2.5 rounded-lg bg-[var(--accent)] text-white font-display text-xs font-bold uppercase tracking-wider hover:bg-[#166534] transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>Scope {activeTab.label} Project ⚡</span>
-              </button>
-            </div>
           </div>
         </div>
 

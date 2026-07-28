@@ -58,7 +58,7 @@ export function TestimonialsSection() {
           Verified Technical Proof
         </span>
         <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-[var(--foreground)] tracking-tight leading-snug">
-          Real business results that prove our architecture.
+          Testimonials
         </h2>
         <p className="mt-2 text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
           Don&apos;t take our word for it. Here is what directors, founders, and operations heads experience after deploying our custom engineering workflows.
@@ -86,10 +86,15 @@ export function TestimonialsSection() {
                 </span>
               </div>
 
-              {/* Quote */}
-              <blockquote className="relative z-10 text-xs sm:text-sm text-[var(--foreground)] leading-relaxed font-normal">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
+              {/* Quote with Big Double Quotes */}
+              <div className="relative z-10">
+                <span className="font-serif text-5xl sm:text-6xl text-[var(--accent)]/40 font-extrabold leading-none select-none block -mb-3">
+                  &ldquo;
+                </span>
+                <blockquote className="relative z-10 text-xs sm:text-sm text-[var(--foreground)] leading-relaxed font-medium">
+                  {t.quote}
+                </blockquote>
+              </div>
             </div>
 
             {/* Bottom Row */}

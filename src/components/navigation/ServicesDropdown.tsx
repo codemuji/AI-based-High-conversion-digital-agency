@@ -130,17 +130,28 @@ export function ServicesDropdown({
             <div className="col-span-12 lg:col-span-8 p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-8 max-h-[80vh] overflow-y-auto no-scrollbar">
               {SERVICES_DROPDOWN_GROUPS.map((group) => (
                 <div key={group.id} className="flex flex-col">
-                  {/* Monospace Column Header */}
-                  <div className="flex items-center justify-between border-b border-[var(--surface-border)] pb-2.5 mb-3.5">
-                    <span className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-                      <span className="font-mono text-xs uppercase font-bold tracking-wider text-[var(--foreground)]">
+                  {/* Monospace Column Header (Clickable Category Hub Link) */}
+                  <div className="flex items-center justify-between border-b border-[var(--surface-border)] pb-2.5 mb-3.5 group/cat">
+                    <Link
+                      href={`/category/${group.id}`}
+                      onClick={onClose}
+                      className="flex items-center gap-2 transition-colors cursor-pointer"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] group-hover/cat:scale-125 transition-transform" />
+                      <span className="font-mono text-xs uppercase font-bold tracking-wider text-[var(--foreground)] group-hover/cat:text-[var(--accent)] transition-colors">
                         {`${group.columnNumber} // ${group.name}`}
                       </span>
-                    </span>
-                    <span className="text-[10px] font-mono font-semibold text-[var(--muted)]">
+                      <span className="text-[10px] text-[var(--accent)] opacity-0 group-hover/cat:opacity-100 transition-opacity font-bold">
+                        →
+                      </span>
+                    </Link>
+                    <Link
+                      href={`/category/${group.id}`}
+                      onClick={onClose}
+                      className="text-[10px] font-mono font-semibold text-[var(--muted)] hover:text-[var(--accent)] transition-colors cursor-pointer"
+                    >
                       {group.items.length} Items
-                    </span>
+                    </Link>
                   </div>
 
                   {/* Sub-items list */}

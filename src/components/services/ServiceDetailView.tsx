@@ -183,12 +183,12 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
           {/* LEFT COLUMN: Title, Description, Checkmark Grid & CTAs */}
           <div className="lg:col-span-6 xl:col-span-6 text-left space-y-6">
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-stone-200 shadow-sm text-xs sm:text-sm font-display uppercase tracking-wider text-[var(--muted)]">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/90 border border-stone-200/80 shadow-2xs text-[9px] sm:text-[10px] font-display uppercase tracking-wider text-[var(--muted)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shrink-0" />
               <span className="font-bold text-[var(--foreground)]">India's Trusted {detail.groupName} Experts</span>
               {detail.item.badge && (
                 <>
-                  <span className="text-[var(--surface-border)]">•</span>
+                  <span className="text-stone-300">•</span>
                   <span className="text-[var(--accent)] font-bold">★ {detail.item.badge}</span>
                 </>
               )}

@@ -108,9 +108,13 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 2: 01 // WEB DESIGN & STORES (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              Web Design
-            </span>
+            <Link
+              href="/category/web-design"
+              className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
+            >
+              <span>Web Design</span>
+              <span className="text-[10px] text-stone-500">→</span>
+            </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[0].items.map((service) => (
                 <li key={service.id}>
@@ -132,9 +136,13 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 3: 02 // DIGITAL MARKETING (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              Marketing
-            </span>
+            <Link
+              href="/category/digital-marketing"
+              className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
+            >
+              <span>Marketing</span>
+              <span className="text-[10px] text-stone-500">→</span>
+            </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[1].items.map((service) => (
                 <li key={service.id}>
@@ -156,9 +164,13 @@ export function Footer({ onStartOnboarding }: FooterProps) {
 
           {/* COLUMN 4: 03 // CUSTOM SOLUTIONS & APPS (Span 2 on Large) */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
-              Software &amp; Apps
-            </span>
+            <Link
+              href="/category/mobile-apps"
+              className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
+            >
+              <span>Software &amp; Apps</span>
+              <span className="text-[10px] text-stone-500">→</span>
+            </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[2].items.map((service) => (
                 <li key={service.id}>

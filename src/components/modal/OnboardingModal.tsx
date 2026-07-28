@@ -255,10 +255,10 @@ export function OnboardingModal({
         width: "100dvw",
         height: "100dvh",
         zIndex: 100,
-        /* Deep cinematic frosted glass backdrop with subtle radial green glow */
-        background: "radial-gradient(circle at 50% 30%, rgba(21, 128, 61, 0.16) 0%, rgba(10, 9, 8, 0.94) 85%)",
-        backdropFilter: "blur(28px) saturate(180%)",
-        WebkitBackdropFilter: "blur(28px) saturate(180%)",
+        /* Luminous rich green-to-mint gradient background with soft blur filter */
+        background: "linear-gradient(135deg, rgba(244, 251, 246, 0.93) 0%, rgba(230, 247, 236, 0.88) 50%, rgba(216, 243, 226, 0.93) 100%)",
+        backdropFilter: "blur(12px) saturate(160%)",
+        WebkitBackdropFilter: "blur(12px) saturate(160%)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -269,6 +269,9 @@ export function OnboardingModal({
         if (e.target === overlayRef.current) handleAnimatedClose();
       }}
     >
+      {/* Glowing Ambient Color Orbs for Rich Blur Effect */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-[#16a34a]/30 via-[#22c55e]/25 to-[#4ade80]/20 rounded-full blur-[100px] animate-pulse" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-gradient-to-tl from-[#15803d]/25 via-[#22c55e]/20 to-[#86efac]/20 rounded-full blur-[100px]" />
       {/* Top Edge Laser Progress Line */}
       <div
         aria-hidden="true"
@@ -277,17 +280,17 @@ export function OnboardingModal({
           top: 0,
           left: 0,
           right: 0,
-          height: "3px",
+          height: "4px",
           zIndex: 110,
-          background: "rgba(255, 255, 255, 0.08)",
+          background: "rgba(0, 0, 0, 0.06)",
         }}
       >
         <div
           style={{
             height: "100%",
             width: `${progressPercent}%`,
-            background: "linear-gradient(90deg, #16a34a, #4ade80)",
-            boxShadow: "0 0 15px #4ade80, 0 0 30px #4ade80",
+            background: "linear-gradient(90deg, #15803d, #22c55e)",
+            boxShadow: "0 0 15px rgba(34, 197, 94, 0.4)",
             transition: "width 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         />
@@ -313,9 +316,9 @@ export function OnboardingModal({
             style={{
               padding: "7px 16px",
               borderRadius: "9999px",
-              background: "rgba(74, 222, 128, 0.12)",
-              border: "1px solid rgba(74, 222, 128, 0.3)",
-              color: "#4ade80",
+              background: "rgba(22, 163, 74, 0.1)",
+              border: "1px solid rgba(22, 163, 74, 0.25)",
+              color: "#15803d",
               fontFamily: "var(--font-mono, monospace)",
               fontSize: "12px",
               fontWeight: 700,
@@ -324,10 +327,10 @@ export function OnboardingModal({
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              boxShadow: "0 0 25px rgba(74, 222, 128, 0.15)",
+              boxShadow: "0 2px 10px rgba(22, 163, 74, 0.08)",
             }}
           >
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 10px #4ade80" }} className="animate-pulse" />
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 8px #22c55e" }} className="animate-pulse" />
             <span>{`0${stepIndex + 1} / 0${questions.length} // ${category} ROADMAP`}</span>
           </span>
 
@@ -336,7 +339,7 @@ export function OnboardingModal({
               style={{
                 fontFamily: "var(--font-mono, monospace)",
                 fontSize: "13px",
-                color: "rgba(255, 255, 255, 0.6)",
+                color: "#71717a",
                 fontStyle: "italic",
                 maxWidth: "320px",
                 overflow: "hidden",
@@ -357,9 +360,9 @@ export function OnboardingModal({
           style={{
             padding: "8px 16px",
             borderRadius: "9999px",
-            border: "1px solid rgba(255, 255, 255, 0.14)",
-            background: "rgba(255, 255, 255, 0.05)",
-            color: "rgba(255, 255, 255, 0.75)",
+            border: "1px solid #e4e4e7",
+            background: "#f4f4f5",
+            color: "#27272a",
             fontFamily: "var(--font-mono, monospace)",
             fontSize: "12px",
             fontWeight: 600,
@@ -371,14 +374,14 @@ export function OnboardingModal({
             flexShrink: 0,
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.14)";
-            (e.currentTarget as HTMLButtonElement).style.color = "#ffffff";
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.35)";
+            (e.currentTarget as HTMLButtonElement).style.background = "#e4e4e7";
+            (e.currentTarget as HTMLButtonElement).style.color = "#09090b";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "#d4d4d8";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.05)";
-            (e.currentTarget as HTMLButtonElement).style.color = "rgba(255, 255, 255, 0.75)";
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.14)";
+            (e.currentTarget as HTMLButtonElement).style.background = "#f4f4f5";
+            (e.currentTarget as HTMLButtonElement).style.color = "#27272a";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "#e4e4e7";
           }}
         >
           <span>ESC</span>
@@ -425,7 +428,7 @@ export function OnboardingModal({
           flexShrink: 0,
           fontFamily: "var(--font-mono, monospace)",
           fontSize: "12px",
-          color: "rgba(255, 255, 255, 0.45)",
+          color: "#71717a",
         }}
       >
         <div>
@@ -435,15 +438,16 @@ export function OnboardingModal({
               onClick={handleBack}
               disabled={isSubmitting}
               style={{
-                color: "rgba(255, 255, 255, 0.7)",
+                color: "#52525b",
+                fontWeight: 600,
                 transition: "color 0.2s",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.color = "#4ade80";
+                (e.currentTarget as HTMLButtonElement).style.color = "#15803d";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.color = "rgba(255, 255, 255, 0.7)";
+                (e.currentTarget as HTMLButtonElement).style.color = "#52525b";
               }}
             >
               &larr; Return to Previous Question
@@ -452,7 +456,7 @@ export function OnboardingModal({
         </div>
 
         <div>
-          <span>Press <strong style={{ color: "rgba(255,255,255,0.8)" }}>[ESC]</strong> or click anywhere outside to exit</span>
+          <span>Press <strong style={{ color: "#18181b" }}>[ESC]</strong> or click anywhere outside to exit</span>
         </div>
       </div>
     </div>

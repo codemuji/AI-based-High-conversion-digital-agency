@@ -45,7 +45,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
     }
   }, [question.id, question.type, currentAnswer]);
 
-  // GSAP Floating Staggered Blur Reveal for option pills
+  // GSAP Floating Staggered Reveal for option pills
   useEffect(() => {
     if (question.type === "select" && optionsContainerRef.current) {
       const buttons = optionsContainerRef.current.querySelectorAll("button");
@@ -92,7 +92,6 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
     setSelectVal(opt);
     setError("");
 
-    // Tactile selection micro-bounce & emerald flash
     gsap.to(e.currentTarget, {
       scale: 0.98,
       duration: 0.08,
@@ -101,7 +100,6 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
       ease: "power2.inOut",
     });
 
-    // Auto advance on single option select after brief delay
     setTimeout(() => {
       onNext(opt);
     }, 180);
@@ -113,22 +111,22 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
       className="w-full flex flex-col justify-center"
     >
       <div>
-        {/* Floating Question Title */}
-        <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight leading-[1.12] drop-shadow-[0_10px_30px_rgba(0,0,0,0.85)] text-center sm:text-left">
+        {/* Question Title */}
+        <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-stone-900 tracking-tight leading-[1.12] text-center sm:text-left">
           {question.title}
         </h2>
 
-        {/* Floating Subtitle */}
+        {/* Subtitle */}
         {question.subtitle && (
-          <p className="text-sm sm:text-base text-stone-300 font-normal mt-2.5 leading-relaxed max-w-2xl drop-shadow-[0_4px_15px_rgba(0,0,0,0.7)] text-center sm:text-left">
+          <p className="text-sm sm:text-base text-stone-600 font-medium mt-2.5 leading-relaxed max-w-2xl text-center sm:text-left">
             {question.subtitle}
           </p>
         )}
 
-        {/* Floating Error Notice */}
+        {/* Error Notice */}
         {error && (
-          <div className="mt-4 p-3.5 rounded-xl text-xs font-semibold flex items-center gap-3 bg-red-500/20 border border-red-500/40 text-red-300 backdrop-blur-md shadow-lg animate-fadeIn">
-            <svg className="w-4 h-4 shrink-0 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mt-4 p-3.5 rounded-xl text-xs font-semibold flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 shadow-xs animate-fadeIn">
+            <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>{error}</span>
@@ -144,14 +142,14 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                 value={textVal}
                 onChange={(e) => setTextVal(e.target.value)}
                 placeholder={question.placeholder}
-                className="w-full p-4 sm:p-5 rounded-2xl bg-white/[0.05] border border-white/15 text-base sm:text-lg text-white placeholder-stone-500 focus:outline-none focus:border-[#4ade80] focus:ring-4 focus:ring-[#4ade80]/20 shadow-[0_15px_35px_rgba(0,0,0,0.4)] transition-all duration-300 backdrop-blur-md resize-none font-display"
+                className="w-full p-4 sm:p-5 rounded-2xl bg-white border border-stone-300 text-base sm:text-lg text-stone-900 font-semibold placeholder-stone-400 focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/15 shadow-sm transition-all duration-300 resize-none font-display"
                 autoFocus
               />
               <div className="flex justify-end">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-3 rounded-xl bg-[#4ade80] hover:bg-[#22c55e] text-black font-display font-black text-sm sm:text-base tracking-wide shadow-[0_0_25px_rgba(74,222,128,0.35)] hover:shadow-[0_0_45px_rgba(74,222,128,0.55)] active:scale-95 disabled:opacity-50 transition-all flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-3.5 rounded-xl bg-[var(--accent)] hover:bg-[#15803d] text-white font-display font-black text-sm sm:text-base tracking-wide shadow-md hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <span>Continue to Next Step &rarr;</span>
                 </button>
@@ -168,28 +166,28 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                     key={opt}
                     type="button"
                     onClick={(e) => handleSelectOption(opt, e)}
-                    className={`w-full text-left py-3.5 sm:py-4 px-5 rounded-xl border transition-all duration-200 flex items-center justify-between cursor-pointer group backdrop-blur-md ${
+                    className={`w-full text-left py-3.5 sm:py-4 px-5 rounded-xl border transition-all duration-200 flex items-center justify-between cursor-pointer group ${
                       isSelected
-                        ? "border-[#4ade80] bg-[#4ade80]/20 text-[#4ade80] font-bold shadow-[0_0_35px_rgba(74,222,128,0.3)] scale-[1.01]"
-                        : "border-white/15 bg-white/[0.05] hover:border-[#4ade80]/70 hover:bg-white/[0.1] text-white hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]"
+                        ? "border-[var(--accent)] bg-emerald-50 text-[#15803d] font-bold shadow-sm ring-2 ring-[var(--accent)]/20 scale-[1.01]"
+                        : "border-stone-200 bg-white hover:border-[var(--accent)] hover:bg-emerald-50/40 text-stone-900 font-semibold shadow-xs hover:shadow-md"
                     }`}
                   >
-                    <span className="text-base sm:text-lg font-medium tracking-tight leading-snug group-hover:translate-x-1 transition-transform">
+                    <span className="text-base sm:text-lg font-bold tracking-tight leading-snug text-stone-900 group-hover:translate-x-1 transition-transform">
                       {opt}
                     </span>
                     <div
-                      className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ml-4 transition-all ${
+                      className={`w-5.5 h-5.5 rounded-full border flex items-center justify-center shrink-0 ml-4 transition-all ${
                         isSelected
-                          ? "border-[#4ade80] bg-[#4ade80] text-black shadow-[0_0_12px_#4ade80]"
-                          : "border-white/30 group-hover:border-[#4ade80]"
+                          ? "border-[var(--accent)] bg-[var(--accent)] text-white shadow-xs"
+                          : "border-stone-300 group-hover:border-[var(--accent)]"
                       }`}
                     >
                       {isSelected ? (
-                        <svg className="w-3 h-3 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
+                        <svg className="w-3.5 h-3.5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       ) : (
-                        <span className="text-[10px] font-mono text-stone-500 group-hover:text-[#4ade80] transition-colors">&rarr;</span>
+                        <span className="text-[10px] font-mono text-stone-400 group-hover:text-[var(--accent)] transition-colors">&rarr;</span>
                       )}
                     </div>
                   </button>
@@ -201,7 +199,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
           {question.type === "contact" && (
             <div className="space-y-4">
               <div>
-                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-[#4ade80] mb-1.5">
+                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-[#15803d] mb-1.5">
                   01 // Your Full Name *
                 </label>
                 <input
@@ -210,13 +208,13 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.name}
                   onChange={(e) => setContactVal({ ...contactVal, name: e.target.value })}
                   placeholder="e.g., Rajesh Sharma"
-                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white/[0.05] border border-white/15 text-sm sm:text-base text-white placeholder-stone-500 focus:outline-none focus:border-[#4ade80] focus:ring-4 focus:ring-[#4ade80]/20 shadow-[0_8px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-300"
+                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white border border-stone-300 text-sm sm:text-base text-stone-900 font-semibold placeholder-stone-400 focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/15 shadow-xs transition-all duration-300"
                   autoFocus
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-[#4ade80] mb-1.5">
+                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-[#15803d] mb-1.5">
                   02 // Phone or WhatsApp Number *
                 </label>
                 <input
@@ -224,12 +222,12 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.phone}
                   onChange={(e) => setContactVal({ ...contactVal, phone: e.target.value })}
                   placeholder="e.g., +91 98765 43210"
-                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white/[0.05] border border-white/15 text-sm sm:text-base text-white placeholder-stone-500 focus:outline-none focus:border-[#4ade80] focus:ring-4 focus:ring-[#4ade80]/20 shadow-[0_8px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-300"
+                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white border border-stone-300 text-sm sm:text-base text-stone-900 font-semibold placeholder-stone-400 focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/15 shadow-xs transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-stone-400 mb-1.5">
+                <label className="block text-[11px] font-mono font-bold uppercase tracking-widest text-stone-600 mb-1.5">
                   03 // Email Address (Optional if WhatsApp provided)
                 </label>
                 <input
@@ -237,7 +235,7 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                   value={contactVal.email}
                   onChange={(e) => setContactVal({ ...contactVal, email: e.target.value })}
                   placeholder="e.g., rajesh@apexretail.in"
-                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white/[0.05] border border-white/15 text-sm sm:text-base text-white placeholder-stone-500 focus:outline-none focus:border-[#4ade80] focus:ring-4 focus:ring-[#4ade80]/20 shadow-[0_8px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-300"
+                  className="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-white border border-stone-300 text-sm sm:text-base text-stone-900 font-semibold placeholder-stone-400 focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/15 shadow-xs transition-all duration-300"
                 />
               </div>
 
@@ -245,11 +243,11 @@ export const QuestionStep = React.forwardRef<HTMLDivElement, QuestionStepProps>(
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 sm:py-4.5 px-6 rounded-xl bg-[#4ade80] hover:bg-[#22c55e] text-black font-display font-black text-base sm:text-lg tracking-wide shadow-[0_0_30px_rgba(74,222,128,0.35)] hover:shadow-[0_0_50px_rgba(74,222,128,0.55)] active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+                  className="w-full py-4 sm:py-4.5 px-6 rounded-xl bg-[var(--accent)] hover:bg-[#15803d] text-white font-display font-black text-base sm:text-lg tracking-wide shadow-md hover:shadow-lg active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5 text-black" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                       </svg>

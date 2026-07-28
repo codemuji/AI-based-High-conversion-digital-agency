@@ -81,14 +81,14 @@ export function ExpertConsultationModal({
       onClick={onClose}
     >
       <div
-        className="bg-[var(--surface)] border border-[var(--surface-border)] rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-7 relative font-display text-[var(--foreground)]"
+        className="bg-white border border-stone-200 rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-7 relative font-display text-stone-900"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[var(--surface-hover)] border border-[var(--surface-border)] text-[var(--muted)] hover:text-[var(--foreground)] flex items-center justify-center transition-colors cursor-pointer text-lg font-bold"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 border border-stone-200 text-stone-500 hover:text-stone-900 flex items-center justify-center transition-colors cursor-pointer text-lg font-bold"
           aria-label="Close modal"
         >
           ✕
@@ -96,7 +96,7 @@ export function ExpertConsultationModal({
 
         {/* Header Icon & Title */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 text-[#1da851] border border-[#25D366]/30 flex items-center justify-center shrink-0">
             <svg
               className="w-5 h-5 fill-current"
               viewBox="0 0 24 24"
@@ -106,37 +106,37 @@ export function ExpertConsultationModal({
             </svg>
           </div>
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#25D366] block">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#1da851] block">
               Direct Expert Scoping
             </span>
-            <h3 className="font-black text-xl text-[var(--foreground)] tracking-tight">
+            <h3 className="font-black text-xl text-stone-900 tracking-tight">
               Talk to Our Technical Expert
             </h3>
           </div>
         </div>
 
-        <p className="text-xs text-[var(--muted)] mb-5 leading-relaxed">
-          Fill in your name and phone number below to open a direct WhatsApp consultation for <strong className="text-[var(--foreground)]">{serviceTitle}</strong>.
+        <p className="text-xs text-stone-600 mb-5 leading-relaxed">
+          Fill in your name and phone number below to open a direct WhatsApp consultation for <strong className="text-stone-900">{serviceTitle}</strong>.
         </p>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Service Name Prefilled */}
           <div>
-            <label className="block text-xs font-bold text-[var(--foreground)] mb-1">
+            <label className="block text-xs font-bold text-stone-800 mb-1">
               Service Requested
             </label>
             <input
               type="text"
               readOnly
               value={serviceTitle}
-              className="w-full px-4 py-2.5 rounded-xl bg-[var(--surface-hover)] border border-[var(--surface-border)] text-xs font-bold text-[var(--accent)] cursor-not-allowed opacity-90"
+              className="w-full px-4 py-2.5 rounded-xl bg-stone-100 border border-stone-200 text-xs font-bold text-[var(--accent)] cursor-not-allowed"
             />
           </div>
 
           {/* Name Field */}
           <div>
-            <label className="block text-xs font-bold text-[var(--foreground)] mb-1">
+            <label className="block text-xs font-bold text-stone-800 mb-1">
               Your Name <span className="text-rose-500">*</span>
             </label>
             <input
@@ -145,13 +145,13 @@ export function ExpertConsultationModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Rajesh Sharma"
-              className="w-full px-4 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] focus:border-[#25D366] text-xs font-medium text-[var(--foreground)] outline-none transition-colors"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-200 focus:border-[#25D366] text-xs font-medium text-stone-900 outline-none transition-colors shadow-xs"
             />
           </div>
 
           {/* Phone Field */}
           <div>
-            <label className="block text-xs font-bold text-[var(--foreground)] mb-1">
+            <label className="block text-xs font-bold text-stone-800 mb-1">
               Phone / WhatsApp Number <span className="text-rose-500">*</span>
             </label>
             <input
@@ -160,7 +160,7 @@ export function ExpertConsultationModal({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="e.g. +91 98765 43210"
-              className="w-full px-4 py-2.5 rounded-xl bg-[var(--background)] border border-[var(--surface-border)] focus:border-[#25D366] text-xs font-medium text-[var(--foreground)] outline-none transition-colors"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-stone-200 focus:border-[#25D366] text-xs font-medium text-stone-900 outline-none transition-colors shadow-xs"
             />
           </div>
 
@@ -183,7 +183,7 @@ export function ExpertConsultationModal({
           </div>
         </form>
 
-        <p className="text-[10px] text-[var(--muted)] text-center mt-4">
+        <p className="text-[10px] text-stone-500 text-center mt-4">
           🔒 100% Privacy Guaranteed. Zero spam.
         </p>
       </div>

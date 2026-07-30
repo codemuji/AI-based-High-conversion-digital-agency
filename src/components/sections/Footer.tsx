@@ -243,6 +243,12 @@ export function Footer({ onStartOnboarding }: FooterProps) {
             <Link href="/about" className="hover:text-white transition-colors">
               About The Studio
             </Link>
+            <Link href="/blog" className="hover:text-[#4ade80] font-bold transition-colors">
+              Blog Journal
+            </Link>
+            <Link href="/admin" className="hover:text-[#4ade80] font-mono transition-colors">
+              Admin Portal
+            </Link>
             <a href="/#faq" className="hover:text-white transition-colors">
               FAQ
             </a>

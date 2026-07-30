@@ -1,7 +1,10 @@
 "use server";
 
 import { after } from "next/server";
-import { mockDbHelper } from "@/db/db";
+import { cookies } from "next/headers";
+import { mockDbHelper, db, hasLiveDb } from "@/db/db";
+import * as schema from "@/db/schema";
+import { eq } from "drizzle-orm";
 import { generateAiProfile, sendTeamNotification } from "@/lib/ai-profiler";
 import type { LeadSubmissionPayload } from "@/components/modal/OnboardingModal";
 
@@ -11,11 +14,22 @@ export interface SubmitLeadResponse {
   error?: string;
 }
 
+export interface ContactEnquiryPayload {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
+
+export interface GenericResponse {
+  success: boolean;
+  error?: string;
+  id?: number;
+}
+
 /**
- * Ponytail lead creation server action.
- * 1. Inserts raw lead answers into DB instantly (~50ms) and returns success.
- * 2. Uses Next.js 15 `after()` to run the Claude Haiku AI profiling asynchronously after response closes.
- * 3. Updates `leads.ai_profile` and fires pre-profiled team webhooks/alerts.
+ * 1. Submit Multi-Step Onboarding Lead Server Action
  */
 export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<SubmitLeadResponse> {
   try {
@@ -23,7 +37,6 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
       return { success: false, error: "Missing required contact details or category." };
     }
 
-    // Step 1: Immediate raw DB insert
     const leadId = await mockDbHelper.insertLead({
       initialQuery: payload.initialQuery || payload.category,
       category: payload.category,
@@ -34,7 +47,6 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
       status: "new",
     });
 
-    // Step 2: Non-blocking async AI triage & team alert via Next.js `after()` (with CLI/offline fallback)
     const runAsyncJob = async () => {
       try {
         const aiProfile = await generateAiProfile(
@@ -43,7 +55,12 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
           payload.answers
         );
 
-        await mockDbHelper.updateAiProfile(leadId, aiProfile);
+        if (hasLiveDb && db) {
+          await db
+            .update(schema.leads)
+            .set({ aiProfile })
+            .where(eq(schema.leads.id, leadId));
+        }
 
         await sendTeamNotification({
           leadId,
@@ -56,23 +73,144 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
           aiProfile,
         });
       } catch (asyncErr) {
-        console.error(`[after() Job Error] Failed to generate profile or send notification for Lead #${leadId}:`, asyncErr);
+        console.error(`[Async Job Error] Lead #${leadId}:`, asyncErr);
       }
     };
 
-    try {
+    if (typeof after === "function") {
       after(runAsyncJob);
-    } catch {
-      // If outside Next.js request context (e.g. standalone test scripts or background worker), run non-blocking
-      runAsyncJob().catch((err) => console.error("[Background Job Error]:", err));
+    } else {
+      runAsyncJob();
     }
 
     return { success: true, leadId };
-  } catch (err: unknown) {
-    console.error("[submitLeadAction Error]:", err);
-    return {
-      success: false,
-      error: err instanceof Error ? err.message : "Failed to save lead. Please try again.",
-    };
+  } catch (err) {
+    console.error("[submitLeadAction] Exception:", err);
+    return { success: false, error: "Internal server error saving lead." };
+  }
+}
+
+/**
+ * 2. Submit Direct Contact Form Enquiry Action
+ */
+export async function submitContactEnquiryAction(payload: ContactEnquiryPayload): Promise<GenericResponse> {
+  try {
+    if (!payload.name || !payload.email || !payload.phone || !payload.message) {
+      return { success: false, error: "Please fill out all required fields." };
+    }
+
+    const enquiryId = await mockDbHelper.insertEnquiry({
+      name: payload.name.trim(),
+      email: payload.email.trim(),
+      phone: payload.phone.trim(),
+      service: payload.service || "General Inquiry",
+      message: payload.message.trim(),
+      status: "new",
+    });
+
+    return { success: true, id: enquiryId };
+  } catch (err) {
+    console.error("[submitContactEnquiryAction] Exception:", err);
+    return { success: false, error: "Failed to submit inquiry. Please try again." };
+  }
+}
+
+/**
+ * 3. Admin Authentication Actions
+ */
+export async function verifyAdminPasswordAction(password: string): Promise<GenericResponse> {
+  const secretKey = process.env.ADMIN_SECRET_KEY || "admin123";
+  if (password === secretKey) {
+    const cookieStore = await cookies();
+    cookieStore.set("admin_session", "authenticated", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: "/",
+    });
+    return { success: true };
+  }
+  return { success: false, error: "Invalid admin password." };
+}
+
+export async function adminLogoutAction(): Promise<GenericResponse> {
+  const cookieStore = await cookies();
+  cookieStore.delete("admin_session");
+  return { success: true };
+}
+
+/**
+ * 4. Admin Data Fetching & Update Actions
+ */
+export async function getAdminEnquiriesAction(): Promise<schema.Enquiry[]> {
+  return mockDbHelper.getAllEnquiries();
+}
+
+export async function updateEnquiryStatusAction(id: number, status: string): Promise<GenericResponse> {
+  try {
+    if (hasLiveDb && db) {
+      await db.update(schema.enquiries).set({ status }).where(eq(schema.enquiries.id, id));
+    }
+    return { success: true };
+  } catch (err) {
+    console.error("[updateEnquiryStatusAction] Exception:", err);
+    return { success: false, error: "Failed to update status." };
+  }
+}
+
+export async function getAdminLeadsAction(): Promise<schema.Lead[]> {
+  return mockDbHelper.getAllLeads();
+}
+
+export async function getAdminPostsAction(onlyPublished = false): Promise<schema.Post[]> {
+  return mockDbHelper.getAllPosts(onlyPublished);
+}
+
+export async function getPostBySlugAction(slug: string): Promise<schema.Post | null> {
+  return mockDbHelper.getPostBySlug(slug);
+}
+
+export async function savePostAction(postData: schema.NewPost, id?: number): Promise<GenericResponse> {
+  try {
+    if (hasLiveDb && db) {
+      if (id) {
+        await db
+          .update(schema.posts)
+          .set({
+            ...postData,
+            updatedAt: new Date(),
+            publishedAt: postData.published ? new Date() : null,
+          })
+          .where(eq(schema.posts.id, id));
+        return { success: true, id };
+      } else {
+        const [inserted] = await db
+          .insert(schema.posts)
+          .values({
+            ...postData,
+            publishedAt: postData.published ? new Date() : null,
+          })
+          .returning({ id: schema.posts.id });
+        return { success: true, id: inserted.id };
+      }
+    } else {
+      const insertedId = await mockDbHelper.insertPost(postData);
+      return { success: true, id: insertedId };
+    }
+  } catch (err) {
+    console.error("[savePostAction] Exception:", err);
+    return { success: false, error: "Failed to save post." };
+  }
+}
+
+export async function deletePostAction(id: number): Promise<GenericResponse> {
+  try {
+    if (hasLiveDb && db) {
+      await db.delete(schema.posts).where(eq(schema.posts.id, id));
+    }
+    return { success: true };
+  } catch (err) {
+    console.error("[deletePostAction] Exception:", err);
+    return { success: false, error: "Failed to delete post." };
   }
 }

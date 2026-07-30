@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import type { Category } from "@/lib/intent-engine";
-import { submitLeadAction } from "@/app/actions";
+import { submitContactEnquiryAction } from "@/app/actions";
 
 interface ContactSectionProps {
   onStartOnboarding?: (category?: Category, query?: string) => void;
@@ -16,6 +16,8 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [email, setEmail] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) {
@@ -24,20 +26,18 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
     }
     setIsSubmitting(true);
     try {
-      const res = await submitLeadAction({
-        category,
-        initialQuery: note.trim() || `Quick Contact Intake from ${name}`,
-        answers: { note: note.trim(), source: "ContactSection Form" },
-        contact: {
-          name: name.trim(),
-          phone: phone.trim(),
-          email: "",
-        },
+      const res = await submitContactEnquiryAction({
+        name: name.trim(),
+        email: email.trim() || "no-email-provided@domain.com",
+        phone: phone.trim(),
+        service: category,
+        message: note.trim() || "Quick Contact Form Brief",
       });
       if (res.success) {
         setSubmitted(true);
         setName("");
         setPhone("");
+        setEmail("");
         setNote("");
       } else {
         alert(res.error || "Failed to submit. Please try via WhatsApp directly.");

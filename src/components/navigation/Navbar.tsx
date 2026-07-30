@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: "Process", href: "/process", id: "process", isPage: true },
   { label: "Work", href: "/work", id: "work", isPage: true },
   { label: "About", href: "/about", id: "about", isPage: true },
+  { label: "Blog", href: "/blog", id: "blog", isPage: true },
 ];
 
 export interface NavbarProps {

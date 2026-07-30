@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     "custom software",
     "digital marketing",
   ],
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({

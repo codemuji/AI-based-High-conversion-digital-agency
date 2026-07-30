@@ -499,47 +499,6 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
           )}
         </div>
 
-        {/* Related Services */}
-        <div className="pt-8 border-t border-[var(--surface-border)] space-y-6">
-          <div className="text-center max-w-2xl mx-auto space-y-1">
-            <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1">
-              Explore Further
-            </span>
-            <h3 className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] tracking-tight">
-              Related digital solutions &amp; services
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedServices.map((relItem) => (
-              <Link
-                key={relItem.id}
-                href={`/services/${relItem.id}`}
-                className="group p-6 rounded-2xl bg-[var(--surface)]/50 border border-[var(--surface-border)] hover:border-[var(--foreground)]/40 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-4 font-display text-[11px]">
-                    <span className="text-[var(--accent)] font-bold">{relItem.category}</span>
-                    <span className="text-[var(--muted)]">⏱ {relItem.timeline}</span>
-                  </div>
-
-                  <h4 className="font-display font-black text-base sm:text-lg text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
-                    {relItem.title}
-                  </h4>
-                  <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
-                    {relItem.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-3 border-t border-[var(--surface-border)] font-display text-[11px] font-bold text-[var(--foreground)] flex items-center justify-between">
-                  <span>Inspect Specifications</span>
-                  <span className="group-hover:translate-x-1 transition-transform text-[var(--accent)]">&rarr;</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
         {/* Bottom Action Banner */}
         <div className="p-6 sm:p-10 rounded-2xl bg-[var(--surface)] border border-[var(--surface-border)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="max-w-md">

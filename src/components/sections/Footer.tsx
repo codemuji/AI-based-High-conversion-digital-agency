@@ -113,7 +113,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
             >
               <span>Web Design</span>
-              <span className="text-[10px] text-stone-500">→</span>
+              <span className="w-4 h-4 rounded-full bg-[#4ade80]/20 text-[#4ade80] font-mono text-[10px] font-bold inline-flex items-center justify-center">i</span>
             </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[0].items.map((service) => (
@@ -141,7 +141,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
             >
               <span>Marketing</span>
-              <span className="text-[10px] text-stone-500">→</span>
+              <span className="w-4 h-4 rounded-full bg-[#4ade80]/20 text-[#4ade80] font-mono text-[10px] font-bold inline-flex items-center justify-center">i</span>
             </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[1].items.map((service) => (
@@ -169,7 +169,7 @@ export function Footer({ onStartOnboarding }: FooterProps) {
               className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] hover:underline flex items-center justify-between pb-2 border-b border-stone-800/60"
             >
               <span>Software &amp; Apps</span>
-              <span className="text-[10px] text-stone-500">→</span>
+              <span className="w-4 h-4 rounded-full bg-[#4ade80]/20 text-[#4ade80] font-mono text-[10px] font-bold inline-flex items-center justify-center">i</span>
             </Link>
             <ul className="space-y-3 font-display text-xs">
               {SERVICES_DROPDOWN_GROUPS[2].items.map((service) => (

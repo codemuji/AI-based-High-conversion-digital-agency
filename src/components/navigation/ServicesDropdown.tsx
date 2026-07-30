@@ -141,8 +141,8 @@ export function ServicesDropdown({
                       <span className="font-mono text-xs uppercase font-bold tracking-wider text-[var(--foreground)] group-hover/cat:text-[var(--accent)] transition-colors">
                         {`${group.columnNumber} // ${group.name}`}
                       </span>
-                      <span className="text-[10px] text-[var(--accent)] opacity-0 group-hover/cat:opacity-100 transition-opacity font-bold">
-                        →
+                      <span className="w-4 h-4 rounded-full bg-[var(--accent)] text-white text-[10px] font-mono font-extrabold inline-flex items-center justify-center opacity-0 group-hover/cat:opacity-100 transition-opacity shrink-0">
+                        i
                       </span>
                     </Link>
                     <Link

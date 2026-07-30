@@ -212,19 +212,6 @@ export function GrowthRoadmapSection({ onStartOnboarding }: GrowthRoadmapSection
                 </div>
               </Link>
 
-              {/* SLEEK COMPACT SCOPING FOOTER BAR */}
-              <div className="px-4 sm:px-4.5 pb-4 sm:pb-4.5 pt-0 bg-white">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onStartOnboarding?.(card.intentCategory, `${card.industry} (${card.scaleBracket})`);
-                  }}
-                  className="w-full py-2 px-3.5 rounded-lg bg-[var(--surface-hover)] hover:bg-[var(--accent)] border border-[var(--surface-border)] hover:border-[var(--accent)] text-[11px] font-display font-bold uppercase tracking-wider text-[var(--foreground)] hover:text-white transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
-                >
-                  <span>Scope {card.scaleBracket} Project ⚡</span>
-                </button>
-              </div>
             </div>
           </ViewTransition>
         ))}

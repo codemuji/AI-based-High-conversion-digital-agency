@@ -2,6 +2,7 @@
 
 import { after } from "next/server";
 import { cookies } from "next/headers";
+import crypto from "crypto";
 import { mockDbHelper, db, hasLiveDb } from "@/db/db";
 import * as schema from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -29,7 +30,18 @@ export interface GenericResponse {
 }
 
 /**
- * 1. Submit Multi-Step Onboarding Lead Server Action
+ * Helper to enforce server-side authentication on admin actions
+ */
+async function requireAdminAuth(): Promise<void> {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("admin_session")?.value;
+  if (!session || session !== "authenticated") {
+    throw new Error("Unauthorized: Admin authentication required.");
+  }
+}
+
+/**
+ * 1. Submit Multi-Step Onboarding Lead Server Action (Public)
  */
 export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<SubmitLeadResponse> {
   try {
@@ -91,7 +103,7 @@ export async function submitLeadAction(payload: LeadSubmissionPayload): Promise<
 }
 
 /**
- * 2. Submit Direct Contact Form Enquiry Action
+ * 2. Submit Direct Contact Form Enquiry Action (Public)
  */
 export async function submitContactEnquiryAction(payload: ContactEnquiryPayload): Promise<GenericResponse> {
   try {
@@ -116,21 +128,37 @@ export async function submitContactEnquiryAction(payload: ContactEnquiryPayload)
 }
 
 /**
- * 3. Admin Authentication Actions
+ * 3. Admin Authentication Actions (Constant-Time Verification)
  */
 export async function verifyAdminPasswordAction(password: string): Promise<GenericResponse> {
-  const secretKey = process.env.ADMIN_SECRET_KEY || "admin123";
-  if (password === secretKey) {
-    const cookieStore = await cookies();
-    cookieStore.set("admin_session", "authenticated", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-      path: "/",
-    });
-    return { success: true };
+  try {
+    const secretKey = process.env.ADMIN_SECRET_KEY || "admin123";
+
+    const targetBuffer = Buffer.from(secretKey, "utf-8");
+    const inputBuffer = Buffer.from(password || "", "utf-8");
+
+    let isValid = false;
+    if (targetBuffer.length === inputBuffer.length) {
+      isValid = crypto.timingSafeEqual(targetBuffer, inputBuffer);
+    }
+
+    if (isValid) {
+      const cookieStore = await cookies();
+      cookieStore.set("admin_session", "authenticated", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24, // 24 hours
+        path: "/",
+      });
+      return { success: true };
+    }
+
+    return { success: false, error: "Invalid admin password." };
+  } catch (err) {
+    console.error("[verifyAdminPasswordAction] Exception:", err);
+    return { success: false, error: "Authentication check failed." };
   }
-  return { success: false, error: "Invalid admin password." };
 }
 
 export async function adminLogoutAction(): Promise<GenericResponse> {
@@ -140,29 +168,35 @@ export async function adminLogoutAction(): Promise<GenericResponse> {
 }
 
 /**
- * 4. Admin Data Fetching & Update Actions
+ * 4. Protected Admin Data Fetching & Update Actions
  */
 export async function getAdminEnquiriesAction(): Promise<schema.Enquiry[]> {
+  await requireAdminAuth();
   return mockDbHelper.getAllEnquiries();
 }
 
 export async function updateEnquiryStatusAction(id: number, status: string): Promise<GenericResponse> {
   try {
+    await requireAdminAuth();
     if (hasLiveDb && db) {
       await db.update(schema.enquiries).set({ status }).where(eq(schema.enquiries.id, id));
     }
     return { success: true };
   } catch (err) {
     console.error("[updateEnquiryStatusAction] Exception:", err);
-    return { success: false, error: "Failed to update status." };
+    return { success: false, error: "Unauthorized or failed to update status." };
   }
 }
 
 export async function getAdminLeadsAction(): Promise<schema.Lead[]> {
+  await requireAdminAuth();
   return mockDbHelper.getAllLeads();
 }
 
 export async function getAdminPostsAction(onlyPublished = false): Promise<schema.Post[]> {
+  if (!onlyPublished) {
+    await requireAdminAuth();
+  }
   return mockDbHelper.getAllPosts(onlyPublished);
 }
 
@@ -172,6 +206,7 @@ export async function getPostBySlugAction(slug: string): Promise<schema.Post | n
 
 export async function savePostAction(postData: schema.NewPost, id?: number): Promise<GenericResponse> {
   try {
+    await requireAdminAuth();
     if (hasLiveDb && db) {
       if (id) {
         await db
@@ -199,18 +234,19 @@ export async function savePostAction(postData: schema.NewPost, id?: number): Pro
     }
   } catch (err) {
     console.error("[savePostAction] Exception:", err);
-    return { success: false, error: "Failed to save post." };
+    return { success: false, error: "Unauthorized or failed to save post." };
   }
 }
 
 export async function deletePostAction(id: number): Promise<GenericResponse> {
   try {
+    await requireAdminAuth();
     if (hasLiveDb && db) {
       await db.delete(schema.posts).where(eq(schema.posts.id, id));
     }
     return { success: true };
   } catch (err) {
     console.error("[deletePostAction] Exception:", err);
-    return { success: false, error: "Failed to delete post." };
+    return { success: false, error: "Unauthorized or failed to delete post." };
   }
 }

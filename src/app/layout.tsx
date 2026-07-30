@@ -37,8 +37,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} ${nunito.variable} ${nunito.className} h-full`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans">
+      <body
+        className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

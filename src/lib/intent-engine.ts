@@ -50,8 +50,6 @@ export function classifyIntent(query: string): IntentMatch {
     }
   }
 
-  // If we found direct keyword hits, confidence is high (0.85 - 0.99)
-  // If no direct hits, default to Website with baseline confidence
   const confidence = maxMatches > 0 ? Math.min(0.75 + maxMatches * 0.1, 0.99) : 0.6;
 
   return {

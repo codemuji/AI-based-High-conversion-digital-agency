@@ -23,14 +23,11 @@ export default function WorkPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#f4fbf6] via-[#e6f7ec] to-[#d8f3e2] -z-20 pointer-events-none" />
         <div className="absolute -top-32 left-1/4 w-[650px] h-[650px] bg-gradient-to-br from-[#16a34a]/35 via-[#22c55e]/30 to-[#4ade80]/25 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
         <div className="absolute -bottom-20 right-10 w-[550px] h-[550px] bg-gradient-to-tl from-[#15803d]/30 via-[#22c55e]/25 to-[#86efac]/25 rounded-full blur-[100px] pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-textured-dot-grid opacity-75 mask-radial-vignette pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-8">
-          {/* Left Column: Editorial Typography & Audited Impact Highlights */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-stone-200/90 shadow-sm text-xs font-mono font-bold text-[var(--foreground)] tracking-wider uppercase">
+          <div className="w-full max-w-4xl mx-auto text-center space-y-8 py-8">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-stone-200/90 shadow-sm text-xs font-mono font-bold text-[var(--foreground)] tracking-wider uppercase mx-auto">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
               <span>PRODUCTION TELEMETRY // AUDITED METRICS</span>
             </div>
@@ -42,23 +39,23 @@ export default function WorkPage() {
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-[var(--muted)] max-w-2xl font-normal leading-relaxed">
+            <p className="text-lg sm:text-xl text-[var(--muted)] max-w-2xl mx-auto font-normal leading-relaxed">
               We replace sluggish, template-bloated websites with lightning-fast, custom Next.js engineering. Explore our verified production case studies across Indian e-commerce, EdTech, healthcare, and B2B logistics.
             </p>
 
             {/* Audited Impact Metric Pills */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl pt-2">
-              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-2">
+              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">+180%</span>
                 <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Fee &amp; Order Lift</span>
                 <span className="text-[11px] text-[var(--muted)]">Apex Fashion &amp; Academy</span>
               </div>
-              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
+              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] block">0.74s</span>
                 <span className="font-mono text-[11px] font-bold text-[var(--accent)] uppercase mt-1 block">Edge Load SLA</span>
                 <span className="text-[11px] text-[var(--muted)]">Core Web Vitals 100/100</span>
               </div>
-              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs col-span-2 sm:col-span-1">
+              <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs col-span-2 sm:col-span-1 text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-emerald-600 block">₹3.2L</span>
                 <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Monthly Savings</span>
                 <span className="text-[11px] text-[var(--muted)]">LogiTrack Express Fleet</span>
@@ -66,7 +63,7 @@ export default function WorkPage() {
             </div>
 
             {/* Pill CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <a
                 href="#work"
                 className="px-8 py-4 rounded-full bg-[var(--accent)] hover:bg-[#15803d] text-white font-display font-bold text-base tracking-wide transition-all shadow-lg hover:shadow-[0_0_25px_rgba(22,163,74,0.35)] hover:-translate-y-0.5"
@@ -157,7 +154,6 @@ export default function WorkPage() {
                 <span className="text-[10px] text-[var(--accent)]">ZERO DOWNTIME</span>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </section>

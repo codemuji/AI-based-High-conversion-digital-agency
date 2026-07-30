@@ -62,13 +62,12 @@ export function CategoryDetailView({ slug }: CategoryDetailViewProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-[#f4fbf6] via-[#e6f7ec] to-[#d8f3e2] -z-20 pointer-events-none" />
         <div className="absolute -top-32 left-1/4 w-[650px] h-[650px] bg-gradient-to-br from-[#16a34a]/35 via-[#22c55e]/30 to-[#4ade80]/25 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
         <div className="absolute -bottom-20 right-10 w-[550px] h-[550px] bg-gradient-to-tl from-[#15803d]/30 via-[#22c55e]/25 to-[#86efac]/25 rounded-full blur-[100px] pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-textured-dot-grid opacity-75 mask-radial-vignette pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="max-w-3xl mx-auto space-y-6">
             {/* Top Monospace Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-stone-200/90 shadow-2xs text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[var(--muted)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-stone-200/90 shadow-2xs text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[var(--muted)] mx-auto">
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
               <span className="text-[var(--foreground)]">{group.columnNumber} // {group.name.toUpperCase()} CATEGORY HUB</span>
               <span className="text-stone-300">•</span>
@@ -84,12 +83,12 @@ export function CategoryDetailView({ slug }: CategoryDetailViewProps) {
             </h1>
 
             {/* Tagline / Subhead */}
-            <p className="text-base sm:text-xl text-[var(--muted)] leading-relaxed font-normal max-w-2xl">
+            <p className="text-base sm:text-xl text-[var(--muted)] leading-relaxed font-normal max-w-2xl mx-auto">
               {group.tagline}. Explore our full lineup of {group.items.length} specialized engineering services below, built specifically for high-growth Indian businesses.
             </p>
 
             {/* Quick Stat Pills */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-xl">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto">
               <div className="p-3.5 rounded-2xl bg-white/90 border border-stone-200/80 shadow-xs">
                 <span className="font-display font-black text-xl sm:text-2xl text-[var(--foreground)] block">
                   {group.items.length} Services
@@ -194,8 +193,12 @@ export function CategoryDetailView({ slug }: CategoryDetailViewProps) {
               <div className="mt-6 pt-5 border-t border-[var(--surface-border)] space-y-4">
                 <div className="flex items-center justify-between text-xs font-mono">
                   <div>
-                    <span className="text-[10px] text-stone-500 block uppercase font-bold">Timeline</span>
-                    <span className="font-semibold text-[var(--foreground)]">{item.timeline}</span>
+                    <span className="text-[10px] text-stone-500 block uppercase font-bold">
+                      {item.startingPrice ? "Starts From" : "Timeline"}
+                    </span>
+                    <span className="font-bold text-[var(--foreground)]">
+                      {item.startingPrice || item.timeline}
+                    </span>
                   </div>
                   <div className="text-right">
                     <span className="text-[10px] text-stone-500 block uppercase font-bold">Performance SLA</span>

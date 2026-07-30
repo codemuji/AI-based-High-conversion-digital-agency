@@ -24,48 +24,60 @@ export function AboutSection() {
           </h2>
 
           <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-            Too many Indian business owners struggle with bloated agencies, confusing technical jargon, hidden monthly plugin fees, and websites that crash or take 5+ seconds to load. At <strong className="text-[var(--foreground)] font-semibold">India Web Designs</strong>, our mission is different: we act as your dedicated, high-speed engineering partners.
+            Established in 2012 from our head office in Guwahati, Assam, <strong className="text-[var(--foreground)] font-semibold">India Web Designs</strong> (a brand managed by WeBotApp Pvt. Ltd.) is a pioneer digital agency in North-East India. We pursue relationships built on transparency, integrity, and strong after-sales support.
           </p>
 
           <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-            Whether you are launching a new online brand, expanding a multi-store retail operation, or automating daily paperwork and WhatsApp inquiries, we custom-engineer clean, zero-bloat digital platforms that load in under 0.8 seconds and belong 100% to you.
+            With 3,100+ completed projects and footprints across 29 countries (including USA, UK, UAE, Australia, and Malaysia), we offer 360-degree digital solutions: website design, web portals, digital marketing, mobile app development, software ERP systems, graphic design, content writing, and business consulting.
           </p>
 
           {/* Core Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-[var(--surface-border)]">
-            <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-[var(--surface-border)]">
+            <div className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-xs">
               <span className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] block">
-                100%
+                3,100+
               </span>
-              <span className="font-display text-[11px] font-bold text-[var(--accent)] uppercase tracking-wider block mt-1">
-                In-House Code
+              <span className="font-display text-[10px] font-bold text-[var(--accent)] uppercase tracking-wider block mt-1">
+                Projects Completed
               </span>
-              <span className="text-[11px] text-[var(--muted)] font-normal mt-1 block leading-tight">
-                Zero outsourced bloat or generic builders
+              <span className="text-[10px] text-[var(--muted)] font-normal mt-0.5 block leading-tight">
+                Global delivery SLA
               </span>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-xs">
               <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">
-                2 Hours
+                10+ Years
               </span>
-              <span className="font-display text-[11px] font-bold text-[var(--foreground)] uppercase tracking-wider block mt-1">
-                Scoping SLA
+              <span className="font-display text-[10px] font-bold text-[var(--foreground)] uppercase tracking-wider block mt-1">
+                Industry Excellence
               </span>
-              <span className="text-[11px] text-[var(--muted)] font-normal mt-1 block leading-tight">
-                Guaranteed window for clear roadmaps
+              <span className="text-[10px] text-[var(--muted)] font-normal mt-0.5 block leading-tight">
+                Pioneering since 2012
               </span>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-xs col-span-2 sm:col-span-1">
+            <div className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-xs">
               <span className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] block">
-                0%
+                29
               </span>
-              <span className="font-display text-[11px] font-bold text-[var(--accent)] uppercase tracking-wider block mt-1">
-                Commission
+              <span className="font-display text-[10px] font-bold text-emerald-600 uppercase tracking-wider block mt-1">
+                Countries Served
               </span>
-              <span className="text-[11px] text-[var(--muted)] font-normal mt-1 block leading-tight">
-                Zero recurring platform cuts on sales
+              <span className="text-[10px] text-[var(--muted)] font-normal mt-0.5 block leading-tight">
+                Worldwide footprint
+              </span>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-xs">
+              <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">
+                1,150+
+              </span>
+              <span className="font-display text-[10px] font-bold text-[var(--foreground)] uppercase tracking-wider block mt-1">
+                Positive Reviews
+              </span>
+              <span className="text-[10px] text-[var(--muted)] font-normal mt-0.5 block leading-tight">
+                90%+ retention rate
               </span>
             </div>
           </div>

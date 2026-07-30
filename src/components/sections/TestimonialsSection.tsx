@@ -17,34 +17,67 @@ const TESTIMONIALS: TestimonialCard[] = [
   {
     id: "t1",
     quote:
-      "Before India Web Designs, our staff spent 5 hours daily manually verifying WhatsApp screenshots for fee installments. They engineered a custom LMS portal and automated GST invoicing in just 3 weeks. Our admin overhead dropped 80% instantly.",
-    author: "Rajesh Kumar Sharma",
-    role: "Director",
-    company: "Apex Vocational & Academy",
-    industry: "EdTech & Coaching",
-    highlightMetric: "+180% Conversions",
+      "I opted for services from many companies, but found they never delivered 10% of their commitment or answered calls after payment. Then I got in touch with India Web Designs—they delivered more than their commitment at a very low price. Highly recommended for Web Design & SEO!",
+    author: "Dhruba Jyoti Das",
+    role: "Business Owner",
+    company: "Dhruba Enterprises",
+    industry: "Website Design & SEO",
+    highlightMetric: "90%+ Retention",
     rating: "★★★★★ 5.0",
   },
   {
     id: "t2",
     quote:
-      "We were paying heavy retainers for bloated plugins that crashed every time we ran a festival sale. The custom high-speed storefront they built loads sub-second, and our repeat purchase rate jumped 42% in the first two months alone.",
-    author: "Ananya Deshmukh",
-    role: "Founder & CEO",
-    company: "Nectar Organics D2C",
-    industry: "E-Commerce",
-    highlightMetric: "0.7s Load Speed",
+      "Awesome team! The best thing I liked about India Web Designs is that they provide free technical guidance to help customers progress in their business. I am a regular user and have recommended multiple friends to get their websites developed here.",
+    author: "Assam House Shifting Team",
+    role: "Operations Head",
+    company: "Assam House Shifting",
+    industry: "Logistics & Services",
+    highlightMetric: "Superb Guidance",
     rating: "★★★★★ 5.0",
   },
   {
     id: "t3",
     quote:
-      "Our previous agency built a clunky CRM that took 20 seconds to load patient reports across our clinics. India Web Designs replaced it with a lightning-fast cloud dashboard. Our doctors love it, and server bills fell by 65%.",
-    author: "Dr. Vikram Singh Mehta",
-    role: "Operations Head",
-    company: "MediPulse Diagnostic Network",
-    industry: "Healthcare",
-    highlightMetric: "65% Cost Saved",
+      "Highly impressed with the service received from India Web Designs. Expecting to get much more work done. The whole engineering team is exceptionally good—it is a complete, reliable platform for all your digital solutions.",
+    author: "Propulsion Education Team",
+    role: "Founder",
+    company: "Propulsion Education",
+    industry: "EdTech & Learning",
+    highlightMetric: "Full Digital Platform",
+    rating: "★★★★★ 5.0",
+  },
+  {
+    id: "t4",
+    quote:
+      "I converted my offline retail store into an online ecommerce platform by getting a website designed by India Web Designs. We get a great volume of sales through their online promotion and social media management.",
+    author: "Rohit Bhadra",
+    role: "Store Owner",
+    company: "Bhadra Retailers",
+    industry: "E-Commerce & Retail",
+    highlightMetric: "+180% Online Sales",
+    rating: "★★★★★ 5.0",
+  },
+  {
+    id: "t5",
+    quote:
+      "Approached them for my ecommerce website. Got great guidance on advanced design & custom features tailored to my business. Their service and support after completion of the website is extremely helpful. Worth every rupee!",
+    author: "Nabanitya Kalita",
+    role: "Founder",
+    company: "Kalita E-Store",
+    industry: "Ecommerce Development",
+    highlightMetric: "Strong After-Sales",
+    rating: "★★★★★ 5.0",
+  },
+  {
+    id: "t6",
+    quote:
+      "They designed my website which came out looking very good. The team is very prompt and responded to all my technical issues and requests in no time.",
+    author: "Simran Kaur",
+    role: "Business Lead",
+    company: "Kaur Studio",
+    industry: "Web Design & Support",
+    highlightMetric: "Instant Technical Support",
     rating: "★★★★★ 5.0",
   },
 ];
@@ -55,13 +88,13 @@ export function TestimonialsSection() {
       {/* Centered Section Header */}
       <div className="max-w-2xl mx-auto mb-10 text-center border-b border-[var(--surface-border)] pb-6">
         <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1.5">
-          Verified Technical Proof
+          Verified Client Telemetry
         </span>
         <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-[var(--foreground)] tracking-tight leading-snug">
-          Testimonials
+          1,150+ Happy Business Clients
         </h2>
         <p className="mt-2 text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
-          Don&apos;t take our word for it. Here is what directors, founders, and operations heads experience after deploying our custom engineering workflows.
+          Here is what business owners, founders, and directors across 29 countries experience working with India Web Designs.
         </p>
       </div>
 

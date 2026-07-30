@@ -47,6 +47,28 @@
   background-size: 20px 20px;
 }
 
+/* Crisp Textured Dotted Grid Matrix matching technical Blueprint UI */
+.bg-textured-dot-grid {
+  background-image: radial-gradient(circle, rgba(28, 25, 23, 0.22) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-dark-textured-dots {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Radial Vignette Fade Mask for background textures */
+.mask-radial-vignette {
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 45%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 45%, transparent 95%);
+}
+
+.mask-radial {
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
+
 
 *:focus-visible:not(.focus\:outline-none):not(.focus-visible\:outline-none) {
   outline: 2px solid var(--accent);

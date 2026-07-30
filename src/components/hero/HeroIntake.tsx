@@ -24,62 +24,62 @@ const SUGGESTIONS: Array<{
   sampleQuery: string;
   icon: React.ReactNode;
 }> = [
-    {
-      category: "Website",
-      title: "Get More Customers Online",
-      description: "A fast, professional website that builds trust and turns daily visitors into genuine customer inquiries.",
-      sampleQuery: "I need a professional website to attract new customers and increase daily sales",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
-    },
-    {
-      category: "App",
-      title: "Mobile App for Regulars",
-      description: "An easy mobile app so your loyal customers can order, book, and connect right from their phone.",
-      sampleQuery: "I want an easy mobile app so our regular clients can order anytime from their phone",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      category: "Custom Software",
-      title: "Stop Billing & Stock Headaches",
-      description: "Simple software to replace manual registers and messy Excel sheets so your business runs smoothly.",
-      sampleQuery: "We need simple software to track our billing, stock, and daily operations without headaches",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-    },
-    {
-      category: "Digital Marketing",
-      title: "Get Consistent Local Leads",
-      description: "Targeted marketing that helps ideal customers in your city find your business on Google and call you.",
-      sampleQuery: "I want local customers to easily find our business on Google and send inquiries",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
-    },
-    {
-      category: "AI Automation",
-      title: "Answer Customers 24/7",
-      description: "A friendly WhatsApp assistant that instantly answers pricing and availability questions when you're busy or asleep.",
-      sampleQuery: "I want our WhatsApp to automatically answer customer questions and capture leads 24/7",
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-      ),
-    },
-  ];
+  {
+    category: "Website",
+    title: "Website for Business Growth",
+    description: "A fast, professional website that builds trust and turns daily visitors into genuine customer inquiries.",
+    sampleQuery: "I need a professional website to attract new customers and increase daily sales",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+    ),
+  },
+  {
+    category: "Digital Marketing",
+    title: "Digital Marketing & SEO",
+    description: "Targeted marketing that helps ideal customers in your city find your business on Google and call you.",
+    sampleQuery: "I want local customers to easily find our business on Google and send inquiries",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+  },
+  {
+    category: "Custom Software",
+    title: "Custom Software for Operations",
+    description: "Simple software to replace manual registers and messy Excel sheets so your business runs smoothly.",
+    sampleQuery: "We need simple software to track our billing, stock, and daily operations without headaches",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
+  {
+    category: "App",
+    title: "Mobile App for Customers",
+    description: "An easy mobile app so your loyal customers can order, book, and connect right from their phone.",
+    sampleQuery: "I want an easy mobile app so our regular clients can order anytime from their phone",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+  {
+    category: "AI Automation",
+    title: "AI Automation & 24/7 Bots",
+    description: "A friendly WhatsApp assistant that instantly answers pricing and availability questions when you're busy or asleep.",
+    sampleQuery: "I want our WhatsApp to automatically answer customer questions and capture leads 24/7",
+    icon: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+      </svg>
+    ),
+  },
+];
 
 export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
   const [query, setQuery] = useState("");
@@ -187,9 +187,11 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
   };
 
   return (
-    <section ref={containerRef} id="hero" className="relative py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center overflow-hidden">
-      {/* Background signature motif */}
-      <div className="absolute inset-0 bg-grid-pattern -z-10 opacity-60 mask-radial" />
+    <section ref={containerRef} id="hero" className="relative w-full py-14 md:py-24 border-b border-[var(--surface-border)] overflow-hidden isolate">
+      {/* Full-Bleed Textured Dotted Grid Matrix Motif (matching reference image) */}
+      <div className="absolute inset-0 bg-textured-dot-grid -z-10 opacity-85 mask-radial-vignette pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
       {/* Top Pill Badge (mirrors image top pill) */}
       <div ref={badgesRef} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--surface-border)] shadow-xs mb-6 text-xs sm:text-sm font-mono uppercase tracking-wider text-[var(--muted)]">
@@ -305,6 +307,7 @@ export function HeroIntake({ onStartOnboarding }: HeroIntakeProps) {
           </span>
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }

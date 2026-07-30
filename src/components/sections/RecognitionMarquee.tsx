@@ -1,75 +1,38 @@
 "use client";
 
 import React from "react";
-import {
-  SiGooglecloud,
-  SiMeta,
-  SiShopify,
-  SiRazorpay,
-} from "react-icons/si";
-import { FaAws } from "react-icons/fa6";
 
 interface RecognitionItem {
   name: string;
   badge: string;
-  icon: React.ReactNode;
+  logoUrl: string;
 }
 
 const RECOGNITION_LOGOS: RecognitionItem[] = [
   {
-    name: "Startup India",
-    badge: "Govt. of India Recognized",
-    icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 text-[#16a34a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        <circle cx="12" cy="12" r="2" fill="currentColor" />
-      </svg>
-    ),
+    name: "DPIIT - Startup India",
+    badge: "Govt. of India DPIIT Recognized",
+    logoUrl: "https://www.startupindia.gov.in/content/dam/invest-india/newhomepage/DPIIT-header.png",
   },
   {
-    name: "Google Cloud",
-    badge: "Verified Partner Agency",
-    icon: <SiGooglecloud className="w-7 h-7 sm:w-9 sm:h-9 text-[#4285F4]" />,
+    name: "Startup Assam",
+    badge: "Govt. of Assam Recognized",
+    logoUrl: "https://startup.assam.gov.in/wp-content/themes/startupassam/images/logo.png",
   },
   {
-    name: "MSME Udyam",
-    badge: "Registered Govt. Enterprise",
-    icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 text-[#d97706]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11a2 2 0 100-4 2 2 0 000 4z" />
-      </svg>
-    ),
+    name: "Ministry of MSME",
+    badge: "Ministry of MSME Govt. of India",
+    logoUrl: "https://www.msme.gov.in/static/uploads/2025/06/3b95c999bc86195fb00f36a0ce88b19d.jpg",
   },
   {
-    name: "Meta Business",
-    badge: "Official WhatsApp & Ads Partner",
-    icon: <SiMeta className="w-7 h-7 sm:w-9 sm:h-9 text-[#0064E0]" />,
+    name: "MSME India",
+    badge: "Registered MSME Enterprise",
+    logoUrl: "https://www.msme.gov.in/static/uploads/2025/06/cb50214f70ce7fdc906077eb3e254119.png",
   },
   {
-    name: "Shopify Partner",
-    badge: "Verified E-Commerce Experts",
-    icon: <SiShopify className="w-7 h-7 sm:w-9 sm:h-9 text-[#95BF47]" />,
-  },
-  {
-    name: "AWS Activate",
-    badge: "Cloud Architecture Partner",
-    icon: <FaAws className="w-7 h-7 sm:w-9 sm:h-9 text-[#FF9900]" />,
-  },
-  {
-    name: "Razorpay",
-    badge: "Payment Growth Partner",
-    icon: <SiRazorpay className="w-7 h-7 sm:w-9 sm:h-9 text-[#0284c7]" />,
-  },
-  {
-    name: "Make in India",
-    badge: "National Digital Initiative",
-    icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 text-[#dc2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    name: "IIM CIP - NEEDP",
+    badge: "IIM Calcutta Innovation Park",
+    logoUrl: "https://iimcip.com/needp/public/assets/frontend/images/needp2022.jpg",
   },
 ];
 
@@ -78,10 +41,10 @@ export function RecognitionMarquee() {
     <section className="relative py-4 sm:py-5 border-t border-b border-[var(--surface-border)] bg-[var(--surface)]/40 overflow-hidden select-none">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-2 sm:mb-3">
         <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[var(--accent-subtle)] border border-[var(--accent)]/30 text-[10px] font-display font-bold tracking-wider uppercase text-[var(--accent)] mb-1">
-          <span>Official Accreditations &amp; Partner Ecosystem</span>
+          <span>Official Government Accreditations &amp; Institutional Recognition</span>
         </div>
         <h2 className="text-[11px] sm:text-xs font-display font-bold uppercase tracking-wider text-[var(--muted)]">
-          Recognized by Government Initiatives &amp; Trusted by Leading Digital Platforms Across India
+          Recognized by Government Initiatives &amp; Academic Innovation Parks
         </h2>
       </div>
 
@@ -91,15 +54,23 @@ export function RecognitionMarquee() {
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-10" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-10" />
 
-        {/* Infinite Scrolling Track (Pure Logo Marks Only) */}
-        <div className="animate-marquee items-center gap-10 sm:gap-16 py-1">
-          {[...RECOGNITION_LOGOS, ...RECOGNITION_LOGOS].map((item, index) => (
+        {/* Infinite Scrolling Track */}
+        <div className="animate-marquee items-center gap-8 sm:gap-14 py-1">
+          {[...RECOGNITION_LOGOS, ...RECOGNITION_LOGOS, ...RECOGNITION_LOGOS].map((item, index) => (
             <div
               key={`${item.name}-${index}`}
               title={`${item.name} • ${item.badge}`}
-              className="group flex items-center justify-center p-2 sm:p-2.5 rounded-xl hover:bg-[var(--surface)]/80 hover:scale-105 transition-all duration-300 shrink-0 cursor-default opacity-85 hover:opacity-100 drop-shadow-sm"
+              className="group flex items-center justify-center p-2 rounded-xl hover:bg-[var(--surface)]/80 hover:scale-105 transition-all duration-300 shrink-0 cursor-default opacity-90 hover:opacity-100 drop-shadow-xs"
             >
-              {item.icon}
+              <div className="h-8 sm:h-10 px-3 flex items-center justify-center bg-white/90 rounded-lg p-1.5 border border-stone-200/80 shadow-xs">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.logoUrl}
+                  alt={item.name}
+                  className="max-h-6 sm:max-h-8 w-auto object-contain filter hover:filter-none transition-all duration-300"
+                  loading="lazy"
+                />
+              </div>
             </div>
           ))}
         </div>

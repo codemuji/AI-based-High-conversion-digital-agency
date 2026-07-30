@@ -28,6 +28,7 @@ const SERVICE_HERO_IMAGES: Record<string, string> = {
   "bulk-sms-marketing-services-in-india": "/images/Bulk_SMS_Broadcasting_&_Marketing.png",
   "whatsapp-marketing-services-in-inida": "/images/Whatsapp_Messaging_&_Bots.png",
   "ads": "/images/Google_Adwords_(PPC_Ads).png",
+  "review-services-in-india": "/images/Reviews_&_Reputation_Management.png",
 
   // Mobile Apps
   "ecommerce-mobile-app-development-services-in-india": "/images/Ecommerce_Mobile_App_Development.png",
@@ -35,12 +36,16 @@ const SERVICE_HERO_IMAGES: Record<string, string> = {
   "video-streaming-ott-app-development-services-in-india": "/images/Video_Streaming_App_(OTT)_Development.png",
   "online-food-delivery-mobile-app-development-service-in-india": "/images/Food_Ordering_Mobile_App_Development.png",
   "online-consultation-mobile-app": "/images/Consultation_&_Booking_Apps.png",
+  "marketplace-mobile-app-development": "/images/Marketplace_&_Services_App.png",
 
   // Web Portals
   "online-learning-portal-development-service-in-india": "/images/Online_Learning_Web_Portal.png",
   "online-matrimony-website-development-service-in-india": "/images/Matrimony_Web_Portal.png",
   "Free-Classifieds-Portal": "/images/Free_Classifieds_Portal.png",
   "online-food-delivery-web-portal-development-service-in-india": "/images/Food_Ordering_Mobile_App_Development.png",
+  "Forum": "/images/Discussion_Forum_&_Portal.png",
+  "Blogs": "/images/Blogging_&_Content_Portal.png",
+  "game-result-display-web-development": "/images/Game_&_Result_Display_Portal.png",
 
   // Softwares
   "school-management-online-software-in-india": "/images/school-management-software.jpg",
@@ -48,6 +53,8 @@ const SERVICE_HERO_IMAGES: Record<string, string> = {
   "vocational-school-management-online-software-in-india": "/images/Vocational_Institute_Management.png",
   "billing-accounting-software-in-india": "/images/Billing_&_Client_Management_(CRM).png",
   "Restaurant-Management": "/images/Restaurant_Management_(POS_&_KOT).png",
+  "POS-and-Billing": "/images/Retail_POS_and_Billing_Software.png",
+  "pharmaceutical-drug-distributor-reporting-system": "/images/Pharmaceutical_Reporting_System.png",
 
   // Graphic Design
   "logo-design-services-in-india": "/images/Logo_&_Brand_Identity_Design.png",
@@ -55,6 +62,9 @@ const SERVICE_HERO_IMAGES: Record<string, string> = {
   "brochure-design-services-in-india": "/images/Brochure_Design.png",
   "poster-design-services-in-india": "/images/Poster_&_Banner_Design.png",
   "catalogue-design": "/images/Digital_Catalogue_Design.png",
+  "menu-design": "/images/Menu_Design.png",
+  "postcard-design": "/images/Postcard_Design.png",
+  "invitation-design": "/images/Invitation_Design.png",
 };
 
 const SERVICE_HERO_TITLES: Record<string, { prefix: string }> = {
@@ -175,8 +185,7 @@ export function ServiceDetailView({ id }: ServiceDetailViewProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-[#f4fbf6] via-[#e6f7ec] to-[#d8f3e2] -z-20 pointer-events-none" />
         <div className="absolute -top-32 left-1/4 w-[650px] h-[650px] bg-gradient-to-br from-[#16a34a]/35 via-[#22c55e]/30 to-[#4ade80]/25 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse" />
         <div className="absolute -bottom-20 right-10 w-[550px] h-[550px] bg-gradient-to-tl from-[#15803d]/30 via-[#22c55e]/25 to-[#86efac]/25 rounded-full blur-[100px] pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-textured-dot-grid opacity-75 mask-radial-vignette pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">

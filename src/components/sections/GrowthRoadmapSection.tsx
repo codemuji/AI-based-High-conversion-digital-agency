@@ -61,24 +61,18 @@ export function GrowthRoadmapSection({ onStartOnboarding }: GrowthRoadmapSection
       id="growth-roadmap"
       className="py-12 sm:py-16 border-t border-[var(--surface-border)] overflow-hidden relative w-full font-sans text-sm"
     >
-      {/* Editorial Architectural Split Header inside standard site container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[var(--surface-border)] pb-6">
-          <div className="max-w-xl">
-            <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block mb-1.5">
-              Scalable Engineering Architecture
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
-              Engineered roadmaps <br className="hidden sm:inline" />
-              built for your exact scale.
-            </h2>
-          </div>
-
-          <div className="max-w-sm lg:text-right">
-            <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-              Every roadmap card features native View Transitions. Click any card to expand directly inside its detailed breakdown.
-            </p>
-          </div>
+      {/* Centered Section Header inside standard site container */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+        <div className="max-w-2xl mx-auto border-b border-[var(--surface-border)] pb-6 space-y-2">
+          <span className="text-[11px] font-display font-bold uppercase tracking-wider text-[var(--accent)] block">
+            Real-World Business Use Cases
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
+            Proven use cases built for your exact scale.
+          </h2>
+          <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
+            Every roadmap card features native View Transitions. Click any card to expand directly inside its detailed breakdown.
+          </p>
         </div>
 
         {/* Interactive Scale Switcher Bar (Micro / Medium / High) */}
@@ -109,12 +103,8 @@ export function GrowthRoadmapSection({ onStartOnboarding }: GrowthRoadmapSection
           </div>
         </div>
 
-        {/* Clear Visual Indication Bar: "↔ Drag / Swipe to Explore" + Left/Right Arrow Controls */}
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--surface)] border border-[var(--surface-border)] text-[11px] font-display font-bold text-[var(--foreground)] shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
-            <span>↔ SWIPE / DRAG OR USE ARROWS TO EXPLORE ALL {activeTab.cards.length} ROADMAPS</span>
-          </div>
+        {/* Left/Right Arrow Controls */}
+        <div className="mt-6 flex items-center justify-end">
 
           <div className="flex items-center gap-2 shrink-0">
             <button

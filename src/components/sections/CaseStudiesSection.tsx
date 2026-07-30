@@ -37,25 +37,20 @@ export function CaseStudiesSection() {
       <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
       <div className="absolute -top-32 left-1/3 w-96 h-96 bg-[var(--accent)]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Architectural Split Header */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-[var(--surface-border)] pb-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs mb-2 text-[11px] font-display font-bold text-[var(--foreground)] tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
-            <span>Verified Client Work</span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
-            Real business results <br className="hidden sm:inline" />
-            that help you grow.
-          </h2>
+      {/* Centered Section Header */}
+      <div className="relative z-10 max-w-2xl mx-auto text-center mb-10 border-b border-[var(--surface-border)] pb-6 space-y-2">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs text-[11px] font-display font-bold text-[var(--foreground)] tracking-wider uppercase mx-auto">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
+          <span>Verified Client Work</span>
         </div>
-        <div className="max-w-md md:text-right space-y-1.5">
-          <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-            See how our fast, reliable digital tools directly help high-growth Indian businesses increase sales, save time, and eliminate operational bloat every day.
-          </p>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-display font-bold text-[var(--accent)]">
-            <span>✓ All Metrics Audited &amp; Production Verified</span>
-          </div>
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--foreground)] tracking-tight leading-snug">
+          Real business results that help you grow.
+        </h2>
+        <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
+          See how our fast, reliable digital tools directly help high-growth Indian businesses increase sales, save time, and eliminate operational bloat every day.
+        </p>
+        <div className="inline-flex items-center gap-1.5 text-[11px] font-display font-bold text-[var(--accent)] justify-center">
+          <span>✓ All Metrics Audited &amp; Production Verified</span>
         </div>
       </div>
 

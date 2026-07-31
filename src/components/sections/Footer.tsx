@@ -22,8 +22,8 @@ export function Footer({ onStartOnboarding }: FooterProps) {
         {/* TOP LEVEL: ARCHITECTURAL MEGA GRID (5 COLUMNS) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10 border-b border-stone-800/80">
           
-          {/* COLUMN 1: BRAND ARCHITECTURE & DIRECT HOTLINE (Span 4 on Large) */}
-          <div className="lg:col-span-4 space-y-6 md:pr-6">
+          {/* COLUMN 1: BRAND ARCHITECTURE & DIRECT HOTLINE (Span 3 on Large) */}
+          <div className="lg:col-span-3 space-y-6 md:pr-4">
             <div className="flex items-center gap-3">
               <Image
                 src="/images/logo.png"
@@ -104,6 +104,60 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 </svg>
               </button>
             </div>
+          </div>
+
+          {/* COLUMN 2: INFORMATION (Span 2 on Large) */}
+          <div className="lg:col-span-2 space-y-4">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-[#4ade80] block pb-2 border-b border-stone-800/60">
+              Information
+            </span>
+            <ul className="space-y-2.5 font-display text-xs">
+              <li>
+                <Link href="/about" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/vision" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Vision &amp; Mission
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Our Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/payment-methods" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Payment Methods
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-conditions" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Terms &amp; Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund-cancellation" className="text-stone-400 hover:text-white transition-colors block py-0.5">
+                  Refund Policy
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* COLUMN 2: 01 // WEB DESIGN & STORES (Span 2 on Large) */}

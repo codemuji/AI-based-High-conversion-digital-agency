@@ -133,7 +133,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
 
                 {/* Email */}
                 <a
-                  href="mailto:hello@codemuji.com"
+                  href="mailto:info@indiawebdesigns.in"
                   className="group flex items-start gap-3.5 p-3.5 rounded-xl bg-stone-900/80 border border-stone-800 hover:border-[#4ade80] transition-all"
                 >
                   <div className="w-9 h-9 rounded-lg bg-[#4ade80]/15 text-[#4ade80] flex items-center justify-center shrink-0 border border-[#4ade80]/30 group-hover:scale-105 transition-transform">
@@ -146,7 +146,7 @@ export function ContactSection({ onStartOnboarding }: ContactSectionProps) {
                       Specifications &amp; RFPs
                     </span>
                     <strong className="text-sm font-bold text-white group-hover:text-[#4ade80] transition-colors">
-                      hello@codemuji.com
+                      info@indiawebdesigns.in
                     </strong>
                   </div>
                 </a>

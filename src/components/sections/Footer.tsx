@@ -78,8 +78,8 @@ export function Footer({ onStartOnboarding }: FooterProps) {
                 </span>
                 <div>
                   <span className="text-stone-500 block text-[10px] uppercase font-bold">RFP &amp; Specifications</span>
-                  <a href="mailto:hello@codemuji.com" className="hover:text-[#4ade80] font-semibold transition-colors">
-                    hello@codemuji.com
+                  <a href="mailto:info@indiawebdesigns.in" className="hover:text-[#4ade80] font-semibold transition-colors">
+                    info@indiawebdesigns.in
                   </a>
                 </div>
               </div>
@@ -321,11 +321,6 @@ export function Footer({ onStartOnboarding }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-display text-stone-500">
           <div>
             &copy; {new Date().getFullYear()} India Web Designs. All rights reserved.
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span>System Status:</span>
-            <span className="text-[#4ade80] font-semibold">Operational (99.99% Uptime)</span>
           </div>
 
           <div className="text-center sm:text-right text-stone-400">

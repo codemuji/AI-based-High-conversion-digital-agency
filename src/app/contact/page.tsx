@@ -7,7 +7,7 @@ import { Footer } from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Contact Us | India Web Designs Headquarters & Direct Hotline",
-  description: "Connect directly with senior full-stack architects at India Web Designs in Guwahati, Assam. Phone: +91 70021 60093, Email: hello@codemuji.com.",
+  description: "Connect directly with senior full-stack architects at India Web Designs in Guwahati, Assam. Phone: +91 70021 60093, Email: info@indiawebdesigns.in.",
 };
 
 export default function ContactPage() {
@@ -107,8 +107,8 @@ export default function ContactPage() {
               <h3 className="font-display font-bold text-lg text-[var(--foreground)]">Email Support</h3>
               <p className="text-xs text-[var(--muted)] leading-relaxed font-mono">
                 Official RFP &amp; Specs:<br />
-                <a href="mailto:hello@codemuji.com" className="text-[var(--accent)] font-bold hover:underline">
-                  hello@codemuji.com
+                <a href="mailto:info@indiawebdesigns.in" className="text-[var(--accent)] font-bold hover:underline">
+                  info@indiawebdesigns.in
                 </a>
               </p>
             </div>

@@ -195,7 +195,7 @@ export default async function PublicBlogIndexPage({
                     </h2>
 
                     <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed line-clamp-3">
-                      {post.excerpt}
+                      {(post.excerpt || "").replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ")}
                     </p>
                   </div>
                 </div>

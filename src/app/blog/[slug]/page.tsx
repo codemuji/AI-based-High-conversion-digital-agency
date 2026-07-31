@@ -69,10 +69,10 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           {/* Article Text Content */}
           <div className="prose prose-stone max-w-none text-base sm:text-lg leading-relaxed text-[var(--foreground)] space-y-6 font-sans">
-            {post.content && (post.content.includes("<p>") || post.content.includes("<h3>") || post.content.includes("<div>")) ? (
+            {post.content && post.content.includes("<") ? (
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             ) : (
-              post.content.split("\n\n").map((paragraph, idx) => {
+              (post.content || "").split("\n\n").map((paragraph, idx) => {
                 if (paragraph.startsWith("### ")) {
                   return (
                     <h3 key={idx} className="font-display font-bold text-2xl text-[var(--foreground)] pt-4">

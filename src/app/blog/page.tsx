@@ -168,17 +168,29 @@ export default async function PublicBlogIndexPage({
                 className="group rounded-3xl bg-[var(--surface)] border border-[var(--surface-border)] hover:border-[var(--accent)]/60 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  {/* Cover Image */}
-                  <div className="relative w-full h-48 sm:h-56 bg-stone-100 overflow-hidden">
-                    <Image
-                      src={post.coverImage || "/images/static_website.png"}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-white font-mono text-[10px] font-bold uppercase tracking-wider">
-                      {post.category}
+                  {/* Professional Placeholder Header */}
+                  <div className="relative w-full h-48 sm:h-52 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-950 p-6 flex flex-col justify-between overflow-hidden group-hover:from-stone-900 group-hover:via-emerald-950/40 group-hover:to-stone-900 transition-colors duration-500 border-b border-stone-800/50">
+                    {/* Decorative Grid & Accent Glow */}
+                    <div className="absolute inset-0 bg-textured-dot-grid opacity-20 pointer-events-none" />
+                    <div className="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-[var(--accent)]/10 blur-2xl group-hover:bg-[var(--accent)]/20 transition-all duration-500 pointer-events-none" />
+
+                    {/* Top Row: Category Badge & Journal Icon */}
+                    <div className="relative z-10 flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white font-mono text-[10px] font-bold uppercase tracking-wider shadow-2xs">
+                        {post.category || "Web Design"}
+                      </span>
+                      <span className="w-8 h-8 rounded-full bg-stone-800/80 border border-stone-700/80 flex items-center justify-center text-stone-400 group-hover:text-emerald-400 group-hover:border-emerald-500/40 transition-colors shadow-2xs">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" />
+                        </svg>
+                      </span>
+                    </div>
+
+                    {/* Bottom Row: Brand SLA Label */}
+                    <div className="relative z-10">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-400 font-bold block">
+                        INDIA WEB DESIGNS • JOURNAL
+                      </span>
                     </div>
                   </div>
 

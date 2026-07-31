@@ -69,27 +69,31 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           {/* Article Text Content */}
           <div className="prose prose-stone max-w-none text-base sm:text-lg leading-relaxed text-[var(--foreground)] space-y-6 font-sans">
-            {post.content.split("\n\n").map((paragraph, idx) => {
-              if (paragraph.startsWith("### ")) {
+            {post.content && (post.content.includes("<p>") || post.content.includes("<h3>") || post.content.includes("<div>")) ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            ) : (
+              post.content.split("\n\n").map((paragraph, idx) => {
+                if (paragraph.startsWith("### ")) {
+                  return (
+                    <h3 key={idx} className="font-display font-bold text-2xl text-[var(--foreground)] pt-4">
+                      {paragraph.replace("### ", "")}
+                    </h3>
+                  );
+                }
+                if (paragraph.startsWith("## ")) {
+                  return (
+                    <h2 key={idx} className="font-display font-extrabold text-3xl text-[var(--foreground)] pt-6 pb-2 border-b border-stone-200">
+                      {paragraph.replace("## ", "")}
+                    </h2>
+                  );
+                }
                 return (
-                  <h3 key={idx} className="font-display font-bold text-2xl text-[var(--foreground)] pt-4">
-                    {paragraph.replace("### ", "")}
-                  </h3>
+                  <p key={idx} className="text-stone-700 leading-relaxed font-normal">
+                    {paragraph}
+                  </p>
                 );
-              }
-              if (paragraph.startsWith("## ")) {
-                return (
-                  <h2 key={idx} className="font-display font-extrabold text-3xl text-[var(--foreground)] pt-6 pb-2 border-b border-stone-200">
-                    {paragraph.replace("## ", "")}
-                  </h2>
-                );
-              }
-              return (
-                <p key={idx} className="text-stone-700 leading-relaxed font-normal">
-                  {paragraph}
-                </p>
-              );
-            })}
+              })
+            )}
           </div>
 
           {/* Call to Action Box inside Article */}

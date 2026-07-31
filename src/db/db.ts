@@ -40,32 +40,55 @@ let mockPostId = 1;
 
 // Seed initial sample blog posts into mock store if empty
 if (mockPostsStore.size === 0) {
-  const samplePosts: schema.NewPost[] = [
-    {
-      title: "Why Custom Next.js Engineering Beats Outdated WordPress Themes in 2026",
-      slug: "why-custom-nextjs-beats-wordpress-in-2026",
-      excerpt: "Discover how custom Next.js web application architecture delivers sub-0.8s edge load speeds, 100/100 Core Web Vitals, and immune security compared to vulnerable WordPress plugins.",
-      content: `In 2026, page load speed and security dictate digital revenue. Indian businesses relying on bloated WordPress themes face slow 3+ second page loads, plugin vulnerabilities, and costly monthly plugin maintenance fees.\n\n### 1. Sub-0.8s Edge Performance\nNext.js leverages Server Components and global Edge CDN distribution to render pages instantly in under 800 milliseconds worldwide.\n\n### 2. Zero Plugin Vulnerability\nCustom React & Next.js architectures eliminate third-party PHP plugin exploits and SQL injection risks completely.\n\n### 3. Superior Google SEO Rankings\nGoogle prioritizes sites with top-tier Core Web Vitals. Fast Next.js websites rank significantly higher for competitive local and national keywords.`,
-      coverImage: "/images/static_website.png",
-      category: "Web Design",
-      author: "India Web Designs Architecture Team",
-      published: true,
-      publishedAt: new Date("2026-07-15T10:00:00Z"),
-    },
-    {
-      title: "How Indian Businesses Are Automating 24/7 WhatsApp Customer Service",
-      slug: "automating-247-whatsapp-customer-service-in-india",
-      excerpt: "Learn how official WhatsApp Business API integration and intelligent responder bots capture leads, answer FAQs, and process orders around the clock.",
-      content: `Indian consumers prefer communicating via WhatsApp. Businesses that automate initial customer inquiries see a 3.4x increase in conversion rates.\n\n### Instant Response SLA\nWhen a potential client asks for pricing or catalog details at midnight, automated WhatsApp workflows respond instantly within 2 seconds.\n\n### Seamless Lead Routing\nInquiries are categorized automatically and pushed straight into your internal CRM or office dashboard for immediate team follow-up.`,
-      coverImage: "/images/Whatsapp_Messaging_&_Bots.png",
-      category: "Digital Marketing",
-      author: "India Web Designs AI Team",
-      published: true,
-      publishedAt: new Date("2026-07-22T14:30:00Z"),
-    },
-  ];
+  let initialPosts: schema.NewPost[] = [];
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const imported = require("@/data/imported-blogs.json");
+    if (Array.isArray(imported) && imported.length > 0) {
+      initialPosts = imported.map((item: any) => ({
+        title: item.title,
+        slug: item.slug,
+        excerpt: item.excerpt,
+        content: item.content,
+        coverImage: item.coverImage || null,
+        category: item.category || "Web Design & Development",
+        author: item.author || "India Web Designs Team",
+        published: true,
+        publishedAt: item.publishedAt ? new Date(item.publishedAt) : new Date(),
+      }));
+    }
+  } catch {
+    // Fallback if file not found yet
+  }
 
-  for (const post of samplePosts) {
+  if (initialPosts.length === 0) {
+    initialPosts = [
+      {
+        title: "Why Custom Next.js Engineering Beats Outdated WordPress Themes in 2026",
+        slug: "why-custom-nextjs-beats-wordpress-in-2026",
+        excerpt: "Discover how custom Next.js web application architecture delivers sub-0.8s edge load speeds, 100/100 Core Web Vitals, and immune security compared to vulnerable WordPress plugins.",
+        content: `In 2026, page load speed and security dictate digital revenue. Indian businesses relying on bloated WordPress themes face slow 3+ second page loads, plugin vulnerabilities, and costly monthly plugin maintenance fees.\n\n### 1. Sub-0.8s Edge Performance\nNext.js leverages Server Components and global Edge CDN distribution to render pages instantly in under 800 milliseconds worldwide.\n\n### 2. Zero Plugin Vulnerability\nCustom React & Next.js architectures eliminate third-party PHP plugin exploits and SQL injection risks completely.\n\n### 3. Superior Google SEO Rankings\nGoogle prioritizes sites with top-tier Core Web Vitals. Fast Next.js websites rank significantly higher for competitive local and national keywords.`,
+        coverImage: "/images/static_website.png",
+        category: "Web Design",
+        author: "India Web Designs Architecture Team",
+        published: true,
+        publishedAt: new Date("2026-07-15T10:00:00Z"),
+      },
+      {
+        title: "How Indian Businesses Are Automating 24/7 WhatsApp Customer Service",
+        slug: "automating-247-whatsapp-customer-service-in-india",
+        excerpt: "Learn how official WhatsApp Business API integration and intelligent responder bots capture leads, answer FAQs, and process orders around the clock.",
+        content: `Indian consumers prefer communicating via WhatsApp. Businesses that automate initial customer inquiries see a 3.4x increase in conversion rates.\n\n### Instant Response SLA\nWhen a potential client asks for pricing or catalog details at midnight, automated WhatsApp workflows respond instantly within 2 seconds.\n\n### Seamless Lead Routing\nInquiries are categorized automatically and pushed straight into your internal CRM or office dashboard for immediate team follow-up.`,
+        coverImage: "/images/Whatsapp_Messaging_&_Bots.png",
+        category: "Digital Marketing",
+        author: "India Web Designs AI Team",
+        published: true,
+        publishedAt: new Date("2026-07-22T14:30:00Z"),
+      },
+    ];
+  }
+
+  for (const post of initialPosts) {
     const id = mockPostId++;
     const record: schema.Post = {
       id,

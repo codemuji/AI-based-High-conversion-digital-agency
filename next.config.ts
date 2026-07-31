@@ -8,6 +8,26 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "indiawebdesigns.in",
+      },
+      {
+        protocol: "https",
+        hostname: "*.indiawebdesigns.in",
+      },
+      {
+        protocol: "https",
+        hostname: "academy.webotapp.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.webotapp.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+      },
+      {
+        protocol: "https",
         hostname: "images.pexels.com",
       },
       {

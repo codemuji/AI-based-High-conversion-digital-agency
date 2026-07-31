@@ -232,7 +232,18 @@ export default async function PublicBlogIndexPage({
                     </h2>
 
                     <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed line-clamp-3">
-                      {(post.excerpt || "").replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ")}
+                      {(post.excerpt || "")
+                        .replace(/\[\/?vc_[^\]]*\]/gi, " ")
+                        .replace(/<[^>]*>/g, " ")
+                        .replace(/<[a-z0-9_-]+[^>]*$/gi, " ")
+                        .replace(/&amp;/g, "&")
+                        .replace(/&lt;/g, "<")
+                        .replace(/&gt;/g, ">")
+                        .replace(/&quot;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&nbsp;/g, " ")
+                        .replace(/\s+/g, " ")
+                        .trim()}
                     </p>
                   </div>
                 </div>
@@ -271,9 +282,10 @@ export default async function PublicBlogIndexPage({
             {/* Page Number Buttons */}
             <div className="flex items-center gap-1">
               {getPageNumbers().map((p, idx) => {
+                const uniqueKey = `page-btn-${p}-${idx}`;
                 if (typeof p === "string") {
                   return (
-                    <span key={idx} className="px-2 py-1 text-stone-400">
+                    <span key={uniqueKey} className="px-2 py-1 text-stone-400">
                       ...
                     </span>
                   );
@@ -281,14 +293,14 @@ export default async function PublicBlogIndexPage({
                 const isCurrent = p === currentPage;
                 return isCurrent ? (
                   <span
-                    key={p}
+                    key={uniqueKey}
                     className="w-9 h-9 flex items-center justify-center rounded-xl bg-stone-900 text-white font-bold shadow-xs"
                   >
                     {p}
                   </span>
                 ) : (
                   <Link
-                    key={p}
+                    key={uniqueKey}
                     href={createPageUrl(p, query)}
                     className="w-9 h-9 flex items-center justify-center rounded-xl border border-stone-200 bg-white text-stone-700 hover:bg-stone-100 font-bold transition-colors"
                   >

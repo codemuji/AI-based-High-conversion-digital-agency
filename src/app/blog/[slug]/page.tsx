@@ -58,7 +58,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
         {/* Cover Image & Article Body */}
         <section className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          {post.coverImage && post.coverImage.startsWith("/images/") && (
+          {post.coverImage && (post.coverImage.startsWith("/blog-images/") || post.coverImage.startsWith("/images/")) && (
             <div className="relative w-full h-64 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-[var(--surface-border)]">
               <Image
                 src={post.coverImage}

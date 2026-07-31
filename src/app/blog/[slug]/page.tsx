@@ -6,6 +6,8 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { getPostBySlugAction } from "@/app/actions";
 
+import { formatWpContent } from "@/lib/wp-cleaner";
+
 export const revalidate = 60;
 
 export default async function BlogPostDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -15,6 +17,8 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
   if (!post || !post.published) {
     notFound();
   }
+
+  const formattedContent = formatWpContent(post.content || "");
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans selection:bg-[var(--accent)] selection:text-white text-sm sm:text-base">
@@ -69,10 +73,10 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           {/* Article Text Content */}
           <div className="prose prose-stone max-w-none text-base sm:text-lg leading-relaxed text-[var(--foreground)] space-y-6 font-sans">
-            {post.content && post.content.includes("<") ? (
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            {formattedContent && formattedContent.includes("<") ? (
+              <div dangerouslySetInnerHTML={{ __html: formattedContent }} />
             ) : (
-              (post.content || "").split("\n\n").map((paragraph, idx) => {
+              (formattedContent || "").split("\n\n").map((paragraph, idx) => {
                 if (paragraph.startsWith("### ")) {
                   return (
                     <h3 key={idx} className="font-display font-bold text-2xl text-[var(--foreground)] pt-4">

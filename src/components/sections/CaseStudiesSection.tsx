@@ -9,62 +9,69 @@ interface CaseStudy {
   metrics: string;
   description: string;
   deliverables: string[];
+  liveUrl?: string;
 }
 
 const CASE_STUDIES: CaseStudy[] = [
   {
-    category: "Online Store",
-    client: "Apex Fashion Retailers",
-    image: "/images/ecommerce_website.png",
-    title: "Apex E-Commerce & High-Conversion Storefront",
-    metrics: "+180% Orders",
-    description: "Replaced a sluggish WordPress site with a sub-0.8s Next.js shopping portal featuring instant UPI checkout and 100/100 Core Web Vitals.",
-    deliverables: ["Custom Next.js Storefront", "Instant UPI Checkout", "Sub-0.8s Edge CDN"],
+    category: "Luxury E-Commerce",
+    client: "Elegance of India",
+    image: "/images/elegance_of_india.png",
+    title: "Elegance of India — South Asian Luxury Fashion",
+    metrics: "+210% Global Reach",
+    description: "Engineered a high-conversion luxury e-commerce storefront for South Asian fashion with multi-currency dynamic pricing, sub-0.7s load speed, and instant WhatsApp ordering.",
+    deliverables: ["Luxury Next.js Storefront", "Multi-Currency Converter", "Sub-0.7s Edge CDN", "WhatsApp Commerce Engine"],
+    liveUrl: "https://eleganceofindia.com/",
   },
   {
-    category: "Healthcare System",
-    client: "CareConnect Medical Group",
-    image: "/images/Pharmaceutical_Reporting_System.png",
-    title: "Pharmaceutical & Patient Reporting System",
-    metrics: "2,400+ Daily Consults",
-    description: "Launched an automated reporting engine and 24/7 WhatsApp consultation bot for medical distributors and clinics across India.",
-    deliverables: ["Pharma Reporting System", "WhatsApp Cloud API", "EMR Database Sync"],
+    category: "Industrial & Utilities",
+    client: "Hydro Energy Solution",
+    image: "/images/hydro_energy_india.png",
+    title: "Hydro Energy Solution — Water & Wastewater Engineering",
+    metrics: "500+ B2B Projects",
+    description: "Engineered an industrial enterprise web portal and product catalog for North-East India's leading WILO water and wastewater management solutions provider.",
+    deliverables: ["Industrial B2B Portal", "Product Catalog Engine", "Service Lead Intake", "Edge Speed Optimization"],
+    liveUrl: "https://hydroenergyindia.com/",
   },
   {
-    category: "POS & Logistics",
-    client: "LogiTrack Express Supply",
-    image: "/images/Retail_POS_and_Billing_Software.png",
-    title: "Retail POS & Inventory Billing Software",
-    metrics: "Save ₹3.2L / mo",
-    description: "Built an offline-first POS billing dashboard that eliminated manual paperwork and optimized delivery logistics for 500+ vehicles.",
-    deliverables: ["Real-Time Billing Engine", "Offline Sync Mobile App", "Automated GST Ledger"],
+    category: "Media & News Portal",
+    client: "Purbodix",
+    image: "/images/purbodix.png",
+    title: "Purbodix — Northeast India Digital Media Portal",
+    metrics: "100k+ Readers / Mo",
+    description: "Engineered a high-performance regional digital news & media web portal serving Northeast India with instant article publishing, multi-category archives, and sub-0.6s CDN response.",
+    deliverables: ["High-Traffic Media Portal", "Bilingual Content Engine", "SEO & Ad Revenue System", "Sub-0.6s Edge Response"],
+    liveUrl: "https://purbodix.com/",
   },
   {
-    category: "Services App",
-    client: "Urban Services Network",
-    image: "/images/Marketplace_&_Services_App.png",
-    title: "Marketplace & On-Demand Booking App",
-    metrics: "4.9 ★ User Rating",
-    description: "Designed and built a native mobile marketplace app connecting homeowners with verified service technicians in real time.",
-    deliverables: ["iOS & Android App", "Live GPS Tracking", "Razorpay Payment Gateway"],
+    category: "Luxury Apparel",
+    client: "Blaze On Me London",
+    image: "/images/blaze_on_me.png",
+    title: "Blaze On Me London — Contemporary Luxury Apparel",
+    metrics: "+300% Global Sales",
+    description: "Engineered a high-converting contemporary luxury fashion portal for Blaze On Me London featuring premium catalog showcases and sub-0.7s edge load performance.",
+    deliverables: ["Luxury Fashion Portal", "Sub-0.7s Edge CDN", "International Checkout", "Responsive Mobile UX"],
+    liveUrl: "https://blazeonme.com/",
   },
   {
-    category: "Web Portal",
-    client: "EngageHub Network",
-    image: "/images/Discussion_Forum_&_Portal.png",
-    title: "Discussion Forum & Interactive Community Portal",
-    metrics: "50k+ Active Members",
-    description: "Engineered a high-performance community forum portal featuring instant thread search, live notifications, and user badges.",
-    deliverables: ["High-Traffic Forum Architecture", "Instant Search", "Realtime Notifications"],
+    category: "Travel & Tourism",
+    client: "Baruah Travels",
+    image: "/images/baruah_travels.png",
+    title: "Baruah Travels — Customised & Group Trips Portal",
+    metrics: "1,500+ Curated Trips",
+    description: "Engineered a high-conversion travel & tour booking platform for Northeast India featuring custom itinerary builders, group trip reservations, and instant WhatsApp booking intake.",
+    deliverables: ["Custom Travel Portal", "Itinerary Booking Engine", "WhatsApp Lead Intake", "Sub-0.8s Edge Load"],
+    liveUrl: "https://baruahtravels.com/",
   },
   {
-    category: "Content Portal",
-    client: "ContentPulse Media",
-    image: "/images/Blogging_&_Content_Portal.png",
-    title: "Blogging & Digital Content Publishing Portal",
-    metrics: "100/100 SEO Score",
-    description: "Custom editorial and blogging portal optimized for ultra-fast Google indexing, ad placement, and organic search dominance.",
-    deliverables: ["SEO Content CMS", "Sub-0.5s Edge Caching", "Ad & Revenue Engine"],
+    category: "Heavy Machinery",
+    client: "G.K. Equipment",
+    image: "/images/gk_equipment.png",
+    title: "G.K. Equipment — Heavy Machinery & Industrial Catalog",
+    metrics: "100/100 Core Web Vitals",
+    description: "Engineered a high-performance industrial heavy machinery showcase portal & digital catalog for G.K. Equipment with sub-0.7s page speeds.",
+    deliverables: ["Industrial Machinery Catalog", "High-Performance Showcase", "RFQ Lead System", "Sub-0.7s Edge CDN"],
+    liveUrl: "https://indiawebdesigns.online/G.K.Equipment/",
   },
 ];
 
@@ -147,12 +154,22 @@ export function CaseStudiesSection() {
             </div>
 
             {/* Bottom Card Action */}
-            <div className="p-6 pt-0">
+            <div className="p-6 pt-0 flex items-center justify-between gap-3">
+              {study.liveUrl ? (
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-display text-xs font-bold text-[var(--accent)] hover:text-[#15803d] transition-colors"
+                >
+                  <span>Visit Live Site ↗</span>
+                </a>
+              ) : null}
               <a
                 href="/#contact"
-                className="inline-flex items-center gap-1.5 font-display text-xs font-bold text-[var(--accent)] hover:text-[#15803d] transition-colors"
+                className="inline-flex items-center gap-1.5 font-display text-xs font-bold text-stone-600 hover:text-[var(--foreground)] transition-colors"
               >
-                <span>Scope Similar Project &rarr;</span>
+                <span>Scope Similar &rarr;</span>
               </a>
             </div>
           </div>

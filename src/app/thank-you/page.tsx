@@ -78,37 +78,37 @@ export default function ThankYouPage({
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--surface-border)] shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">
-                E-Commerce
+                Luxury E-Commerce
               </span>
               <h3 className="font-display font-bold text-lg text-[var(--foreground)] mt-2">
-                Apex Retail — 420% Lead Conversion Boost
+                Elegance of India — South Asian Luxury Fashion
               </h3>
               <p className="text-xs text-[var(--muted)] mt-2 leading-relaxed">
-                Rebuilt a legacy catalog site into a lightning-fast custom headless store with 0.8s load times.
+                Engineered high-speed luxury storefront with multi-currency pricing and sub-0.7s load times.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--surface-border)] shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-[var(--signature)]">
-                AI Automation
+                Industrial Engineering
               </span>
               <h3 className="font-display font-bold text-lg text-[var(--foreground)] mt-2">
-                CareConnect — 24/7 Medical Triage AI Agent
+                Hydro Energy Solution — Water Management
               </h3>
               <p className="text-xs text-[var(--muted)] mt-2 leading-relaxed">
-                Automated 85% of incoming patient queries and booking workflows across WhatsApp and Web.
+                Industrial B2B web portal &amp; product catalog for WILO pumping and water solutions.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--surface-border)] shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">
-                Enterprise App
+                Media &amp; Publishing
               </span>
               <h3 className="font-display font-bold text-lg text-[var(--foreground)] mt-2">
-                LogiTrack — Fleet Operations Portal
+                Purbodix — Northeast News Portal
               </h3>
               <p className="text-xs text-[var(--muted)] mt-2 leading-relaxed">
-                Custom real-time GPS tracking dashboard and driver app managing 500+ commercial vehicles.
+                High-traffic regional media publishing platform serving 100k+ monthly active readers.
               </p>
             </div>
           </div>

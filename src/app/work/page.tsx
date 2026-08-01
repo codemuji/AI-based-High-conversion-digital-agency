@@ -46,9 +46,9 @@ export default function WorkPage() {
             {/* Audited Impact Metric Pills */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-2">
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
-                <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">+180%</span>
-                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Fee &amp; Order Lift</span>
-                <span className="text-[11px] text-[var(--muted)]">Apex Fashion &amp; Academy</span>
+                <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">+210%</span>
+                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Global Reach &amp; Sales</span>
+                <span className="text-[11px] text-[var(--muted)]">Elegance of India</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] block">0.74s</span>
@@ -56,9 +56,9 @@ export default function WorkPage() {
                 <span className="text-[11px] text-[var(--muted)]">Core Web Vitals 100/100</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs col-span-2 sm:col-span-1 text-center">
-                <span className="font-display font-black text-2xl sm:text-3xl text-emerald-600 block">₹3.2L</span>
-                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Monthly Savings</span>
-                <span className="text-[11px] text-[var(--muted)]">LogiTrack Express Fleet</span>
+                <span className="font-display font-black text-2xl sm:text-3xl text-emerald-600 block">100k+</span>
+                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Monthly Readers</span>
+                <span className="text-[11px] text-[var(--muted)]">Purbodix Media Portal</span>
               </div>
             </div>
 

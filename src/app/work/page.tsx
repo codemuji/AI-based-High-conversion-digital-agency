@@ -27,37 +27,37 @@ export default function WorkPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="w-full max-w-4xl mx-auto text-center space-y-8 py-8">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-stone-200/90 shadow-sm text-xs font-mono font-bold text-[var(--foreground)] tracking-wider uppercase mx-auto">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-stone-200/90 shadow-sm text-xs font-display font-bold text-[var(--foreground)] tracking-wider uppercase mx-auto">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] animate-pulse shrink-0" />
-              <span>PRODUCTION TELEMETRY // AUDITED METRICS</span>
+              <span>VERIFIED CLIENT WORK &amp; RESULTS</span>
             </div>
 
-            <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-[var(--foreground)] tracking-tight leading-[1.02]">
-              Proven architectures. <br />
+            <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-[var(--foreground)] tracking-tight leading-[1.08]">
+              Our Real Client Projects. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--foreground)] via-stone-700 to-[var(--accent)]">
-                Audited business lift.
+                Proven Business Growth.
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-[var(--muted)] max-w-2xl mx-auto font-normal leading-relaxed">
-              We replace sluggish, template-bloated websites with lightning-fast, custom Next.js engineering. Explore our verified production case studies across Indian e-commerce, EdTech, healthcare, and B2B logistics.
+            <p className="text-base sm:text-lg text-[var(--muted)] max-w-2xl mx-auto font-normal leading-relaxed">
+              Explore live websites, e-commerce stores, and custom software platforms we built for businesses — engineered for fast loading, higher customer trust, and real sales growth.
             </p>
 
             {/* Audited Impact Metric Pills */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-2">
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[var(--accent)] block">+210%</span>
-                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Global Reach &amp; Sales</span>
+                <span className="font-display text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Global Reach &amp; Sales</span>
                 <span className="text-[11px] text-[var(--muted)]">Elegance of India</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[var(--foreground)] block">0.74s</span>
-                <span className="font-mono text-[11px] font-bold text-[var(--accent)] uppercase mt-1 block">Edge Load SLA</span>
+                <span className="font-display text-[11px] font-bold text-[var(--accent)] uppercase mt-1 block">Page Load Speed</span>
                 <span className="text-[11px] text-[var(--muted)]">Core Web Vitals 100/100</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs col-span-2 sm:col-span-1 text-center">
                 <span className="font-display font-black text-2xl sm:text-3xl text-emerald-600 block">100k+</span>
-                <span className="font-mono text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Monthly Readers</span>
+                <span className="font-display text-[11px] font-bold text-[var(--foreground)] uppercase mt-1 block">Monthly Readers</span>
                 <span className="text-[11px] text-[var(--muted)]">Purbodix Media Portal</span>
               </div>
             </div>
@@ -68,13 +68,13 @@ export default function WorkPage() {
                 href="#work"
                 className="px-8 py-4 rounded-full bg-[var(--accent)] hover:bg-[#15803d] text-white font-display font-bold text-base tracking-wide transition-all shadow-lg hover:shadow-[0_0_25px_rgba(22,163,74,0.35)] hover:-translate-y-0.5"
               >
-                Inspect Case Studies ↓
+                View Client Projects ↓
               </a>
               <Link
                 href="/#contact"
-                className="px-7 py-4 rounded-full bg-white hover:bg-stone-50 text-[var(--foreground)] border border-stone-200 font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
+                className="px-7 py-4 rounded-full bg-white hover:bg-stone-50 text-[var(--foreground)] border border-stone-200 font-display text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
               >
-                Scope Similar Architecture &rarr;
+                Get a Quote for Your Business &rarr;
               </Link>
             </div>
           </div>
